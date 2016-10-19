@@ -3,11 +3,11 @@ package ch.bfh.ti.soed.hs16.srs.black;
 public class Reservation implements Comparable<Reservation>{
     private final Customer customer;
     private final Room room;
-    private final double startTime;
-    private final double endTime;
+    private final long startTime;
+    private final long endTime;
     // price class
 
-    Reservation(Customer customer, Room room, double startTime, double endTime){
+    Reservation(Customer customer, Room room, long startTime, long endTime){
         customer.addReservation(this);
         room.addReservation(this);
         this.customer = customer;
