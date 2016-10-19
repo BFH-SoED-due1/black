@@ -30,7 +30,7 @@
             <item name="About" href="index.html"/>
             <item name="The Vision" href="doc/vision.pdf"/>
             <item name="User Stories" href="user_stories.html"/>
-            <item name="Domain Model" href="domain_model.html"/>
+            <item name="Domain Model" href="doc/domain_model.pdf"/>
             <item name="Context View" href="context_view.html"/>
             <!--
             <item name="System Sequence Diagram" href="system_sequence_diagram.html" />

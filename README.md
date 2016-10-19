@@ -1,4 +1,3 @@
-Hallo Welt
 lsrs-black
 ==============
 
