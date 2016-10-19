@@ -37,19 +37,24 @@ correctly implemented.
 *------+---------------+--------------+-------+
 |<<No>>|<<Description>>|<<Success>>|<<Failed>>|
 *------+---------------+--------------+-------+
-
-*--+---------------------------------------------------------+-----------+-----------+
 |01|Als Kunde möchte ich einen oder mehrere Reservationen auf verschiedene Räume tätigen, um Diese für einen Zeitraum zu besetzen.|...|...|
 *--+---------------------------------------------------------+-----------+-----------+
-|02|...|...|...|
+|02|Als Kunde möchte ich von mir getätigte Reservationen wieder annullieren können, um diese für diesen Zeitraum wieder frei zu geben.|...|...|
 *--+---------------------------------------------------------+-----------+-----------+
-|..|As <User> I want to be able to add a new reservation, so that a resource is reserved till the reservation ends.|The object is reserved for the entered time.|A message box appears with the errors.|
+|03|Als Kunde möchte ich sehen welche Räume zu welcher Zeit zur Verfügung stehen, um zu sehen, welche Räume für eine Reservierung in Frage kommen.|...|...|
 *--+---------------------------------------------------------+-----------+-----------+
-|..|...|...|...|
+|04|Als Kunde möchte ich im Falle einer Reservierung eine Benachrichtigung erhalten, um über Statusänderungen informiert zu bleiben.|...|...|
+*--+---------------------------------------------------------+-----------+-----------+
+|05|Als Kunde möchte ich eine Übersicht über meine getätigten Reservationen haben, um den Überblick zu behalten.|...|...|
+*--+---------------------------------------------------------+-----------+-----------+
+|06|Als Kunde möchte ich eine Übersicht über meine Rechnungen und deren Status haben, um über die laufenden Kosten informiert zu sein.|...|...|
+*--+---------------------------------------------------------+-----------+-----------+
+|07|Als Administrator möchte ich Räume entfernen oder hinzufügen können, um das System den Umständen anzupassen.|...|...|
+*--+---------------------------------------------------------+-----------+-----------+
+|08|Als Administrator möchte ich Räume entfernen oder hinzufügen können, um das System den Umständen anzupassen.Als Administrator möchte ich alle getätigten Reservationen annullieren/umbuchen können, falls ein Zimmer kurzfristig nicht mehr zur Verfügung steht.|...|...|
 *--+---------------------------------------------------------+-----------+-----------+
 
 
-[images/use_case_diagram.svg]
 * 3. Open Issues
 
 	Add here any open issues, if any.

@@ -15,9 +15,7 @@ associations among them. It also introduces the respective multiplicities.
 
 * 1. Domain Model
 
-  The model that was developed so far...
-
-  Add the image of the domain model here.
+[images/domain_model.svg]
 
 * 2. Open Issues
 
