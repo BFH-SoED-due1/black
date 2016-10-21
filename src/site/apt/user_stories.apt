@@ -2,7 +2,7 @@
     User Stories
     ----------
     ----------
-    October 19, 2016
+    October 21, 2016
 
 User Stories
 
@@ -11,9 +11,6 @@ roles users have when using the Smart Reservation System (SRS).
 
 
 * 1. Roles
-
-  Describe the roles you have identified. I recommend to use a definition
-list:
 
   [Customer] An ordinary user of the system.
 
@@ -33,10 +30,9 @@ or more criteria which can be used to validate whether the user story is
 correctly implemented.
 
 
-
-*------+---------------+--------------+-------+
+*------+---------------+-----------+----------+
 |<<No>>|<<Description>>|<<Success>>|<<Failed>>|
-*------+---------------+--------------+-------+
+*------+---------------+-----------+----------+
 |01|As customer I want to book one or multiple reservations for different rooms, to occupy them for a certain period.|...|...|
 *--+---------------------------------------------------------+-----------+-----------+
 |02|As customer I want to cancel reservations placed by me, to set them free for that period of time.|...|...|

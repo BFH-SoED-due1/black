@@ -2,8 +2,7 @@
     Glossary
 	----------
     ----------
-    October 19, 2016
-
+    October 21, 2016
 
 Glossary for the Smart Reservation System
 
@@ -14,10 +13,18 @@ by the development team.
 	
 	[Product owner]		The product owner has all rights about the project.
 
-	[SRS]			Smart Reservation System - A software system enabling
-					associations and enterprises to book and share rooms.
+	[SRS]			    Smart Reservation System - A software system enabling
+					    associations and enterprises to book and share rooms.
 	
-	[Stakeholders]			The people that are related to the product.
+	[Stakeholders]		The people that are related to the product.
+
+	[Scrum-Master]      The "coach" of the development team.
+
+	[Use Case Diagram]  Representation of interactions between the user and the system.
+
+	[User Stories]      Description of interactions between the end user and the system.
+
+	[Domain Model]      Shows the (most) important concepts of a software system.
 
 
 * Stakeholders
