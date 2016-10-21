@@ -7,7 +7,7 @@
 	<artifactId>srs-black</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>srs-red</name>
+	<name>srs-black</name>
 
 	<prerequisites>
 		<maven>3</maven>
