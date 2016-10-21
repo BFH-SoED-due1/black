@@ -1,13 +1,15 @@
     ----------
     Context View
     ----------
-    Name: To be provided
     ----------
-    October 03, 2016
+    October 19, 2016
 
 Context View
 
   This document describes the context view of the Smart Reservation
 System (SRS). It introduces the system and its environment.
 
-[images/use_case_diagram.svg]
+
+* Use Case Diagram
+
+[images/use_case_diagram.svg] Use Case Diagram

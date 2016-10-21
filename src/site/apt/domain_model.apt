@@ -1,9 +1,8 @@
     ----------
     Domain Model
     ----------
-    due1
     ----------
-    October 03, 2015
+    October 19, 2016
 
 Domain Model
 
@@ -11,11 +10,13 @@ Domain Model
 System (SRS). It introduces the most important entities ("Fachklassen") and the
 associations among them. It also introduces the respective multiplicities.
 
-  Note that only a few attributes are showed in the diagram, but no operations.
+  Note that only a few attributes are shown in the diagram, but no operations.
+
 
 * 1. Domain Model
 
-[images/domain_model.svg]
+[images/domain_model.svg] Domain Model
+
 
 * 2. Open Issues
 

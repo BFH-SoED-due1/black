@@ -1,7 +1,8 @@
-		----------
-		Glossary
-		----------
-		----------
+    ----------
+    Glossary
+	----------
+    ----------
+    October 19, 2016
 
 
 Glossary for the Smart Reservation System
@@ -16,8 +17,24 @@ by the development team.
 	[SRS]			Smart Reservation System - A software system enabling
 					associations and enterprises to book and share rooms.
 	
-	[Stakeholders]			Personen welche mit dem Projekt in Verbindung stehen
+	[Stakeholders]			The people that are related to the product.
 
+
+* Stakeholders
+
+*------+--------+------------------------+
+|<<No>>|<<Name>>|<<Description/Interest>>|
+*------+--------+------------------------+
+|01|Developer|Fair distribution of tasks, reasonable contract conditions (time limits)|
+*--+---------------+-----------------------+
+|02|Private investors|Invested money including profit|
+*--+---------------+-----------------------+
+|03|User|Stable, user-friendly and feature-rich product|
+*--+---------------+-----------------------+
+|04|Scrum-Master|Trouble-free coordination of the production process and good teamwork|
+*--+---------------+-----------------------+
+|05|Customer|Complete, bug-free und feature-rich product|
+*--+---------------+-----------------------+
 
 	
 
