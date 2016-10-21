@@ -29,19 +29,19 @@ by the development team.
 
 * Stakeholders
 
-*------+--------+------------------------+
-|<<No>>|<<Name>>|<<Description/Interest>>|
-*------+--------+------------------------+
-|01|Developer|Fair distribution of tasks, reasonable contract conditions (time limits)|
-*--+---------------+-----------------------+
-|02|Private investors|Invested money including profit|
-*--+---------------+-----------------------+
-|03|User|Stable, user-friendly and feature-rich product|
-*--+---------------+-----------------------+
-|04|Scrum-Master|Trouble-free coordination of the production process and good teamwork|
-*--+---------------+-----------------------+
-|05|Customer|Complete, bug-free und feature-rich product|
-*--+---------------+-----------------------+
+*------+--------+---------------+------------+----------+
+|<<No>>|<<Name>>|<<Description>>|<<Interest>>|<<Party>>|
+*------+--------+---------------+------------+----------+
+|01|Customer|Person/Organization that provided the assignment.|Complete, bug-free und feature-rich product.|Prof. Dr. Eric Dubuis|
+*--+---------------+-----------------------+------------------------+------------------------+
+|02|Scrum-Master|Head of the project team.|Trouble-free coordination of the production process and good teamwork.|Valentin Widmer|
+*--+---------------+-----------------------+------------------------+------------------------+
+|03|Developer|People that are mainly working on the project.|Fair distribution of tasks, reasonable contract conditions (time limits).|Davide Papacella, Jonas Nydegger, Xavier Frei|
+*--+---------------+-----------------------+------------------------+------------------------+
+|04|User|People that will use the finished product.|Stable, user-friendly and feature-rich product.|...|
+*--+---------------+-----------------------+------------------------+------------------------+
+|05|Private Investors|Supporters of the project.|Invested money including profit.|...|
+*--+---------------+-----------------------+------------------------+------------------------+
 
 	
 
