@@ -7,7 +7,7 @@ public class Reservation implements Comparable<Reservation>{
     private final long endTime;
     // price class
 
-    Reservation(Customer customer, Room room, long startTime, long endTime){
+    public Reservation(Customer customer, Room room, long startTime, long endTime){
         customer.addReservation(this);
         room.addReservation(this);
         this.customer = customer;
