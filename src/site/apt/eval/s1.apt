@@ -3,7 +3,7 @@
 		-------------
 		Eric Dubuis
 		-------------
-		October 3, 2016
+		October 3, 2016; Evaluation: October 30, 2016
 
 
 Introduction
@@ -79,7 +79,7 @@ branch. You will merge the deliverable from you development branch <sprint1>
 	[]
 
 	Note that all documents and the source files must be committed on the "master"
-branch of the remote GitHub repository. Remeber: You’ll work on individual branches
+branch of the remote GitHub repository. Remember: You’ll work on individual branches
 or on the development branch, however, and you have to merge your committed items
 onto the "master" branch.
 
@@ -91,24 +91,31 @@ Evaluation
 *-------------------------------------------+---------------*-----------------*
 | Item										| Max. points	| Points received |
 *-------------------------------------------+---------------*-----------------*
-| Document containing the user stories\		| 		10		| 				  |
-| and roles.								| 				| 				  |
-|											| 				| 				  |
+| Document containing the user stories\		| 		10		| 		10		  |
+| and roles.\								| 				| 				  |
+| COMMENTS:\								| 				| 				  |
+| - Good.									| 				| 				  |
 *-------------------------------------------+---------------*-----------------*
-| Domain Model Document\					| 		10		| 				  |
-| (associations, multiplicities)							| 				  |
-|											| 				| 				  |
-| 											| 				| 				  |
+| Domain Model Document\					| 		10		| 		 9		  |
+| (associations, multiplicities)\			|				| 				  |
+| COMMENTS:\								| 				| 				  |
+| - class names, multiplicities: okay\		| 				| 				  |
+| - no visibilities for association names (-1)\| 			| 				  |
+| - bad choice of association name "modifies"| 				| 				  |
 *-------------------------------------------+---------------*-----------------*
-| Sensible stakeholders (in glossary)\		| 		10		| 				  |
-| 											| 				| 			  	  |
-| 											| 				| 				  |
+| Sensible stakeholders (in glossary)\		| 		10		| 		10		  |
+| COMMENTS:\								| 				| 				  |
+| - okay									| 				| 				  |
 *-------------------------------------------+---------------*-----------------*
-| Working infrastructure\					| 		10		| 				  |
-| 											| 				| 			  	  |
-| 											| 				| 				  |
+| First classes and tests\					| 		10		| 		 8		  |
+| COMMENTS:\								| 				| 				  |
+| - Implement classes such that test do not fail | 			| 				  |
 *-------------------------------------------+---------------*-----------------*
-| Total										| 		50		| 				  |
+| Working infrastructure\					| 		10		| 		10		  |
+| COMMENTS:\								| 				| 			  	  |
+| - Adjusted directory structure for test classes\ | 		| 				  |
+*-------------------------------------------+---------------*-----------------*
+| Total										| 		50		| 		47		  |
 *-------------------------------------------+---------------*-----------------*
 Distribution of points for this deliverable.
 
