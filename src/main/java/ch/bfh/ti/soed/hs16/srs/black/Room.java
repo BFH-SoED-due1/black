@@ -9,18 +9,20 @@ public class Room {
     private int roomNr;
     private String description;
 
-    Room(int roomNr, String description){
+    public Room(int roomNr, String description){
         reservations = new TreeSet<Reservation>();
         this.roomNr = roomNr;
         this.description = description;
     }
 
-    public void addReservation(Reservation reservation){
-        // throw exception if time slot is not empty
+    protected void addReservation(Reservation reservation) throws Exception {
+        for (Reservation res: reservations)
+            if (res.timeCollisionWith(reservation))
+                throw new Exception("time collision");
         reservations.add(reservation);
     }
 
-    public void removeReservation(Reservation reservation){
+    protected void removeReservation(Reservation reservation){
         reservations.remove(reservation);
     }
 
