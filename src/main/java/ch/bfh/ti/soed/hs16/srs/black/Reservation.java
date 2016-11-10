@@ -9,7 +9,7 @@ public class Reservation implements Comparable<Reservation>{
     private final Date end;
     // price class
 
-    public Reservation(Customer customer, Room room, Date begin, Date end) {
+    public Reservation(Customer customer, Room room, Date begin, Date end) throws Exception {
         this.customer = customer;
         this.room = room;
         this.begin = begin;
@@ -21,6 +21,11 @@ public class Reservation implements Comparable<Reservation>{
     public void cancelReservation(){
         customer.removeReservation(this);
         room.removeReservation(this);
+    }
+
+    public boolean timeCollisionWith(Reservation o){
+        return begin.after(o.begin) && begin.before(o.end) || begin.before(o.begin) && end.after(o.begin)
+                || begin.equals(o.begin) && end.equals(o.end);
     }
 
     @Override

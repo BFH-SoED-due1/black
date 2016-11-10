@@ -7,16 +7,16 @@ public class Customer {
     private String name;
     // other personal information ...
 
-    Customer(String name){
+    public Customer(String name){
         reservations = new TreeSet<>();
         this.name = name;
     }
 
-    public void addReservation(Reservation reservation){
+    protected void addReservation(Reservation reservation){
         reservations.add(reservation);
     }
 
-    public void removeReservation(Reservation reservation){
+    protected void removeReservation(Reservation reservation){
         reservations.remove(reservation);
     }
 
