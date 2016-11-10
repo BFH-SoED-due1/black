@@ -14,6 +14,8 @@ public class Reservation implements Comparable<Reservation>{
         this.room = room;
         this.begin = begin;
         this.end = end;
+        if (customer == null || room == null || begin == null || end == null || begin.after(end) || begin.equals(end))
+            throw new IllegalArgumentException();
         customer.addReservation(this);
         room.addReservation(this);
     }
