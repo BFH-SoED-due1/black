@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2016 Berner Fachhochschule, Switzerland.
+ *
+ * Project Smart Reservation System.
+ *
+ * Distributable under GPL license. See terms of license at gnu.org.
+ */
 package ch.bfh.ti.soed.hs16.srs.black.reservation;
 
 import com.vaadin.navigator.View;
@@ -10,7 +17,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 
 
-public class ReservationView extends CustomComponent implements View{
+public class ReservationView extends CustomComponent implements View {
     private TextField fromField;
     private TextField toField;
     private Button makeButton;
@@ -33,10 +40,7 @@ public class ReservationView extends CustomComponent implements View{
         setCompositionRoot(layout);
 
         layout.setSizeFull();
-
-
         layout.setComponentAlignment(content, Alignment.MIDDLE_CENTER);
-
     }
 
     public Button getLogoutButton() {

@@ -1,3 +1,10 @@
+/*
+ * Copyright (c) 2016 Berner Fachhochschule, Switzerland.
+ *
+ * Project Smart Reservation System.
+ *
+ * Distributable under GPL license. See terms of license at gnu.org.
+ */
 package ch.bfh.ti.soed.hs16.srs.black.login;
 
 import com.vaadin.navigator.View;
@@ -12,6 +19,7 @@ import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 
+
 public class LoginView extends CustomComponent implements View {
 
     private Label errorLbl;
@@ -19,7 +27,7 @@ public class LoginView extends CustomComponent implements View {
     private PasswordField passwordField;
     private Button loginButton;
 
-    public LoginView(){
+    public LoginView() {
 
         usernameField = new TextField("Username");
         passwordField = new PasswordField("Password");
@@ -41,7 +49,6 @@ public class LoginView extends CustomComponent implements View {
 
         layout.setComponentAlignment(panel, Alignment.MIDDLE_CENTER);
 
-
     }
 
     public Button getLoginButton() {
@@ -59,12 +66,11 @@ public class LoginView extends CustomComponent implements View {
     public Label getErrorLbl() {
         return errorLbl;
     }
+
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
 
     }
-
-
 }
 
 
