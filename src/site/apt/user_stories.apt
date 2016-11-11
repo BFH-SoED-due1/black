@@ -2,7 +2,7 @@
     User Stories
     ----------
     ----------
-    October 21, 2016
+    November 11, 2016
 
 User Stories
 
@@ -33,21 +33,23 @@ correctly implemented.
 *------+---------------+-----------+----------+
 |<<No>>|<<Description>>|<<Success>>|<<Failed>>|
 *------+---------------+-----------+----------+
-|01|As customer I want to book one or multiple reservations for different rooms, to occupy them for a certain period.|...|...|
+|01|As a customer I want to log-in, to authenticate myself and to have access to the system.|...|...|
 *--+---------------------------------------------------------+-----------+-----------+
-|02|As customer I want to cancel reservations placed by me, to set them free for that period of time.|...|...|
+|02|As a customer I want to book one or multiple reservations for different rooms, to occupy them for a period of time.|...|...|
 *--+---------------------------------------------------------+-----------+-----------+
-|03|As customer I want to see which rooms are open at which times, to see which rooms are open for reservation.|...|...|
+|03|As a customer I want to cancel reservations placed by me, to set them free for that period of time.|...|...|
 *--+---------------------------------------------------------+-----------+-----------+
-|04|As customer I want to receive notifications concerning my reservation, to be up-to-date about status changes. |...|...|
+|04|As a customer I want to see which rooms are open at which times, to see which rooms are open for reservation.|...|...|
 *--+---------------------------------------------------------+-----------+-----------+
-|05|As customer I want to have a list of my reservations, to keep an overview.|...|...|
+|05|As a customer I want to receive notifications concerning my reservation, to be up-to-date about status changes.|...|...|
 *--+---------------------------------------------------------+-----------+-----------+
-|06|As customer I want to have an overview of my billings and their current status, to be informed about my running costs.|...|...|
+|06|As a customer I want to have a list of my reservations, to keep an overview.|...|...|
 *--+---------------------------------------------------------+-----------+-----------+
-|07|As administrator I want to add, modify and remove rooms, to adjust the system according to the circumstances.|...|...|
+|07|As a customer I want to have an overview of my billings and their current status, to be informed about my running costs.|...|...|
 *--+---------------------------------------------------------+-----------+-----------+
-|08|As administrator I want to cancel or rebook reservations in case a room may not be available on short notice.|...|...|
+|08|As an administrator I want to add, modify and remove rooms, to adjust the system according to the circumstances.|...|...|
+*--+---------------------------------------------------------+-----------+-----------+
+|09|As an administrator I want to cancel or rebook reservations in case a room may not be available on short notice.|...|...|
 *--+---------------------------------------------------------+-----------+-----------+
 
 
