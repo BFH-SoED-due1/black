@@ -1,0 +1,31 @@
+    ----------
+    Sprint Backlog
+	----------
+    ----------
+    November 12, 2016
+
+Sprint Backlog
+
+    The sprint backlog is a breakdown of the user stories in the product backlog into tasks.
+These tasks are estimated in working hours and need to be continuously updated by the team members.
+
+
+*------+--------------+---------------------+------------+--------------------+-----------------+----------+
+|<<ID>>|<<Story Name>>|<<Story Description>>|<<Priority>>|<<Estimated Effort>>|<<Actual Effort>>|<<Status>>|
+*------+--------------+---------------------+------------+--------------------+-----------------+----------+
+|1|Make Reservation|As a customer I want to book one or multiple reservations for different rooms, to occupy them for a period of time.|High|6|-|In progress|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|1.1| |Implement MVC Pattern|High|3|-|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|1.2| |Implement Business Logic|High|3|-|In progress|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|1.2.1| |Include "Date-Range" library|High|3|-|Cancelled|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|1.2.2| |Add UnitTest --> Double Booking|High|1|-|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|1.2.3| |Perform General Testing|High|2|-|Waiting|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|1.3| |Implement Database Interface|Medium|3|-|In progress|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|1.4| |Create GUI|Medium|3|-|Waiting|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
