@@ -72,6 +72,3 @@ public class LoginView extends CustomComponent implements View {
 
     }
 }
-
-
-

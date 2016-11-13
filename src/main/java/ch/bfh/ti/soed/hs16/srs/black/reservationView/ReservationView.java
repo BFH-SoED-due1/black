@@ -26,7 +26,6 @@ public class ReservationView extends CustomComponent implements View {
     private Button logoutButton;
 
     public ReservationView() {
-
         fromField = new DateField("Reservation from");
         toField = new DateField("Reservation to");
         roomNumberField = new TextField("Room Number");
@@ -71,7 +70,6 @@ public class ReservationView extends CustomComponent implements View {
 
     }
 }
-
 
 
 

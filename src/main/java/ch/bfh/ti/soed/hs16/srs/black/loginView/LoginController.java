@@ -9,8 +9,6 @@ package ch.bfh.ti.soed.hs16.srs.black.loginView;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
 import com.vaadin.navigator.Navigator;
-import com.vaadin.server.VaadinSession;
-import com.vaadin.server.WrappedSession;
 import com.vaadin.ui.Button;
 
 
