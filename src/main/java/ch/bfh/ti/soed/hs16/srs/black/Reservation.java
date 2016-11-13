@@ -1,8 +1,16 @@
+/*
+ * Copyright (c) 2016 Berner Fachhochschule, Switzerland.
+ *
+ * Project Smart Reservation System.
+ *
+ * Distributable under GPL license. See terms of license at gnu.org.
+ */
 package ch.bfh.ti.soed.hs16.srs.black;
 
 import java.util.Date;
 
-public class Reservation implements Comparable<Reservation>{
+
+public class Reservation implements Comparable<Reservation> {
     private final Customer customer;
     private final Room room;
     private final Date begin;
@@ -20,12 +28,12 @@ public class Reservation implements Comparable<Reservation>{
         room.addReservation(this);
     }
 
-    public void cancelReservation(){
+    public void cancelReservation() {
         customer.removeReservation(this);
         room.removeReservation(this);
     }
 
-    public boolean timeCollisionWith(Reservation o){
+    public boolean timeCollisionWith(Reservation o) {
         return begin.after(o.begin) && begin.before(o.end) || begin.before(o.begin) && end.after(o.begin)
                 || begin.equals(o.begin) && end.equals(o.end);
     }
