@@ -1,5 +1,8 @@
 package ch.bfh.ti.soed.hs16.srs.black;
 
+import ch.bfh.ti.soed.hs16.srs.black.model.Customer;
+import ch.bfh.ti.soed.hs16.srs.black.model.Reservation;
+import ch.bfh.ti.soed.hs16.srs.black.model.Room;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.Calendar;
@@ -36,7 +39,7 @@ public class ReservationTest {
         int returnValue, expected;
         Room testRoom1 = new Room(1, "50m^2");
         Room testRoom2 = new Room(2, "70m^");
-        Customer testCustomer1 = new Customer("Albert");
+        Customer testCustomer1 = new Customer("Albert", "123");
         Reservation reservation1;
         Reservation reservation2;
 
@@ -65,7 +68,7 @@ public class ReservationTest {
     @Test
     public void testCreateReservation() throws Exception {
         Room testRoom1 = new Room(1,"50m^2");
-        Customer testCustomer1 = new Customer("Albert");
+        Customer testCustomer1 = new Customer("Albert", "123");
         Reservation testReservation1 = new Reservation(testCustomer1, testRoom1, date1, date2);
         assertTrue(testRoom1.getReservations().contains(testReservation1));
         assertTrue(testCustomer1.getReservations().contains(testReservation1));
@@ -74,21 +77,21 @@ public class ReservationTest {
     @Test (expected = IllegalArgumentException.class)
     public void testCreateReservationWithBeginEqualsEnd() throws Exception {
         Room testRoom1 = new Room(1,"50m^2");
-        Customer testCustomer1 = new Customer("Albert");
+        Customer testCustomer1 = new Customer("Albert", "123");
         Reservation testReservation1 = new Reservation(testCustomer1, testRoom1, date1, date1);
     }
 
     @Test (expected = IllegalArgumentException.class)
     public void testCreateReservationWithEndBeforeBegin() throws Exception {
         Room testRoom1 = new Room(1,"50m^2");
-        Customer testCustomer1 = new Customer("Albert");
+        Customer testCustomer1 = new Customer("Albert", "123");
         Reservation testReservation1 = new Reservation(testCustomer1, testRoom1, date2, date1);
     }
 
     @Test
     public void testCancelReservation() throws Exception {
         Room testRoom1 = new Room(1,"50m^2");
-        Customer testCustomer1 = new Customer("Albert");
+        Customer testCustomer1 = new Customer("Albert", "123");
         Reservation testReservation1 = new Reservation(testCustomer1, testRoom1, date1, date2);
         assertTrue(testRoom1.getReservations().contains(testReservation1));
         assertTrue(testCustomer1.getReservations().contains(testReservation1));
@@ -101,7 +104,7 @@ public class ReservationTest {
     public void testTimeCollisionWith() throws Exception {
         Room testRoom1 = new Room(1,"50m^2");
         Room testRoom2 = new Room(2,"50m^2");
-        Customer testCustomer1 = new Customer("Albert");
+        Customer testCustomer1 = new Customer("Albert", "123");
 
         // case begin1 = begin2, end1 = end2
         Reservation testReservation1 = new Reservation(testCustomer1, testRoom1, date1, date2);
@@ -155,7 +158,7 @@ public class ReservationTest {
     @Test(expected = Exception.class)
     public void testAvoidDoubleBookingRoom() throws Exception {
         Room testRoom1 = new Room(1,"50m^2");
-        Customer testCustomer1 = new Customer("Albert");
+        Customer testCustomer1 = new Customer("Albert", "123");
         new Reservation(testCustomer1, testRoom1, date2, date3);
         new Reservation(testCustomer1, testRoom1, date1, date4);
     }

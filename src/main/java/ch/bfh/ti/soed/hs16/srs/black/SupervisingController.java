@@ -9,10 +9,11 @@ package ch.bfh.ti.soed.hs16.srs.black;
 
 import javax.servlet.annotation.WebServlet;
 
-import ch.bfh.ti.soed.hs16.srs.black.login.LoginController;
-import ch.bfh.ti.soed.hs16.srs.black.login.LoginView;
-import ch.bfh.ti.soed.hs16.srs.black.reservation.ReservationController;
-import ch.bfh.ti.soed.hs16.srs.black.reservation.ReservationView;
+import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
+import ch.bfh.ti.soed.hs16.srs.black.loginView.LoginController;
+import ch.bfh.ti.soed.hs16.srs.black.loginView.LoginView;
+import ch.bfh.ti.soed.hs16.srs.black.reservationView.ReservationController;
+import ch.bfh.ti.soed.hs16.srs.black.reservationView.ReservationView;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 

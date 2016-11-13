@@ -5,28 +5,26 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black;
+package ch.bfh.ti.soed.hs16.srs.black.model;
 
 import java.util.Collections;
 import java.util.Set;
 import java.util.TreeSet;
 
 
-public class Room {
+public class Customer {
     private Set<Reservation> reservations;
-    private int roomNr;
-    private String description;
+    private String name;
+    private String password;
+    // other personal information ...
 
-    public Room(int roomNr, String description) {
-        reservations = new TreeSet<Reservation>();
-        this.roomNr = roomNr;
-        this.description = description;
+    public Customer(String name, String password) {
+        reservations = new TreeSet<>();
+        this.name = name;
+        this.password = password;
     }
 
-    protected void addReservation(Reservation reservation) throws Exception {
-        for (Reservation res : reservations)
-            if (res.timeCollisionWith(reservation))
-                throw new Exception("time collision");
+    protected void addReservation(Reservation reservation) {
         reservations.add(reservation);
     }
 
@@ -36,5 +34,13 @@ public class Room {
 
     public Set<Reservation> getReservations() {
         return Collections.unmodifiableSet(reservations);
+    }
+
+    public String getPassword(){
+        return password;
+    }
+
+    public String getName(){
+        return name;
     }
 }

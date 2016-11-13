@@ -5,10 +5,12 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.login;
+package ch.bfh.ti.soed.hs16.srs.black.loginView;
 
-import ch.bfh.ti.soed.hs16.srs.black.DataModel;
+import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
 import com.vaadin.navigator.Navigator;
+import com.vaadin.server.VaadinSession;
+import com.vaadin.server.WrappedSession;
 import com.vaadin.ui.Button;
 
 
@@ -27,7 +29,9 @@ public class LoginController {
     }
 
     public void login(Button.ClickEvent event) {
-        if (loginView.getUsernameField().getValue().equals(dataModel.getUsername()) && loginView.getPasswordField().getValue().equals(dataModel.getPassword())) {
+        String userName = loginView.getUsernameField().getValue();
+        String password = loginView.getPasswordField().getValue();
+        if (dataModel.customerExists(userName) && dataModel.getPassword(userName).equals(password)) {
             loginView.getErrorLbl().setValue("");
             loginView.getUsernameField().clear();
             loginView.getPasswordField().clear();
