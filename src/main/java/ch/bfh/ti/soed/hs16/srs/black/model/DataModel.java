@@ -12,6 +12,7 @@ import java.util.HashSet;
 import java.util.TreeSet;
 import java.util.Date;
 
+
 public class DataModel {
 
     private Set<Customer> customers = new HashSet<>();
@@ -28,28 +29,28 @@ public class DataModel {
         addRoom(2, "50m^2");
     }
 
-    public Boolean customerExists(String customerName){
+    public Boolean customerExists(String customerName) {
         for (Customer customer : customers)
             if (customer.getName().equals(customerName))
                 return true;
         return false;
     }
 
-    public Boolean roomExists(int roomNumber){
+    public Boolean roomExists(int roomNumber) {
         for (Room room : rooms)
             if (room.getRoomNr() == roomNumber)
                 return true;
         return false;
     }
 
-    protected Customer getCustomer(String customerName){
+    protected Customer getCustomer(String customerName) {
         for (Customer customer : customers)
-        if (customer.getName().equals(customerName))
-            return customer;
+            if (customer.getName().equals(customerName))
+                return customer;
         return null;
     }
 
-    protected Room getRoom(int roomNr){
+    protected Room getRoom(int roomNr) {
         for (Room room : rooms)
             if (room.getRoomNr() == roomNr)
                 return room;
@@ -63,11 +64,11 @@ public class DataModel {
         return null;
     }
 
-    public void addCustomer(String customerName, String password){
+    public void addCustomer(String customerName, String password) {
         customers.add(new Customer(customerName, password));
     }
 
-    public void addRoom(int roomNumber, String description){
+    public void addRoom(int roomNumber, String description) {
         rooms.add(new Room(roomNumber, description));
     }
 

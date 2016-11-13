@@ -9,13 +9,8 @@ package ch.bfh.ti.soed.hs16.srs.black.reservationView;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.DateField;
-import com.vaadin.ui.VerticalLayout;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.TextField;
-import com.vaadin.ui.FormLayout;
-import com.vaadin.ui.CustomComponent;
-import com.vaadin.ui.Alignment;
+import com.vaadin.shared.ui.MarginInfo;
+import com.vaadin.ui.*;
 
 
 public class ReservationView extends CustomComponent implements View {
@@ -33,16 +28,21 @@ public class ReservationView extends CustomComponent implements View {
         logoutButton = new Button("Logout");
 
         VerticalLayout layout = new VerticalLayout();
+        Panel panel = new Panel("Reservation");
+        panel.setSizeUndefined();
+        layout.addComponent(panel);
 
         FormLayout content = new FormLayout();
         content.addComponents(fromField, toField, roomNumberField, makeButton, logoutButton);
         content.setSizeUndefined();
         content.setMargin(true);
-        layout.addComponent(content);
+        panel.setContent(content);
+
         setCompositionRoot(layout);
 
         layout.setSizeFull();
-        layout.setComponentAlignment(content, Alignment.MIDDLE_CENTER);
+        layout.setComponentAlignment(panel, Alignment.MIDDLE_CENTER);
+        layout.setMargin(new MarginInfo(true, false, false, false));
     }
 
     public Button getLogoutButton() {
@@ -70,7 +70,3 @@ public class ReservationView extends CustomComponent implements View {
 
     }
 }
-
-
-
-

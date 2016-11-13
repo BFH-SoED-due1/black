@@ -9,6 +9,7 @@ package ch.bfh.ti.soed.hs16.srs.black.loginView;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
@@ -35,7 +36,7 @@ public class LoginView extends CustomComponent implements View {
         errorLbl = new Label("");
 
         VerticalLayout layout = new VerticalLayout();
-        Panel panel = new Panel("SRS");
+        Panel panel = new Panel("Smart Reservation System Login");
         panel.setSizeUndefined();
         layout.addComponent(panel);
 
@@ -48,7 +49,7 @@ public class LoginView extends CustomComponent implements View {
         setCompositionRoot(layout);
 
         layout.setComponentAlignment(panel, Alignment.MIDDLE_CENTER);
-
+        layout.setMargin(new MarginInfo(true, false, false, false));
     }
 
     public Button getLoginButton() {
