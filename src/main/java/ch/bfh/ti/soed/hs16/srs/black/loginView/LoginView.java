@@ -5,7 +5,7 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.login;
+package ch.bfh.ti.soed.hs16.srs.black.loginView;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -72,6 +72,3 @@ public class LoginView extends CustomComponent implements View {
 
     }
 }
-
-
-
