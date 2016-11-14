@@ -5,7 +5,7 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.loginView;
+package ch.bfh.ti.soed.hs16.srs.black.view.loginView;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
 import com.vaadin.navigator.Navigator;

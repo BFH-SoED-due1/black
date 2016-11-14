@@ -5,7 +5,7 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.reservationView;
+package ch.bfh.ti.soed.hs16.srs.black.view.reservationView;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
 import com.vaadin.navigator.Navigator;
@@ -33,11 +33,10 @@ public class ReservationController {
             int roomNumber = Integer.parseInt(reservationView.getRoomNumberField().getValue());
             String username = "user2"; // this will be replaced with user of current session
             try {
-                dataModel.addReservation(username,roomNumber,begin,end);
+                dataModel.addReservation(username, roomNumber, begin, end);
             } catch (Exception e) {
                 e.printStackTrace();
             }
         });
-
     }
 }

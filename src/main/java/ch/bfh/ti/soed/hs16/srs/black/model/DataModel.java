@@ -76,5 +76,6 @@ public class DataModel {
         if (!customerExists(userName) || !roomExists(roomNumber))
             throw new IllegalArgumentException();
         reservations.add(new Reservation(getCustomer(userName), getRoom(roomNumber), begin, end));
+        System.out.println("Added new Reservation");
     }
 }
