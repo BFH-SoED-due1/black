@@ -12,6 +12,9 @@ import java.util.Set;
 import java.util.TreeSet;
 
 
+/**
+ * The room Object stores all reservations(Reservation) in a TreeSet. reservations can be added and removed afterwards.
+ */
 public class Room {
     private Set<Reservation> reservations;
     private int roomNr;

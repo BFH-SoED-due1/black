@@ -19,7 +19,7 @@ public class DataModel {
     private Set<Room> rooms = new HashSet<>();
     private Set<Reservation> reservations = new TreeSet<>();
 
-    public DataModel() {
+    public DataModel() throws Exception {
         // set test users
         addCustomer("user1", "123");
         addCustomer("user2", "234");
@@ -29,14 +29,14 @@ public class DataModel {
         addRoom(2, "50m^2");
     }
 
-    public Boolean customerExists(String customerName) {
+    public boolean customerExists(String customerName) {
         for (Customer customer : customers)
             if (customer.getName().equals(customerName))
                 return true;
         return false;
     }
 
-    public Boolean roomExists(int roomNumber) {
+    public boolean roomExists(int roomNumber) {
         for (Room room : rooms)
             if (room.getRoomNr() == roomNumber)
                 return true;

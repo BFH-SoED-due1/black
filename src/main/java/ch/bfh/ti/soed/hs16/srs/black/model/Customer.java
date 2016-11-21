@@ -11,17 +11,22 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.TreeSet;
 
-
+/**
+ * The Customer Object stores all reservations(Reservation) of a customer in a TreeSet. Personal information(name,password at this point of
+ * implementation) are included too and can be changed after Object creation.
+ */
 public class Customer {
     private Set<Reservation> reservations;
     private String name;
     private String password;
     // other personal information ...
 
-    public Customer(String name, String password) {
+    public Customer(String name, String password) throws Exception{
         reservations = new TreeSet<>();
         this.name = name;
         this.password = password;
+        if (name.isEmpty() || password.isEmpty())
+            throw new IllegalArgumentException();
     }
 
     protected void addReservation(Reservation reservation) {
@@ -42,5 +47,13 @@ public class Customer {
 
     public String getName(){
         return name;
+    }
+
+    public void setName(String name){
+        this.name = name;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
     }
 }
