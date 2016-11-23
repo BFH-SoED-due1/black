@@ -16,12 +16,13 @@ import java.util.TreeSet;
  * implementation) are included too and can be changed after Object creation.
  */
 public class Customer {
+
     private Set<Reservation> reservations;
     private String name;
     private String password;
     // other personal information ...
 
-    public Customer(String name, String password) throws Exception{
+    public Customer(String name, String password) {
         reservations = new TreeSet<>();
         this.name = name;
         this.password = password;

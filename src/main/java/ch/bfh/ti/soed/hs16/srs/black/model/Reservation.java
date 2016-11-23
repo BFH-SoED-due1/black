@@ -15,6 +15,7 @@ import java.util.Date;
  */
 
 public class Reservation implements Comparable<Reservation> {
+
     private final Customer customer;
     private final Room room;
     private final Date begin;

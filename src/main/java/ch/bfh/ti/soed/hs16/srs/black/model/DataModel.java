@@ -19,7 +19,7 @@ public class DataModel {
     private Set<Room> rooms = new HashSet<>();
     private Set<Reservation> reservations = new TreeSet<>();
 
-    public DataModel() throws Exception {
+    public DataModel() {
         // set test users
         addCustomer("user1", "123");
         addCustomer("user2", "234");
