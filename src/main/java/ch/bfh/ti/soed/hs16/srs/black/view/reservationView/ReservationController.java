@@ -8,6 +8,7 @@
 package ch.bfh.ti.soed.hs16.srs.black.view.reservationView;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
+import ch.bfh.ti.soed.hs16.srs.black.model.JPADataAccess;
 import com.vaadin.navigator.Navigator;
 import java.util.Date;
 

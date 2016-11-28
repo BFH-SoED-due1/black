@@ -10,6 +10,7 @@ package ch.bfh.ti.soed.hs16.srs.black;
 import javax.servlet.annotation.WebServlet;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
+import ch.bfh.ti.soed.hs16.srs.black.model.JPADataAccess;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginController;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationController;
@@ -42,7 +43,7 @@ public class SupervisingController extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        dataModel = new DataModel();
+        dataModel = DataModel.getInstance();
         loginView = new LoginView();
         reservationView = new ReservationView();
         navigator = new Navigator(this, this);
