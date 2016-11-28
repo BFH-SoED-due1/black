@@ -10,8 +10,8 @@ package ch.bfh.ti.soed.hs16.srs.black.model;
 import java.util.Date;
 
 /**
- * The reservation Object stores a specific reservation committed from a Customer and including a Room. The Comparable
- * class is overwritten. We use the Data object to compare timeranges of comitted reservations.
+ * The Reservation object stores a specific Reservation made by a Customer and contains a Room.
+ * The Comparable class is overwritten. We use the data object to compare time ranges of made Reservations.
  */
 
 public class Reservation implements Comparable<Reservation> {

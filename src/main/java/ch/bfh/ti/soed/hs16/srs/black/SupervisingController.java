@@ -14,11 +14,14 @@ import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginController;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationController;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationView;
+import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.UI;
 
 /**
@@ -30,11 +33,9 @@ import com.vaadin.ui.UI;
  */
 @SuppressWarnings("serial")
 @Theme("mytheme")
+@PreserveOnRefresh  // Preserve the session when the site gets reloaded
 public class SupervisingController extends UI {
 
-    //Adding new views here and in init() method
-    //private static final String NAMEOFVIEW = "nameofview";
-    private static final String RESERVATION_VIEW = "reservation";
     private Navigator navigator;
     private DataModel dataModel;
     private LoginView loginView;
@@ -46,15 +47,52 @@ public class SupervisingController extends UI {
         loginView = new LoginView();
         reservationView = new ReservationView();
         navigator = new Navigator(this, this);
-        navigator.addView("", loginView);
-        navigator.addView(RESERVATION_VIEW, reservationView);
+
+        // Adding the login view to the navigator
+        navigator.addView(LoginView.NAME, loginView);
+
+        // Setting the error view of the navigator to the login view
+        // This way the navigator will always default to the login view
+        navigator.setErrorView(loginView);
+
+        // Adding the reservation view to the navigator
+        navigator.addView(ReservationView.NAME, reservationView);
+
         new LoginController(dataModel, loginView, navigator);
         new ReservationController(dataModel, reservationView, navigator);
+
+        // We use a view change handler to ensure the user is always redirected
+        // to the login view if the user is not logged in
+        navigator.addViewChangeListener(new ViewChangeListener() {
+
+            @Override
+            public boolean beforeViewChange(ViewChangeEvent event) {
+                // Check if a user has logged in
+                boolean isLoggedIn = VaadinSession.getCurrent().getAttribute("user") != null;
+                boolean isLoginView = event.getNewView() instanceof LoginView;
+
+                if (!isLoggedIn && !isLoginView) {
+                    // Always redirect to login view if a user has not yet logged in
+                    getNavigator().navigateTo(LoginView.NAME);
+                    return false;
+
+                } else if (isLoggedIn && isLoginView) {
+                    // Access attempt to the login view while already logged in gets cancelled
+                    return false;
+                }
+                return true;
+            }
+
+            @Override
+            public void afterViewChange(ViewChangeEvent event) {
+                // placeholder
+            }
+        });
     }
 
 
-    @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
+    @WebServlet(urlPatterns = "/*", asyncSupported = true)
     @VaadinServletConfiguration(ui = SupervisingController.class, productionMode = false)
-    public static class MyUIServlet extends VaadinServlet {
+    public static class Servlet extends VaadinServlet {
     }
 }

@@ -23,6 +23,7 @@ import com.vaadin.ui.VerticalLayout;
 
 public class LoginView extends CustomComponent implements View {
 
+    public static final String NAME = "login";
     private Label errorLbl;
     private TextField usernameField;
     private PasswordField passwordField;
@@ -69,6 +70,7 @@ public class LoginView extends CustomComponent implements View {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-
+        // focus the username field when user arrives on the login view
+        usernameField.focus();
     }
 }

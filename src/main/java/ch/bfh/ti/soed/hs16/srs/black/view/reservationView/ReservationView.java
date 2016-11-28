@@ -22,17 +22,18 @@ import com.vaadin.ui.VerticalLayout;
 
 public class ReservationView extends CustomComponent implements View {
 
+    public static final String NAME = "reservation";
     private DateField fromField;
     private DateField toField;
     private TextField roomNumberField;
-    private Button makeButton;
+    private Button makeReservationButton;
     private Button logoutButton;
 
     public ReservationView() {
         fromField = new DateField("Reservation from");
         toField = new DateField("Reservation to");
         roomNumberField = new TextField("Room Number");
-        makeButton = new Button("Make reservation");
+        makeReservationButton = new Button("Make reservation");
         logoutButton = new Button("Logout");
 
         VerticalLayout layout = new VerticalLayout();
@@ -41,7 +42,7 @@ public class ReservationView extends CustomComponent implements View {
         layout.addComponent(panel);
 
         FormLayout content = new FormLayout();
-        content.addComponents(fromField, toField, roomNumberField, makeButton, logoutButton);
+        content.addComponents(fromField, toField, roomNumberField, makeReservationButton, logoutButton);
         content.setSizeUndefined();
         content.setMargin(true);
         panel.setContent(content);
@@ -57,8 +58,8 @@ public class ReservationView extends CustomComponent implements View {
         return logoutButton;
     }
 
-    public Button getMakeButton() {
-        return makeButton;
+    public Button getMakeReservationButton() {
+        return makeReservationButton;
     }
 
     public DateField getFromField() {
