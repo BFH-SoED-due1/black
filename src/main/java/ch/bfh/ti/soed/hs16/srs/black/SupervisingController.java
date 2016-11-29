@@ -58,6 +58,7 @@ public class SupervisingController extends UI {
         // Adding the reservation view to the navigator
         navigator.addView(ReservationView.NAME, reservationView);
 
+        // Instantiating the controllers for the two views
         new LoginController(dataModel, loginView, navigator);
         new ReservationController(dataModel, reservationView, navigator);
 

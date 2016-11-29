@@ -17,6 +17,8 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Notification;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView.NAME;
@@ -44,15 +46,25 @@ public class ReservationController extends CustomComponent {
         reservationView.getMakeReservationButton().addClickListener(clickEvent -> {
             Date begin = reservationView.getFromField().getValue();
             Date end = reservationView.getToField().getValue();
+            SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
             int roomNumber = Integer.parseInt(reservationView.getRoomNumberField().getValue());
             String username = String.valueOf(VaadinSession.getCurrent().getAttribute("user"));
             try {
                 dataModel.addReservation(username, roomNumber, begin, end);
                 new Notification("Success",
-                        "Added reservation for: " + username + ", Room Nr.: " + roomNumber + ", From: " + begin + " until " + end)
+                        "Added reservation for: " + username +
+                                ", Room Nr.: " + roomNumber +
+                                ", From: " + df.format(begin) +
+                                " until " + df.format(end))
+                        .show(Page.getCurrent());
+            } catch (IllegalArgumentException iae) {
+                new Notification("Illegal Argument Exception",
+                        "Please check the dates you set for your reservation.")
                         .show(Page.getCurrent());
             } catch (Exception e) {
-                e.printStackTrace();
+                new Notification("Time Collision Exception",
+                        "There already exists a reservation for the chosen time range.")
+                        .show(Page.getCurrent());
             }
         });
     }

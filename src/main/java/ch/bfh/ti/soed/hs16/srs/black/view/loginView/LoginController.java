@@ -10,9 +10,11 @@ package ch.bfh.ti.soed.hs16.srs.black.view.loginView;
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationView;
 import com.vaadin.navigator.Navigator;
+import com.vaadin.server.Page;
 import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
+import com.vaadin.ui.Notification;
 
 
 public class LoginController extends CustomComponent {
@@ -33,17 +35,18 @@ public class LoginController extends CustomComponent {
         String userName = loginView.getUsernameField().getValue();
         String password = loginView.getPasswordField().getValue();
         if (dataModel.customerExists(userName) && dataModel.getPassword(userName).equals(password)) {
-            loginView.getErrorLbl().setValue("");
-
             // Store the current user in the service session
             VaadinSession.getCurrent().setAttribute("user", userName);
 
-            // Navigate to reservation view
+            // Navigate to the reservation view
             navigator.navigateTo(ReservationView.NAME);
 
         } else {
-            loginView.getErrorLbl().setValue("Access denied!");
+            new Notification("Access Denied!",
+                    "Please enter a valid username/password combination.")
+                        .show(Page.getCurrent());
             loginView.getPasswordField().clear();
+            loginView.getPasswordField().focus();
         }
     }
 }

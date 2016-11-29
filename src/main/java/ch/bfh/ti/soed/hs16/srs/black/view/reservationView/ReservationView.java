@@ -30,10 +30,10 @@ public class ReservationView extends CustomComponent implements View {
     private Button logoutButton;
 
     public ReservationView() {
-        fromField = new DateField("Reservation from");
-        toField = new DateField("Reservation to");
+        fromField = new DateField("Start Date");
+        toField = new DateField("End Date");
         roomNumberField = new TextField("Room Number");
-        makeReservationButton = new Button("Make reservation");
+        makeReservationButton = new Button("Make Reservation");
         logoutButton = new Button("Logout");
 
         VerticalLayout layout = new VerticalLayout();
@@ -76,6 +76,6 @@ public class ReservationView extends CustomComponent implements View {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-
+        // placeholder
     }
 }
