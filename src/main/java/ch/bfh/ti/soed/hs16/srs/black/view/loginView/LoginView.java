@@ -23,7 +23,7 @@ import com.vaadin.ui.VerticalLayout;
 
 public class LoginView extends CustomComponent implements View {
 
-    private Label errorLbl;
+    public static final String NAME = "login";
     private TextField usernameField;
     private PasswordField passwordField;
     private Button loginButton;
@@ -32,7 +32,6 @@ public class LoginView extends CustomComponent implements View {
         usernameField = new TextField("Username");
         passwordField = new PasswordField("Password");
         loginButton = new Button("Login");
-        errorLbl = new Label("");
 
         VerticalLayout layout = new VerticalLayout();
         Panel panel = new Panel("Smart Reservation System Login");
@@ -40,7 +39,7 @@ public class LoginView extends CustomComponent implements View {
         layout.addComponent(panel);
 
         FormLayout content = new FormLayout();
-        content.addComponents(usernameField, passwordField, loginButton, errorLbl);
+        content.addComponents(usernameField, passwordField, loginButton);
         content.setSizeUndefined();
         content.setMargin(true);
         panel.setContent(content);
@@ -63,12 +62,10 @@ public class LoginView extends CustomComponent implements View {
         return passwordField;
     }
 
-    public Label getErrorLbl() {
-        return errorLbl;
-    }
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-
+        // focus the username field when user arrives on the login view
+        usernameField.focus();
     }
 }

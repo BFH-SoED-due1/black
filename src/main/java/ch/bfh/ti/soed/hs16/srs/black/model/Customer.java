@@ -12,8 +12,8 @@ import java.util.Set;
 import java.util.TreeSet;
 
 /**
- * The Customer Object stores all reservations(Reservation) of a customer in a TreeSet. Personal information(name,password at this point of
- * implementation) are included too and can be changed after Object creation.
+ * The Customer object stores all Reservations of a Customer in a TreeSet.
+ * Personal Information (Name and Password) are included too and can be changed after object creation.
  */
 public class Customer {
 
