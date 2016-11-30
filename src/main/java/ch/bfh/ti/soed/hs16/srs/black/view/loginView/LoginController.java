@@ -41,6 +41,9 @@ public class LoginController extends CustomComponent {
             // Navigate to the reservation view
             navigator.navigateTo(ReservationView.NAME);
 
+            // Clear the fields of the Login View
+            loginView.getUsernameField().clear();
+            loginView.getPasswordField().clear();
         } else {
             new Notification("Access Denied!",
                     "Please enter a valid username/password combination.")
