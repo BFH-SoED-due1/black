@@ -24,7 +24,7 @@ import java.util.Date;
 import static ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView.NAME;
 
 
-public class ReservationController extends CustomComponent {
+public class ReservationController {
 
     private DataModel dataModel;
     private ReservationView reservationView;

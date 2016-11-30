@@ -14,6 +14,8 @@ import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginController;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationController;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationView;
+import ch.bfh.ti.soed.hs16.srs.black.view.signUpView.SignUpController;
+import ch.bfh.ti.soed.hs16.srs.black.view.signUpView.SignUpView;
 import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -41,6 +43,7 @@ public class SupervisingController extends UI {
     private DataModel dataModel;
     private LoginView loginView;
     private ReservationView reservationView;
+    private SignUpView signUpView;
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
@@ -49,6 +52,7 @@ public class SupervisingController extends UI {
         dataModel = new DataModel();
         loginView = new LoginView();
         reservationView = new ReservationView();
+        signUpView = new SignUpView();
         navigator = new Navigator(this, this);
 
         // Adding the login view to the navigator
@@ -61,9 +65,13 @@ public class SupervisingController extends UI {
         // Adding the reservation view to the navigator
         navigator.addView(ReservationView.NAME, reservationView);
 
+        // Adding the sign up view to the navigator
+        navigator.addView(SignUpView.NAME, signUpView);
+
         // Instantiating the controllers for the two views
         new LoginController(dataModel, loginView, navigator);
         new ReservationController(dataModel, reservationView, navigator);
+        new SignUpController(dataModel, signUpView, navigator);
 
         // We use a view change handler to ensure the user is always redirected
         // to the login view if the user is not logged in
@@ -74,16 +82,16 @@ public class SupervisingController extends UI {
                 // Check if a user has logged in
                 boolean isLoggedIn = VaadinSession.getCurrent().getAttribute("user") != null;
                 boolean isLoginView = event.getNewView() instanceof LoginView;
-
+/*
                 if (!isLoggedIn && !isLoginView) {
                     // Always redirect to login view if a user has not yet logged in
-                    getNavigator().navigateTo(LoginView.NAME);
+                    //navigator.navigateTo(LoginView.NAME);
                     return false;
 
                 } else if (isLoggedIn && isLoginView) {
                     // Access attempt to the login view while already logged in gets cancelled
                     return false;
-                }
+                }*/
                 return true;
             }
 
