@@ -13,9 +13,7 @@ import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinSession;
-import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Notification;
-
 import javax.persistence.NoResultException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -23,7 +21,7 @@ import java.util.Date;
 import static ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView.NAME;
 
 
-public class ReservationController extends CustomComponent {
+public class ReservationController {
 
     private DataModel dataModel;
     private ReservationView reservationView;
@@ -46,31 +44,32 @@ public class ReservationController extends CustomComponent {
             Date begin = reservationView.getFromField().getValue();
             Date end = reservationView.getToField().getValue();
             SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-            String username = String.valueOf(VaadinSession.getCurrent().getAttribute("user"));
+            Notification exceptionNf = new Notification("","");
+            exceptionNf.setDelayMsec(2000);
             int roomNumber = Integer.parseInt(reservationView.getRoomNumberField().getValue());
-
+            String username = String.valueOf(VaadinSession.getCurrent().getAttribute("user"));
             try {
                 Customer customer = dataModel.getCustomer(username);
                 Room room = dataModel.getRoom(roomNumber);
                 dataModel.addReservation(customer, room, begin, end);
-                new Notification("Success",
-                        "Added reservation for: " + username +
-                                ", Room Nr.: " + roomNumber +
-                                ", From: " + df.format(begin) +
-                                " until " + df.format(end))
-                        .show(Page.getCurrent());
+                exceptionNf.setCaption("Success");
+                exceptionNf.setDescription("Added reservation for: " + username +
+                        ", Room Nr.: " + roomNumber +
+                        ", From: " + df.format(begin) +
+                        " until " + df.format(end));
+                exceptionNf.show(Page.getCurrent());
             } catch (IllegalArgumentException iae) {
-                new Notification("Illegal Argument Exception",
-                        "Please check the dates you set for your reservation.")
-                        .show(Page.getCurrent());
+                exceptionNf.setCaption("Illegal Argument Exception");
+                exceptionNf.setDescription("Please check the dates you set for your reservation.");
+                exceptionNf.show(Page.getCurrent());
             } catch(NoResultException nre) {
-                new Notification("NoResultExeption",
-                        "Room not found in database.")
-                        .show(Page.getCurrent());
+                exceptionNf.setCaption("No Result Exeption");
+                exceptionNf.setDescription("Room not found in database.");
+                exceptionNf.show(Page.getCurrent());
             } catch (Exception e) {
-                new Notification("Time Collision Exception",
-                        "There already exists a reservation for the chosen time range.")
-                        .show(Page.getCurrent());
+                exceptionNf.setCaption("Time Collision Exception");
+                exceptionNf.setDescription("There already exists a reservation for the chosen time range.");
+                exceptionNf.show(Page.getCurrent());
             }
         });
     }

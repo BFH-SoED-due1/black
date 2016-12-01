@@ -10,6 +10,7 @@ package ch.bfh.ti.soed.hs16.srs.black.model.logic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import java.util.Set;
@@ -22,10 +23,9 @@ import java.util.Collections;
  */
 @Entity(name = "Customer")
 public class Customer {
-    @Id
-    @GeneratedValue
-    private Long id;
 
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     @OneToMany(targetEntity = Reservation.class)
     private Set<Reservation> reservations;
     @Column(unique = true)

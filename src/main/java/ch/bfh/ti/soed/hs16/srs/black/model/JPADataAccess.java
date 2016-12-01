@@ -19,10 +19,10 @@ import java.util.Set;
 
 
 public class JPADataAccess extends DataModel {
+
     private static final String PERSISTENCE_UNIT = "black";
     private static final String DEFAULT_DATA_ACCESS_CLASS = "ch.bfh.ti.soed.hs16.srs.black.model.JPADataAccess";
     private static EntityManager entityManager;
-
 
     private JPADataAccess() {
     } // to create an instance of this class, you have to use getInstance()
@@ -98,7 +98,9 @@ public class JPADataAccess extends DataModel {
 
     @Override
     public Customer getCustomer(String customerName) throws NoResultException {
-        return entityManager.createQuery("select o from Customer as o where o.name = :customerName", Customer.class).setParameter("customerName", customerName).getSingleResult();
+        return entityManager.createQuery("select o from Customer as o where o.name = :customerName", Customer.class)
+                .setParameter("customerName", customerName)
+                .getSingleResult();
     }
 
     @Override
@@ -121,6 +123,8 @@ public class JPADataAccess extends DataModel {
 
     @Override
     public Room getRoom(int roomNr) throws NoResultException {
-        return entityManager.createQuery("select o from Room as o where o.roomNr = :roomNr", Room.class).setParameter("roomNr", roomNr).getSingleResult();
+        return entityManager.createQuery("select o from Room as o where o.roomNr = :roomNr", Room.class)
+                .setParameter("roomNr", roomNr)
+                .getSingleResult();
     }
 }

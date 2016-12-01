@@ -14,12 +14,12 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Notification;
+
 import javax.naming.AuthenticationException;
 
 
-public class LoginController extends CustomComponent {
+public class LoginController {
 
     private DataModel dataModel;
     private LoginView loginView;
@@ -36,8 +36,8 @@ public class LoginController extends CustomComponent {
     public void login(Button.ClickEvent event) {
         String userName = loginView.getUsernameField().getValue();
         String password = loginView.getPasswordField().getValue();
+        Customer customer = dataModel.getCustomer(userName);
         try {
-            Customer customer = dataModel.getCustomer(userName);
             if (customer.getPassword().equals(password)) {
                 // Store the current user in the service session
                 VaadinSession.getCurrent().setAttribute("user", userName);
@@ -45,17 +45,17 @@ public class LoginController extends CustomComponent {
                 // Navigate to the reservation view
                 navigator.navigateTo(ReservationView.NAME);
 
-                // Clear the fields of the Login View
+                // Clear the fields of the login view
                 loginView.getUsernameField().clear();
                 loginView.getPasswordField().clear();
             } else {
                 throw new AuthenticationException();
             }
-        }
-        catch (Exception e){
-            new Notification("Access Denied!",
-                    "Please enter a valid username/password combination.")
-                    .show(Page.getCurrent());
+        } catch (Exception e) {
+            Notification accessDeniedNf = new Notification("Access Denied!",
+                    "Please enter a valid username/password combination.");
+            accessDeniedNf.show(Page.getCurrent());
+            accessDeniedNf.setDelayMsec(2000);
             loginView.getPasswordField().clear();
             loginView.getPasswordField().focus();
         }

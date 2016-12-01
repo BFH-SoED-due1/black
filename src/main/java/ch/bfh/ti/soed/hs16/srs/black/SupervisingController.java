@@ -45,8 +45,9 @@ public class SupervisingController extends UI {
     private LoginView loginView;
     private ReservationView reservationView;
 
-    // create room and customer for test
-    static {
+    // Create Room and Customer for test purposes
+    // Commented out because this data is now stored in the SQLite DB
+    /*static {
         DataModel testData = JPADataAccess.getInstance();
         Room room1 = new Room(1,"20m^2");
         Room room2 = new Room(2,"20m^2");
@@ -57,7 +58,7 @@ public class SupervisingController extends UI {
         testData.addRoom(room2);
         testData.addCustomer(customer1);
         testData.addCustomer(customer2);
-    }
+    }*/
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {

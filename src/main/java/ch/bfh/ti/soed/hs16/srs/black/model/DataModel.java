@@ -13,7 +13,9 @@ import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
 import java.util.Date;
 import java.util.Set;
 
+
 public abstract class DataModel {
+
     protected static DataModel instance = null;
 
     // for reservation handling ...

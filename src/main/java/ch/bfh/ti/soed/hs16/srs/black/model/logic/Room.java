@@ -17,16 +17,15 @@ import java.util.Set;
 import java.util.TreeSet;
 import java.util.Collections;
 
-
 /**
- * The room Object stores all reservations(Reservation) in a TreeSet. reservations can be added and removed afterwards.
+ * The Room object stores all Reservations in a TreeSet.
+ * Reservations can be added and removed afterwards.
  */
 @Entity(name = "Room")
 public class Room {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
 
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     @OneToMany(targetEntity = Reservation.class)
     private Set<Reservation> reservations;
     @Column(unique = true)
