@@ -9,11 +9,15 @@ package ch.bfh.ti.soed.hs16.srs.black.view.reservationView;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
 import ch.bfh.ti.soed.hs16.srs.black.model.JPADataAccess;
+import com.vaadin.external.org.slf4j.Logger;
+import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.navigator.Navigator;
 import java.util.Date;
 
 
 public class ReservationController {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ReservationController.class);
 
     private DataModel dataModel;
     private ReservationView reservationView;
@@ -32,11 +36,11 @@ public class ReservationController {
             Date begin = reservationView.getFromField().getValue();
             Date end = reservationView.getToField().getValue();
             int roomNumber = Integer.parseInt(reservationView.getRoomNumberField().getValue());
-            String username = "user2"; // this will be replaced with user of current session
+            String username = "user1"; // this will be replaced with user of current session
             try {
                 dataModel.addReservation(username, roomNumber, begin, end);
             } catch (Exception e) {
-                e.printStackTrace();
+                LOG.error("", e);
             }
         });
     }

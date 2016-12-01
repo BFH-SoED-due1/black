@@ -1,30 +1,30 @@
+/*
+ * Copyright (c) 2016 Berner Fachhochschule, Switzerland.
+ *
+ * Project Smart Reservation System.
+ *
+ * Distributable under GPL license. See terms of license at gnu.org.
+ */
+
 package ch.bfh.ti.soed.hs16.srs.black.model;
 
 import java.util.Date;
 
-/**
- * Created by davide on 28/11/16.
- */
 public abstract class DataModel {
-    public static final String DEFAULT_DATA_ACCESS_CLASS = "ch.bfh.ti.soed.hs16.srs.black.model.JPADataAccess";
+    protected static DataModel instance = null;
 
-    private static DataModel instance = null;
-
-    public static DataModel getInstance() {
-        // The following is NOT thread safe:
-        if (instance == null) {
-            try {
-                @SuppressWarnings("rawtypes")
-                Class clazz = Class.forName(DEFAULT_DATA_ACCESS_CLASS);
-                instance = (DataModel) clazz.newInstance();
-            } catch (Exception ex) {
-                System.err.println("Could not load class: " + DEFAULT_DATA_ACCESS_CLASS);
-                throw new RuntimeException("Could not load class: " + DEFAULT_DATA_ACCESS_CLASS);
-            }
-        }
-        return instance;
-    }
+    // for reservation handling ...
     public abstract void addReservation(String userName, int roomNumber, Date begin, Date end) throws Exception;
+    public abstract void cancelReservation();
+
+    // for customer handling ...
+    public abstract void addCustomer(String customerName, String password);
+    public abstract void removeCustomer(String customerName);
     public abstract boolean customerExists(String customerName);
     public abstract String getPassword(String customerName);
-    }
+
+
+    // for room handling ..
+    public abstract void addRoom(int roomNr, String description);
+    public abstract void removeRoom();
+}

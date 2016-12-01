@@ -7,20 +7,33 @@
  */
 package ch.bfh.ti.soed.hs16.srs.black.model.logic;
 
-import java.util.Collections;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.Collections;
 
 /**
  * The Customer Object stores all reservations(Reservation) of a customer in a TreeSet. Personal information(name,password at this point of
  * implementation) are included too and can be changed after Object creation.
  */
+@Entity(name = "Customer")
 public class Customer {
+    @Id
+    @GeneratedValue
+    private Long id;
 
+    @OneToMany(targetEntity = Reservation.class)
     private Set<Reservation> reservations;
+    @Column(unique = true)
     private String name;
     private String password;
     // other personal information ...
+
+    public Customer(){} // null constructor
 
     public Customer(String name, String password) {
         reservations = new TreeSet<>();
@@ -30,11 +43,11 @@ public class Customer {
             throw new IllegalArgumentException();
     }
 
-    protected void addReservation(Reservation reservation) {
+    void addReservation(Reservation reservation) {
         reservations.add(reservation);
     }
 
-    protected void removeReservation(Reservation reservation) {
+    void removeReservation(Reservation reservation) {
         reservations.remove(reservation);
     }
 

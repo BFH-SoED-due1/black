@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
 import ch.bfh.ti.soed.hs16.srs.black.model.JPADataAccess;
+import ch.bfh.ti.soed.hs16.srs.black.model.SimpleDataAccess;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginController;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationController;
@@ -41,9 +42,16 @@ public class SupervisingController extends UI {
     private LoginView loginView;
     private ReservationView reservationView;
 
+    // create room and customer for test
+    static {
+        DataModel testData = JPADataAccess.getInstance();
+        testData.addRoom(1,"2m^2");
+        testData.addCustomer("user1","123");
+    }
+
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        dataModel = DataModel.getInstance();
+        dataModel = JPADataAccess.getInstance();
         loginView = new LoginView();
         reservationView = new ReservationView();
         navigator = new Navigator(this, this);
