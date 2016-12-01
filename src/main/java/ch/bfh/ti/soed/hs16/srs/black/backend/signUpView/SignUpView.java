@@ -1,4 +1,4 @@
-package ch.bfh.ti.soed.hs16.srs.black.view.signUpView;
+package ch.bfh.ti.soed.hs16.srs.black.backend.signUpView;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -15,17 +15,17 @@ public class SignUpView extends CustomComponent implements View {
     private PasswordField passwordField;
     private PasswordField passwordFieldRepeat;
     private Button addUserButton;
-    private Button clearButton;
+    private Button goBackButton;
 
     public SignUpView(){
         usernameField = new TextField("Username");
         passwordField = new PasswordField("Password");
         passwordFieldRepeat = new PasswordField("Repeat Password");
         addUserButton = new Button("Add User");
-        clearButton = new Button("Clear");
+        goBackButton = new Button("Go back");
 
         VerticalLayout layout = new VerticalLayout();
-        HorizontalLayout layoutButtons = new HorizontalLayout(addUserButton, clearButton);
+        HorizontalLayout layoutButtons = new HorizontalLayout(addUserButton, goBackButton);
         layoutButtons.setSpacing(true);
         Panel panel = new Panel("Smart Reservation System Sign Up");
         panel.setSizeUndefined();
@@ -59,8 +59,8 @@ public class SignUpView extends CustomComponent implements View {
         return addUserButton;
     }
 
-    public Button getClearButton() {
-        return clearButton;
+    public Button getGoBackButton() {
+        return goBackButton;
     }
 
 

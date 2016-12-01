@@ -5,23 +5,18 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.view.reservationView;
+package ch.bfh.ti.soed.hs16.srs.black.backend.reservationView;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
 import com.vaadin.navigator.Navigator;
-import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinSession;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Notification;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import static ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView.NAME;
+import static ch.bfh.ti.soed.hs16.srs.black.backend.loginView.LoginView.NAME;
 
 
 public class ReservationController {
@@ -39,7 +34,7 @@ public class ReservationController {
             // Logout the user / end the session
             VaadinSession.getCurrent().setAttribute("user", null);
 
-            // Refresh this view, the navigator should redirect to login view
+            // Refresh this backend, the navigator should redirect to login backend
             navigator.navigateTo(NAME);
         });
 

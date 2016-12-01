@@ -5,7 +5,7 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.view.loginView;
+package ch.bfh.ti.soed.hs16.srs.black.backend.loginView;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -65,7 +65,7 @@ public class LoginView extends CustomComponent implements View {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-        // focus the username field when user arrives on the login view
+        // focus the username field when user arrives on the login backend
         usernameField.focus();
     }
 }

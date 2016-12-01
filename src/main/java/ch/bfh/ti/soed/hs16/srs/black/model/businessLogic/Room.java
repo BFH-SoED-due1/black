@@ -5,7 +5,9 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.model;
+package ch.bfh.ti.soed.hs16.srs.black.model.businessLogic;
+
+import ch.bfh.ti.soed.hs16.srs.black.model.businessLogic.Reservation;
 
 import java.util.Collections;
 import java.util.Set;

@@ -7,6 +7,10 @@
  */
 package ch.bfh.ti.soed.hs16.srs.black.model;
 
+import ch.bfh.ti.soed.hs16.srs.black.model.businessLogic.Customer;
+import ch.bfh.ti.soed.hs16.srs.black.model.businessLogic.Reservation;
+import ch.bfh.ti.soed.hs16.srs.black.model.businessLogic.Room;
+
 import java.util.Set;
 import java.util.HashSet;
 import java.util.TreeSet;
