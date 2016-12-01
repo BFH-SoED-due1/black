@@ -48,7 +48,7 @@ public class Room {
         reservations.add(reservation);
     }
 
-    protected void removeReservation(Reservation reservation) {
+    void removeReservation(Reservation reservation) {
         reservations.remove(reservation);
     }
 
@@ -58,5 +58,9 @@ public class Room {
 
     public int getRoomNr(){
         return roomNr;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }

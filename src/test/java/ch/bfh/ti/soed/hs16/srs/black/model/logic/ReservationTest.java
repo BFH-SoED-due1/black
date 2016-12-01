@@ -1,14 +1,17 @@
-package ch.bfh.ti.soed.hs16.srs.black;
+/*
+ * Copyright (c) 2016 Berner Fachhochschule, Switzerland.
+ *
+ * Project Smart Reservation System.
+ *
+ * Distributable under GPL license. See terms of license at gnu.org.
+ */
+package ch.bfh.ti.soed.hs16.srs.black.model.logic;
 
-import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
-import ch.bfh.ti.soed.hs16.srs.black.model.logic.Reservation;
-import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -161,5 +164,37 @@ public class ReservationTest {
         Customer testCustomer1 = new Customer("Albert", "123");
         new Reservation(testCustomer1, testRoom1, date2, date3);
         new Reservation(testCustomer1, testRoom1, date1, date4);
+    }
+
+    @Test
+    public void testGetCustomer() throws Exception {
+        Room testRoom1 = new Room(1,"50m^2");
+        Customer testCustomer1 = new Customer("Albert", "123");
+        Reservation testReservation1 = new Reservation(testCustomer1, testRoom1, date1, date2);
+        assertEquals(testReservation1.getCustomer(), testCustomer1);
+    }
+
+    @Test
+    public void testGetRoom() throws Exception {
+        Room testRoom1 = new Room(1,"50m^2");
+        Customer testCustomer1 = new Customer("Albert", "123");
+        Reservation testReservation1 = new Reservation(testCustomer1, testRoom1, date1, date2);
+        assertEquals(testReservation1.getRoom(), testRoom1);
+    }
+
+    @Test
+    public void testGetBegin() throws Exception {
+        Room testRoom1 = new Room(1,"50m^2");
+        Customer testCustomer1 = new Customer("Albert", "123");
+        Reservation testReservation1 = new Reservation(testCustomer1, testRoom1, date1, date2);
+        assertEquals(testReservation1.getBegin(), date1);
+    }
+
+    @Test
+    public void testGetEnd() throws Exception {
+        Room testRoom1 = new Room(1,"50m^2");
+        Customer testCustomer1 = new Customer("Albert", "123");
+        Reservation testReservation1 = new Reservation(testCustomer1, testRoom1, date1, date2);
+        assertEquals(testReservation1.getEnd(), date2);
     }
 }
