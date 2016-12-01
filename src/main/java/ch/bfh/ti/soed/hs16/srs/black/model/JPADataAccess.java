@@ -16,6 +16,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 import java.util.Date;
 import java.util.Set;
+import java.util.TreeSet;
 
 
 public class JPADataAccess extends DataModel {
@@ -63,19 +64,29 @@ public class JPADataAccess extends DataModel {
 
     @Override
     public void cancelReservation(Reservation reservation) {
-        // TODO ...
+        EntityTransaction tx = entityManager.getTransaction();
+        tx.begin();
+        try {
+            entityManager.remove(reservation);
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+            throw e;
+        }
     }
 
     @Override
-    public Set<Reservation> getReservations(Customer customer) {
-        // TODO ...
-        return null;
+    public Set<Reservation> getReservations(Customer customer) throws NoResultException {
+        return new TreeSet<Reservation>(entityManager.createQuery
+                ("select Reservation from Customer where Customer = :customer", Reservation.class)
+                .getResultList());
     }
 
     @Override
-    public Set<Reservation> getReservations(Room room) {
-        // TODO ...
-        return null;
+    public Set<Reservation> getReservations(Room room) throws NoResultException {
+        return new TreeSet<Reservation>(entityManager.createQuery
+                ("select Reservation from Room where Room = :room", Reservation.class)
+                .getResultList());
     }
 
     @Override
@@ -93,7 +104,15 @@ public class JPADataAccess extends DataModel {
 
     @Override
     public void removeCustomer(Customer customer) {
-        // TODO ...
+        EntityTransaction tx = entityManager.getTransaction();
+        try {
+            tx.begin();
+            entityManager.remove(customer);
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+            throw e;
+        }
     }
 
     @Override
@@ -118,7 +137,15 @@ public class JPADataAccess extends DataModel {
 
     @Override
     public void removeRoom(Room room) {
-        // TODO ...
+        EntityTransaction tx = entityManager.getTransaction();
+        try {
+            tx.begin();
+            entityManager.remove(room);
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+            throw e;
+        }
     }
 
     @Override

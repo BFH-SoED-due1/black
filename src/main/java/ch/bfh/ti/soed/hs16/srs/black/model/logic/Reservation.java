@@ -34,7 +34,7 @@ public class Reservation implements Comparable<Reservation> {
     @Temporal(TemporalType.DATE)
     private Date end;
 
-    public Reservation(){} // null constructor
+    public Reservation() {} // null constructor
 
     public Reservation(Customer customer, Room room, Date begin, Date end) throws Exception {
         this.customer = customer;
