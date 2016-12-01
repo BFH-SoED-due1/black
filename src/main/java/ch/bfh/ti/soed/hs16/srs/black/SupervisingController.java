@@ -47,8 +47,10 @@ public class SupervisingController extends UI {
     // create room and customer for test
     static {
         DataModel testData = JPADataAccess.getInstance();
-        testData.addRoom(1,"2m^2");
+        testData.addRoom(1,"20m^2");
+        testData.addRoom(2, "30m^2");
         testData.addCustomer("user1","123");
+        testData.addCustomer("user2","234");
     }
 
     @Override
