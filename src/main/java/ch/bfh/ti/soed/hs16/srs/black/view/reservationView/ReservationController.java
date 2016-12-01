@@ -8,6 +8,9 @@
 package ch.bfh.ti.soed.hs16.srs.black.view.reservationView;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
+import ch.bfh.ti.soed.hs16.srs.black.model.JPADataAccess;
+import com.vaadin.external.org.slf4j.Logger;
+import com.vaadin.external.org.slf4j.LoggerFactory;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
@@ -25,6 +28,8 @@ import static ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView.NAME;
 
 
 public class ReservationController extends CustomComponent {
+
+    private static final Logger LOG = LoggerFactory.getLogger(ReservationController.class);
 
     private DataModel dataModel;
     private ReservationView reservationView;
@@ -49,6 +54,7 @@ public class ReservationController extends CustomComponent {
             SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
             int roomNumber = Integer.parseInt(reservationView.getRoomNumberField().getValue());
             String username = String.valueOf(VaadinSession.getCurrent().getAttribute("user"));
+
             try {
                 dataModel.addReservation(username, roomNumber, begin, end);
                 new Notification("Success",
