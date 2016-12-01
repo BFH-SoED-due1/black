@@ -7,14 +7,13 @@
  */
 package ch.bfh.ti.soed.hs16.srs.black.model.logic;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import java.util.Collections;import java.util.Date;
+import java.util.Date;
 
 /**
  * The Reservation object stores a specific Reservation made by a Customer and contains a Room.

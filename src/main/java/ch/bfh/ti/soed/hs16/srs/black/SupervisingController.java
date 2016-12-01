@@ -11,7 +11,8 @@ import javax.servlet.annotation.WebServlet;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
 import ch.bfh.ti.soed.hs16.srs.black.model.JPADataAccess;
-import ch.bfh.ti.soed.hs16.srs.black.model.SimpleDataAccess;
+import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
+import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginController;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationController;
@@ -47,10 +48,15 @@ public class SupervisingController extends UI {
     // create room and customer for test
     static {
         DataModel testData = JPADataAccess.getInstance();
-        testData.addRoom(1,"20m^2");
-        testData.addRoom(2, "30m^2");
-        testData.addCustomer("user1","123");
-        testData.addCustomer("user2","234");
+        Room room1 = new Room(1,"20m^2");
+        Room room2 = new Room(2,"20m^2");
+        Customer customer1 = new Customer("user1", "123");
+        Customer customer2 = new Customer("user2", "234");
+
+        testData.addRoom(room1);
+        testData.addRoom(room2);
+        testData.addCustomer(customer1);
+        testData.addCustomer(customer2);
     }
 
     @Override
