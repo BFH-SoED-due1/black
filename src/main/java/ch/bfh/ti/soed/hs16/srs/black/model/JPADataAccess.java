@@ -47,13 +47,14 @@ public class JPADataAccess extends DataModel {
     }
 
     @Override
-    public void addReservation(Customer customer, Room room, Date begin, Date end) throws Exception {
+    public Reservation addReservation(Customer customer, Room room, Date begin, Date end) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
         try {
             Reservation reservation = new Reservation(customer, room, begin, end);
             entityManager.persist(reservation);
             tx.commit();
+            return reservation;
         } catch (Exception e) {
             tx.rollback();
             throw e;

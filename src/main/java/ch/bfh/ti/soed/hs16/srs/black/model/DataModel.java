@@ -17,7 +17,7 @@ public abstract class DataModel {
     protected static DataModel instance = null;
 
     // for reservation handling ...
-    public abstract void addReservation(Customer customer, Room room, Date begin, Date end) throws Exception;
+    public abstract Reservation addReservation(Customer customer, Room room, Date begin, Date end) throws Exception;
     public abstract void cancelReservation(Reservation reservation);
     public abstract Set<Reservation> getReservations(Customer customer);
     public abstract Set<Reservation> getReservations(Room room);

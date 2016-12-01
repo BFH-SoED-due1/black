@@ -66,4 +66,21 @@ public class Reservation implements Comparable<Reservation> {
             return 1;
         return 0;
     }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public Date getBegin() {
+        return begin;
+    }
+
+    public Date getEnd() {
+        return end;
+    }
+
 }
