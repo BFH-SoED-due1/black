@@ -8,10 +8,12 @@
 package ch.bfh.ti.soed.hs16.srs.black.model;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
+import ch.bfh.ti.soed.hs16.srs.black.model.logic.Reservation;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.persistence.NoResultException;
 import java.util.*;
 
 import static org.junit.Assert.*;
@@ -25,8 +27,8 @@ public class JPADataAccessTest {
     @Before
     public void setUp() throws Exception {
         dataModel = JPADataAccess.getInstance();
-        testCustomer = new Customer("user1", "123");
-        testRoom = new Room(1, "79m^");
+        testCustomer = dataModel.getCustomer("user1");
+        testRoom = dataModel.getRoom(1);
         Calendar c = new GregorianCalendar();
         c.set(2016, 11, 9, 13, 22, 15);
         date1 = new Date(c.getTimeInMillis());
@@ -44,51 +46,71 @@ public class JPADataAccessTest {
 
     @Test
     public void testAddReservation() throws Exception {
-        // TODO ...
+        Reservation testReservation = dataModel.addReservation(testCustomer, testRoom, date1, date2);
+        assertTrue(dataModel.getReservations(testRoom).contains(testReservation));
+        assertTrue(dataModel.getReservations(testCustomer).contains(testReservation));
+        dataModel.cancelReservation(testReservation);
     }
 
     @Test
     public void testCancelReservation() throws Exception {
-        // TODO ...
+        Reservation testReservation = dataModel.addReservation(testCustomer, testRoom, date1, date2);
+        dataModel.cancelReservation(testReservation);
+        assertFalse(dataModel.getReservations(testRoom).contains(testReservation));
+        assertFalse(dataModel.getReservations(testCustomer).contains(testReservation));
     }
 
     @Test
     public void testGetReservations() throws Exception {
-        // TODO ...
-    }
-
-    @Test
-    public void testGetReservations1() throws Exception {
-        // TODO ...
+        assertEquals(dataModel.getReservations(testCustomer), dataModel.getReservations(testRoom));
     }
 
     @Test
     public void testAddCustomer() throws Exception {
-        // TODO ...
+        Customer testCustomer1 = new Customer("testName", "testPw");
+        dataModel.addCustomer(testCustomer1);
+        assertTrue(dataModel.getCustomer("testName").equals(testCustomer1));
+        dataModel.removeCustomer(testCustomer1);
     }
 
-    @Test
+    @Test (expected = NoResultException.class)
     public void testRemoveCustomer() throws Exception {
-        // TODO ...
+        Customer testCustomer1 = new Customer("testName", "testPw");
+        dataModel.addCustomer(testCustomer1);
+        assertTrue(dataModel.getCustomer("testName").equals(testCustomer1));
+        dataModel.removeCustomer(testCustomer1);
+        assertNotEquals(testCustomer1, dataModel.getCustomer("testName"));
     }
 
     @Test
     public void testGetCustomer() throws Exception {
-        // TODO ...
+        Customer testCustomer1 = new Customer("testName", "testPw");
+        dataModel.addCustomer(testCustomer1);
+        assertEquals(testCustomer1, dataModel.getCustomer("testName"));
+        dataModel.removeCustomer(testCustomer1);
     }
 
     @Test
     public void testAddRoom() throws Exception {
-        // TODO ...
+        Room room1 = new Room(10, "testRoomDescription");
+        dataModel.addRoom(room1);
+        assertTrue(dataModel.getRoom(10).equals(room1));
+        dataModel.removeRoom(room1);
     }
 
-    @Test
+    @Test (expected = NoResultException.class)
     public void testRemoveRoom() throws Exception {
-        // TODO ...
+        Room room1 = new Room(10, "testRoomDescription");
+        dataModel.addRoom(room1);
+        dataModel.removeRoom(room1);
+        assertNotEquals(room1, dataModel.getRoom(10));
     }
 
     @Test
     public void testGetRoom() throws Exception {
-        // TODO ...
+        Room room1 = new Room(10, "testRoomDescription");
+        dataModel.addRoom(room1);
+        assertEquals(room1, dataModel.getRoom(10));
+        dataModel.removeRoom(room1);
     }
 }

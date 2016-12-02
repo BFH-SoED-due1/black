@@ -7,6 +7,7 @@
  */
 package ch.bfh.ti.soed.hs16.srs.black.model.logic;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,11 +24,11 @@ import java.util.Date;
 @Entity(name = "Reservation")
 public class Reservation implements Comparable<Reservation> {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne(targetEntity = Customer.class)
+    @ManyToOne(targetEntity = Customer.class, cascade = CascadeType.PERSIST)
     private Customer customer;
-    @ManyToOne(targetEntity = Room.class)
+    @ManyToOne(targetEntity = Room.class, cascade = CascadeType.PERSIST)
     private Room room;
     @Temporal(TemporalType.DATE)
     private Date begin;

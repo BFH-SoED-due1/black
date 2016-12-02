@@ -33,8 +33,8 @@ public class JPADataAccess extends DataModel {
             if (instance == null) {
                 try {
                     @SuppressWarnings("rawtypes")
-                    Class clazz = Class.forName(DEFAULT_DATA_ACCESS_CLASS);
-                    instance = (DataModel) clazz.newInstance();
+                    Class aClass = Class.forName(DEFAULT_DATA_ACCESS_CLASS);
+                    instance = (DataModel) aClass.newInstance();
                 } catch (Exception ex) {
                     System.err.println("Could not load class: " + DEFAULT_DATA_ACCESS_CLASS);
 
@@ -78,14 +78,16 @@ public class JPADataAccess extends DataModel {
     @Override
     public Set<Reservation> getReservations(Customer customer) throws NoResultException {
         return new TreeSet<Reservation>(entityManager.createQuery
-                ("select Reservation from Customer where Customer = :customer", Reservation.class)
+                ("select r from Reservation as r where r.customer = :customer", Reservation.class)
+                .setParameter("customer", customer)
                 .getResultList());
     }
 
     @Override
     public Set<Reservation> getReservations(Room room) throws NoResultException {
         return new TreeSet<Reservation>(entityManager.createQuery
-                ("select Reservation from Room where Room = :room", Reservation.class)
+                ("select r from Reservation as r where r.room = :room", Reservation.class)
+                .setParameter("room", room)
                 .getResultList());
     }
 

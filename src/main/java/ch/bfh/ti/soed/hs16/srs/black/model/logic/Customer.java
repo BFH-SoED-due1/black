@@ -7,6 +7,7 @@
  */
 package ch.bfh.ti.soed.hs16.srs.black.model.logic;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,16 +25,15 @@ import java.util.Collections;
 @Entity(name = "Customer")
 public class Customer {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany(targetEntity = Reservation.class)
+    @OneToMany(targetEntity = Reservation.class, cascade = CascadeType.PERSIST)
     private Set<Reservation> reservations;
     @Column(unique = true)
     private String name;
     private String password;
-    // other personal information ...
 
-    public Customer(){} // null constructor
+    public Customer() {} // null constructor
 
     public Customer(String name, String password) {
         reservations = new TreeSet<>();
