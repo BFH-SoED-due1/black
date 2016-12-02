@@ -1,4 +1,4 @@
-package ch.bfh.ti.soed.hs16.srs.black.backend.signUpView;
+package ch.bfh.ti.soed.hs16.srs.black.view.signUpView;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;

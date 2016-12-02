@@ -5,7 +5,7 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.backend.reservationView;
+package ch.bfh.ti.soed.hs16.srs.black.view.reservationView;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;

@@ -1,7 +1,7 @@
-package ch.bfh.ti.soed.hs16.srs.black.backend.signUpView;
+package ch.bfh.ti.soed.hs16.srs.black.view.signUpView;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
-import ch.bfh.ti.soed.hs16.srs.black.backend.loginView.LoginView;
+import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.Page;
 import com.vaadin.ui.Button;
@@ -26,16 +26,21 @@ public class SignUpController {
         String username = signUpView.getUsernameField().getValue();
         String password = signUpView.getPasswordField().getValue();
         String passwordRepeat = signUpView.getPasswordFieldRepeat().getValue();
+        Notification alertNf = new Notification("");
+        alertNf.setDelayMsec(2000);
 
         if (username.isEmpty() || password.isEmpty() || passwordRepeat.isEmpty()){
-            new Notification("Please fill out the complete form!").show(Page.getCurrent());
+            alertNf.setCaption("Please fill out the complete form!");
+            alertNf.show(Page.getCurrent());
         } else if (!password.equals(passwordRepeat)){
-            new Notification("The given passwords aren't identical!").show(Page.getCurrent());
+            alertNf.setCaption("The given passwords aren't identical!");
+            alertNf.show(Page.getCurrent());
             signUpView.getPasswordFieldRepeat().clear();
             signUpView.getPasswordFieldRepeat().focus();
         } else if (true) {
             // Check if User is already in database
-            new Notification("User already exists!").show(Page.getCurrent());
+            alertNf.setCaption("User already exists!");
+            alertNf.show(Page.getCurrent());
         } else {
             // Add New User-Credentials to Database
         }

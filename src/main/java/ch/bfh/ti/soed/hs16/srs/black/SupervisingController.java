@@ -10,12 +10,12 @@ package ch.bfh.ti.soed.hs16.srs.black;
 import javax.servlet.annotation.WebServlet;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
-import ch.bfh.ti.soed.hs16.srs.black.backend.loginView.LoginController;
-import ch.bfh.ti.soed.hs16.srs.black.backend.loginView.LoginView;
-import ch.bfh.ti.soed.hs16.srs.black.backend.reservationView.ReservationController;
-import ch.bfh.ti.soed.hs16.srs.black.backend.reservationView.ReservationView;
-import ch.bfh.ti.soed.hs16.srs.black.backend.signUpView.SignUpController;
-import ch.bfh.ti.soed.hs16.srs.black.backend.signUpView.SignUpView;
+import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginController;
+import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView;
+import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationController;
+import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationView;
+import ch.bfh.ti.soed.hs16.srs.black.view.signUpView.SignUpController;
+import ch.bfh.ti.soed.hs16.srs.black.view.signUpView.SignUpView;
 import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
@@ -55,17 +55,17 @@ public class SupervisingController extends UI {
         signUpView = new SignUpView();
         navigator = new Navigator(this, this);
 
-        // Adding the login backend to the navigator
+        // Adding the login view to the navigator
         navigator.addView(LoginView.NAME, loginView);
 
-        // Setting the error backend of the navigator to the login backend
-        // This way the navigator will always default to the login backend
+        // Setting the error view of the navigator to the login view
+        // This way the navigator will always default to the login view
         navigator.setErrorView(loginView);
 
-        // Adding the reservation backend to the navigator
+        // Adding the reservation view to the navigator
         navigator.addView(ReservationView.NAME, reservationView);
 
-        // Adding the sign up backend to the navigator
+        // Adding the sign up view to the navigator
         navigator.addView(SignUpView.NAME, signUpView);
 
         // Instantiating the controllers for the two views
@@ -73,8 +73,8 @@ public class SupervisingController extends UI {
         new ReservationController(dataModel, reservationView, navigator);
         new SignUpController(dataModel, signUpView, navigator);
 
-        // We use a backend change handler to ensure the user is always redirected
-        // to the login backend if the user is not logged in
+        // We use a view change handler to ensure the user is always redirected
+        // to the login view if the user is not logged in
         navigator.addViewChangeListener(new ViewChangeListener() {
 
             @Override
@@ -84,12 +84,12 @@ public class SupervisingController extends UI {
                 boolean isLoginView = event.getNewView() instanceof LoginView;
 /*
                 if (!isLoggedIn && !isLoginView) {
-                    // Always redirect to login backend if a user has not yet logged in
+                    // Always redirect to login view if a user has not yet logged in
                     //navigator.navigateTo(LoginView.NAME);
                     return false;
 
                 } else if (isLoggedIn && isLoginView) {
-                    // Access attempt to the login backend while already logged in gets cancelled
+                    // Access attempt to the login view while already logged in gets cancelled
                     return false;
                 }*/
                 return true;

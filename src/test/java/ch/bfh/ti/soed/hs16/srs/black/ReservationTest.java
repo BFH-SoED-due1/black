@@ -1,8 +1,8 @@
 package ch.bfh.ti.soed.hs16.srs.black;
 
-import ch.bfh.ti.soed.hs16.srs.black.model.businessLogic.Customer;
-import ch.bfh.ti.soed.hs16.srs.black.model.businessLogic.Reservation;
-import ch.bfh.ti.soed.hs16.srs.black.model.businessLogic.Room;
+import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
+import ch.bfh.ti.soed.hs16.srs.black.model.logic.Reservation;
+import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.Calendar;

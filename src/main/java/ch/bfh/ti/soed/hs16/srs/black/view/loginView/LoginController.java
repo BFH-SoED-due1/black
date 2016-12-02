@@ -5,11 +5,11 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.backend.loginView;
+package ch.bfh.ti.soed.hs16.srs.black.view.loginView;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
-import ch.bfh.ti.soed.hs16.srs.black.backend.reservationView.ReservationView;
-import ch.bfh.ti.soed.hs16.srs.black.backend.signUpView.SignUpView;
+import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationView;
+import ch.bfh.ti.soed.hs16.srs.black.view.signUpView.SignUpView;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinSession;
@@ -39,7 +39,7 @@ public class LoginController {
             // Store the current user in the service session
             VaadinSession.getCurrent().setAttribute("user", userName);
 
-            // Navigate to the reservation backend
+            // Navigate to the reservation view
             navigator.navigateTo(ReservationView.NAME);
 
             // Clear the fields of the Login View
