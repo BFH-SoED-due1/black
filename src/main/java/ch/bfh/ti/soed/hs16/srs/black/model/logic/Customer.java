@@ -14,9 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.Collections;
+import java.util.*;
 
 /**
  * The Customer object stores all Reservations of a Customer in a TreeSet.
@@ -28,7 +26,7 @@ public class Customer {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToMany(targetEntity = Reservation.class, cascade = CascadeType.PERSIST)
-    private Set<Reservation> reservations;
+    private List<Reservation> reservations;
     @Column(unique = true)
     private String name;
     private String password;
@@ -36,7 +34,7 @@ public class Customer {
     public Customer() {} // null constructor
 
     public Customer(String name, String password) {
-        reservations = new TreeSet<>();
+        reservations = new ArrayList<>();
         this.name = name;
         this.password = password;
         if (name.isEmpty() || password.isEmpty())
@@ -51,8 +49,8 @@ public class Customer {
         reservations.remove(reservation);
     }
 
-    public Set<Reservation> getReservations() {
-        return Collections.unmodifiableSet(reservations);
+    public List<Reservation> getReservations() {
+        return Collections.unmodifiableList(reservations);
     }
 
     public String getPassword(){
@@ -61,5 +59,21 @@ public class Customer {
 
     public String getName(){
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Customer customer = (Customer) o;
+
+        return name.equals(customer.name);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
     }
 }

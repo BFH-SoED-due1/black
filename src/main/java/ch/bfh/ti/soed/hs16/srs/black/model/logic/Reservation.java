@@ -22,7 +22,7 @@ import java.util.Date;
  * The Comparable class is overwritten. We use the data object to compare time ranges of made Reservations.
  */
 @Entity(name = "Reservation")
-public class Reservation implements Comparable<Reservation> {
+public class Reservation {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -57,7 +57,7 @@ public class Reservation implements Comparable<Reservation> {
         return begin.after(o.begin) && begin.before(o.end) || begin.before(o.begin) && end.after(o.begin)
                 || begin.equals(o.begin) && end.equals(o.end);
     }
-
+/*
     @Override
     public int compareTo(Reservation o) {
         if (begin.before(o.begin))
@@ -66,7 +66,7 @@ public class Reservation implements Comparable<Reservation> {
             return 1;
         return 0;
     }
-
+*/
     public Customer getCustomer() {
         return customer;
     }
@@ -81,5 +81,28 @@ public class Reservation implements Comparable<Reservation> {
 
     public Date getEnd() {
         return end;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Reservation that = (Reservation) o;
+
+        if (!customer.equals(that.customer)) return false;
+        if (!room.equals(that.room)) return false;
+        if (!begin.equals(that.begin)) return false;
+        return end.equals(that.end);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = customer.hashCode();
+        result = 31 * result + room.hashCode();
+        result = 31 * result + begin.hashCode();
+        result = 31 * result + end.hashCode();
+        return result;
     }
 }
