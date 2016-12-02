@@ -14,10 +14,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.GenerationType;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
- * The Room object stores all Reservations in a TreeSet.
+ * The Room object stores all Reservations in a an ArrayList.
  * Reservations can be added and removed afterwards.
  */
 @Entity(name = "Room")

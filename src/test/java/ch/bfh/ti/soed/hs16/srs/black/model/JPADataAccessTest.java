@@ -22,7 +22,7 @@ public class JPADataAccessTest {
     DataModel dataModel;
     Customer testCustomer;
     Room testRoom;
-    Date date1, date2;
+    Date date1, date2, date3, date4;
 
     @Before
     public void setUp() throws Exception {
@@ -32,8 +32,12 @@ public class JPADataAccessTest {
         Calendar c = new GregorianCalendar();
         c.set(2016, 11, 9, 13, 22, 15);
         date1 = new Date(c.getTimeInMillis());
-        c.set(2016, 11, 9, 15, 22, 15);
+        c.set(2016, 11, 10, 15, 22, 15);
         date2 = new Date(c.getTimeInMillis());
+        c.set(2017, 12, 9, 13, 22, 15);
+        date3 = new Date(c.getTimeInMillis());
+        c.set(2017, 12, 10, 15, 22, 15);
+        date4 = new Date(c.getTimeInMillis());
     }
 
     @Test
@@ -54,7 +58,7 @@ public class JPADataAccessTest {
 
     @Test
     public void testCancelReservation() throws Exception {
-        Reservation testReservation = dataModel.addReservation(testCustomer, testRoom, date1, date2);
+        Reservation testReservation = dataModel.addReservation(testCustomer, testRoom, date3, date4);
         dataModel.cancelReservation(testReservation);
         assertFalse(dataModel.getReservations(testRoom).contains(testReservation));
         assertFalse(dataModel.getReservations(testCustomer).contains(testReservation));
@@ -79,7 +83,7 @@ public class JPADataAccessTest {
         dataModel.addCustomer(testCustomer1);
         assertTrue(dataModel.getCustomer("testName").equals(testCustomer1));
         dataModel.removeCustomer(testCustomer1);
-        assertNotEquals(testCustomer1, dataModel.getCustomer("testName"));
+        dataModel.getCustomer("testName");
     }
 
     @Test
@@ -103,7 +107,7 @@ public class JPADataAccessTest {
         Room room1 = new Room(10, "testRoomDescription");
         dataModel.addRoom(room1);
         dataModel.removeRoom(room1);
-        assertNotEquals(room1, dataModel.getRoom(10));
+        dataModel.getRoom(10);
     }
 
     @Test

@@ -13,8 +13,12 @@ import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
+import javax.persistence.Parameter;
 import javax.persistence.Persistence;
-import java.util.*;
+import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 public class JPADataAccess extends DataModel {
@@ -55,7 +59,7 @@ public class JPADataAccess extends DataModel {
             tx.commit();
             return reservation;
         } catch (Exception e) {
-            //tx.rollback();
+            tx.rollback();
             throw e;
         }
     }
@@ -65,7 +69,9 @@ public class JPADataAccess extends DataModel {
         EntityTransaction tx = entityManager.getTransaction();
         tx.begin();
         try {
-            entityManager.remove(reservation);
+            Reservation reservation1 = entityManager.find(Reservation.class, reservation.getId());
+            entityManager.remove(reservation1);
+            reservation.cancelReservation();
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
@@ -120,6 +126,14 @@ public class JPADataAccess extends DataModel {
         return entityManager.createQuery("select o from Customer as o where o.name = :customerName", Customer.class)
                 .setParameter("customerName", customerName)
                 .getSingleResult();
+    }
+
+    @Override
+    public boolean customerExists(String customerName) throws NoResultException {
+        Query query = entityManager.createQuery("select o from Customer as o where o.name = :customerName", Customer.class)
+                .setParameter("customerName", customerName);
+        List results = query.getResultList();
+        return !results.isEmpty();
     }
 
     @Override

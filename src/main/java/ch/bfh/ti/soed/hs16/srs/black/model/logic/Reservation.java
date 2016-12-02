@@ -67,6 +67,11 @@ public class Reservation {
         return 0;
     }
 */
+
+    public Long getId() {
+        return id;
+    }
+
     public Customer getCustomer() {
         return customer;
     }
