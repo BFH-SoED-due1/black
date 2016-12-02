@@ -14,9 +14,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
-import java.util.Date;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 
 public class JPADataAccess extends DataModel {
@@ -57,7 +55,7 @@ public class JPADataAccess extends DataModel {
             tx.commit();
             return reservation;
         } catch (Exception e) {
-            tx.rollback();
+            //tx.rollback();
             throw e;
         }
     }
@@ -76,16 +74,16 @@ public class JPADataAccess extends DataModel {
     }
 
     @Override
-    public Set<Reservation> getReservations(Customer customer) throws NoResultException {
-        return new TreeSet<Reservation>(entityManager.createQuery
+    public List<Reservation> getReservations(Customer customer) throws NoResultException {
+        return new ArrayList<Reservation>(entityManager.createQuery
                 ("select r from Reservation as r where r.customer = :customer", Reservation.class)
                 .setParameter("customer", customer)
                 .getResultList());
     }
 
     @Override
-    public Set<Reservation> getReservations(Room room) throws NoResultException {
-        return new TreeSet<Reservation>(entityManager.createQuery
+    public List<Reservation> getReservations(Room room) throws NoResultException {
+        return new ArrayList<Reservation>(entityManager.createQuery
                 ("select r from Reservation as r where r.room = :room", Reservation.class)
                 .setParameter("room", room)
                 .getResultList());

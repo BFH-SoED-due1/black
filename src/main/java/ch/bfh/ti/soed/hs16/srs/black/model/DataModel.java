@@ -11,7 +11,7 @@ import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Reservation;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 
 public abstract class DataModel {
@@ -21,8 +21,8 @@ public abstract class DataModel {
     // for reservation handling ...
     public abstract Reservation addReservation(Customer customer, Room room, Date begin, Date end) throws Exception;
     public abstract void cancelReservation(Reservation reservation);
-    public abstract Set<Reservation> getReservations(Customer customer);
-    public abstract Set<Reservation> getReservations(Room room);
+    public abstract List<Reservation> getReservations(Customer customer);
+    public abstract List<Reservation> getReservations(Room room);
 
     // for customer handling ...
     public abstract void addCustomer(Customer customer);
