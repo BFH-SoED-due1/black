@@ -10,6 +10,7 @@ package ch.bfh.ti.soed.hs16.srs.black.view.reservationView;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.shared.ui.MarginInfo;
+import com.vaadin.shared.ui.datefield.Resolution;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
@@ -18,6 +19,7 @@ import com.vaadin.ui.FormLayout;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
+import java.util.Locale;
 
 
 public class ReservationView extends CustomComponent implements View {
@@ -31,7 +33,13 @@ public class ReservationView extends CustomComponent implements View {
 
     public ReservationView() {
         fromField = new DateField("Start Date");
+        fromField.setLocale(new Locale("de", "DE"));
+        fromField.setResolution(Resolution.MINUTE);
+        fromField.setDateFormat("dd.MM.yyyy HH:mm");
         toField = new DateField("End Date");
+        toField.setLocale(new Locale("de", "DE"));
+        toField.setResolution(Resolution.MINUTE);
+        toField.setDateFormat("dd.MM.yyyy HH:mm");
         roomNumberField = new TextField("Room Number");
         makeReservationButton = new Button("Make Reservation");
         logoutButton = new Button("Logout");

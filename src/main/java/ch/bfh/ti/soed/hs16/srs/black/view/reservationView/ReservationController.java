@@ -42,8 +42,8 @@ public class ReservationController {
         reservationView.getMakeReservationButton().addClickListener(clickEvent -> {
             Date begin = reservationView.getFromField().getValue();
             Date end = reservationView.getToField().getValue();
-            SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy");
-            Notification exceptionNf = new Notification("","");
+            SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+            Notification exceptionNf = new Notification("");
             exceptionNf.setDelayMsec(2000);
             int roomNumber = Integer.parseInt(reservationView.getRoomNumberField().getValue());
             String username = String.valueOf(VaadinSession.getCurrent().getAttribute("user"));
