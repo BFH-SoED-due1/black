@@ -9,15 +9,15 @@ package ch.bfh.ti.soed.hs16.srs.black.view.loginView;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationView;
+import ch.bfh.ti.soed.hs16.srs.black.view.signUpView.SignUpView;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Notification;
 
 
-public class LoginController extends CustomComponent {
+public class LoginController {
 
     private DataModel dataModel;
     private LoginView loginView;
@@ -29,6 +29,7 @@ public class LoginController extends CustomComponent {
         this.navigator = navigator;
 
         loginView.getLoginButton().addClickListener(this::login);
+        loginView.getSignUpButton().addClickListener(this::signUp);
     }
 
     public void login(Button.ClickEvent event) {
@@ -51,5 +52,10 @@ public class LoginController extends CustomComponent {
             loginView.getPasswordField().clear();
             loginView.getPasswordField().focus();
         }
+    }
+
+    public void signUp(Button.ClickEvent event){
+        navigator.navigateTo(SignUpView.NAME);
+
     }
 }

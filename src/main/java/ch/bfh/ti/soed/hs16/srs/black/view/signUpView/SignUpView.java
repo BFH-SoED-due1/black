@@ -1,41 +1,38 @@
-/*
- * Copyright (c) 2016 Berner Fachhochschule, Switzerland.
- *
- * Project Smart Reservation System.
- *
- * Distributable under GPL license. See terms of license at gnu.org.
- */
-package ch.bfh.ti.soed.hs16.srs.black.view.loginView;
+package ch.bfh.ti.soed.hs16.srs.black.view.signUpView;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.*;
 
+/**
+ * Created by valentin on 30.11.16.
+ */
+public class SignUpView extends CustomComponent implements View {
 
-public class LoginView extends CustomComponent implements View {
-
-    public static final String NAME = "login";
+    public static final String NAME = "signup";
     private TextField usernameField;
     private PasswordField passwordField;
-    private Button loginButton;
-    private Button signUpButton;
+    private PasswordField passwordFieldRepeat;
+    private Button addUserButton;
+    private Button goBackButton;
 
-    public LoginView() {
+    public SignUpView(){
         usernameField = new TextField("Username");
         passwordField = new PasswordField("Password");
-        loginButton = new Button("Login");
-        signUpButton = new Button("Sign Up");
+        passwordFieldRepeat = new PasswordField("Repeat Password");
+        addUserButton = new Button("Add User");
+        goBackButton = new Button("Go back");
 
         VerticalLayout layout = new VerticalLayout();
-        HorizontalLayout layoutButtons = new HorizontalLayout(loginButton, signUpButton);
+        HorizontalLayout layoutButtons = new HorizontalLayout(addUserButton, goBackButton);
         layoutButtons.setSpacing(true);
-        Panel panel = new Panel("Smart Reservation System Login");
+        Panel panel = new Panel("Smart Reservation System Sign Up");
         panel.setSizeUndefined();
         layout.addComponent(panel);
 
         FormLayout content = new FormLayout();
-        content.addComponents(usernameField, passwordField, layoutButtons);
+        content.addComponents(usernameField, passwordField, passwordFieldRepeat, layoutButtons);
         content.setSizeUndefined();
         content.setMargin(true);
         panel.setContent(content);
@@ -46,14 +43,6 @@ public class LoginView extends CustomComponent implements View {
         layout.setMargin(new MarginInfo(true, false, false, false));
     }
 
-    public Button getLoginButton() {
-        return loginButton;
-    }
-
-    public Button getSignUpButton() {
-        return signUpButton;
-    }
-
     public TextField getUsernameField() {
         return usernameField;
     }
@@ -62,10 +51,23 @@ public class LoginView extends CustomComponent implements View {
         return passwordField;
     }
 
+    public PasswordField getPasswordFieldRepeat() {
+        return passwordFieldRepeat;
+    }
+
+    public Button getAddUserButton() {
+        return addUserButton;
+    }
+
+    public Button getGoBackButton() {
+        return goBackButton;
+    }
+
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-        // focus the username field when user arrives on the login view
-        usernameField.focus();
+        // placeholder
     }
 }
+
+

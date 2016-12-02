@@ -9,22 +9,17 @@ package ch.bfh.ti.soed.hs16.srs.black.view.reservationView;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
 import com.vaadin.navigator.Navigator;
-import com.vaadin.navigator.View;
-import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinSession;
-import com.vaadin.ui.Button;
-import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Notification;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import static ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView.NAME;
 
 
-public class ReservationController extends CustomComponent {
+public class ReservationController {
 
     private DataModel dataModel;
     private ReservationView reservationView;
