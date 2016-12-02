@@ -38,6 +38,7 @@ public class LoginController {
         String userName = loginView.getUsernameField().getValue();
         String password = loginView.getPasswordField().getValue();
         Customer customer = dataModel.getCustomer(userName);
+
         try {
             if (customer.getPassword().equals(password)) {
                 // Store the current user in the service session

@@ -14,7 +14,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,8 +25,7 @@ public class JPADataAccess extends DataModel {
     private static final String DEFAULT_DATA_ACCESS_CLASS = "ch.bfh.ti.soed.hs16.srs.black.model.JPADataAccess";
     private static EntityManager entityManager;
 
-    private JPADataAccess() {
-    } // to create an instance of this class, you have to use getInstance()
+    private JPADataAccess() {} // to create an instance of this class, you have to use getInstance()
 
     public static DataModel getInstance() {
         synchronized (DataModel.class) {

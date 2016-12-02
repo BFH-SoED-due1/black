@@ -3,5 +3,4 @@
 /target/
 .idea/
 .settings/
-src/main/resources/srs.db
 srs-black.iml

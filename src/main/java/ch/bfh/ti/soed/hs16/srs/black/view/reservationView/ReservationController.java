@@ -47,6 +47,7 @@ public class ReservationController {
             exceptionNf.setDelayMsec(2000);
             int roomNumber = Integer.parseInt(reservationView.getRoomNumberField().getValue());
             String username = String.valueOf(VaadinSession.getCurrent().getAttribute("user"));
+
             try {
                 Customer customer = dataModel.getCustomer(username);
                 Room room = dataModel.getRoom(roomNumber);

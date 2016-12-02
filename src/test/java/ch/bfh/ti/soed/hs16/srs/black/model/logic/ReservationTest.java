@@ -16,7 +16,9 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
+
 public class ReservationTest {
+
     // some test dates: date1 < date2 < date3 < date4
     private Date date1;
     private Date date2;

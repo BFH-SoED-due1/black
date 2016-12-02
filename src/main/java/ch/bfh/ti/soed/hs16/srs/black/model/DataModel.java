@@ -30,7 +30,7 @@ public abstract class DataModel {
     public abstract Customer getCustomer(String customerName);
     //public abstract boolean customerExists(String customerName);
 
-    // for room handling ..
+    // for room handling ...
     public abstract void addRoom(Room room);
     public abstract void removeRoom(Room room);
     public abstract Room getRoom(int roomNr);

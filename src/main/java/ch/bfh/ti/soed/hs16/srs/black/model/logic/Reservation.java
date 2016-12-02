@@ -99,7 +99,6 @@ public class Reservation {
         if (!room.equals(that.room)) return false;
         if (!begin.equals(that.begin)) return false;
         return end.equals(that.end);
-
     }
 
     @Override

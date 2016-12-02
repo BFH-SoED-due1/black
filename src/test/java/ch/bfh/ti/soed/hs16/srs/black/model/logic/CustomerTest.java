@@ -15,7 +15,9 @@ import java.util.GregorianCalendar;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
+
 public class CustomerTest {
+
     Customer testCustomer;
     Room testRoom;
     Date date1, date2, date3;

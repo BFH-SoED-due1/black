@@ -12,13 +12,18 @@ import ch.bfh.ti.soed.hs16.srs.black.model.logic.Reservation;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
 import org.junit.Before;
 import org.junit.Test;
-
 import javax.persistence.NoResultException;
-import java.util.*;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
-import static org.junit.Assert.*;
 
 public class JPADataAccessTest {
+
     DataModel dataModel;
     Customer testCustomer;
     Room testRoom;

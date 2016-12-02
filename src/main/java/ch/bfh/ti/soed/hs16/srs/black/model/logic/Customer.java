@@ -71,7 +71,6 @@ public class Customer {
         Customer customer = (Customer) o;
 
         return name.equals(customer.name);
-
     }
 
     @Override

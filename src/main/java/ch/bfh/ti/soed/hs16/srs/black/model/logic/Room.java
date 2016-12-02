@@ -72,7 +72,6 @@ public class Room {
         Room room = (Room) o;
 
         return roomNr == room.roomNr;
-
     }
 
     @Override
