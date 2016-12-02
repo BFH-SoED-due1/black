@@ -7,35 +7,36 @@
  */
 package ch.bfh.ti.soed.hs16.srs.black.model.logic;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.GenerationType;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
- * The Room object stores all Reservations in a TreeSet.
+ * The Room object stores all Reservations in a an ArrayList.
  * Reservations can be added and removed afterwards.
  */
 @Entity(name = "Room")
 public class Room {
 
-    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany(targetEntity = Reservation.class)
-    private Set<Reservation> reservations;
+    @OneToMany(targetEntity = Reservation.class, cascade = CascadeType.PERSIST)
+    private List<Reservation> reservations;
     @Column(unique = true)
     private int roomNr;
     private String description;
 
-    public Room(){} // null constructor
+    public Room() {} // null constructor
 
     public Room(int roomNr, String description) {
-        reservations = new TreeSet<>();
+        reservations = new ArrayList();
         this.roomNr = roomNr;
         this.description = description;
     }
@@ -51,8 +52,8 @@ public class Room {
         reservations.remove(reservation);
     }
 
-    public Set<Reservation> getReservations() {
-        return Collections.unmodifiableSet(reservations);
+    public List<Reservation> getReservations() {
+        return Collections.unmodifiableList(reservations);
     }
 
     public int getRoomNr(){
@@ -61,5 +62,21 @@ public class Room {
 
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Room room = (Room) o;
+
+        return roomNr == room.roomNr;
+
+    }
+
+    @Override
+    public int hashCode() {
+        return roomNr;
     }
 }

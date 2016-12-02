@@ -14,8 +14,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 
 public class JPADataAccess extends DataModel {
@@ -32,8 +34,8 @@ public class JPADataAccess extends DataModel {
             if (instance == null) {
                 try {
                     @SuppressWarnings("rawtypes")
-                    Class clazz = Class.forName(DEFAULT_DATA_ACCESS_CLASS);
-                    instance = (DataModel) clazz.newInstance();
+                    Class aClass = Class.forName(DEFAULT_DATA_ACCESS_CLASS);
+                    instance = (DataModel) aClass.newInstance();
                 } catch (Exception ex) {
                     System.err.println("Could not load class: " + DEFAULT_DATA_ACCESS_CLASS);
 
@@ -63,19 +65,33 @@ public class JPADataAccess extends DataModel {
 
     @Override
     public void cancelReservation(Reservation reservation) {
-        // TODO ...
+        EntityTransaction tx = entityManager.getTransaction();
+        tx.begin();
+        try {
+            Reservation reservation1 = entityManager.find(Reservation.class, reservation.getId());
+            entityManager.remove(reservation1);
+            reservation.cancelReservation();
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+            throw e;
+        }
     }
 
     @Override
-    public Set<Reservation> getReservations(Customer customer) {
-        // TODO ...
-        return null;
+    public List<Reservation> getReservations(Customer customer) throws NoResultException {
+        return new ArrayList<Reservation>(entityManager.createQuery
+                ("select r from Reservation as r where r.customer = :customer", Reservation.class)
+                .setParameter("customer", customer)
+                .getResultList());
     }
 
     @Override
-    public Set<Reservation> getReservations(Room room) {
-        // TODO ...
-        return null;
+    public List<Reservation> getReservations(Room room) throws NoResultException {
+        return new ArrayList<Reservation>(entityManager.createQuery
+                ("select r from Reservation as r where r.room = :room", Reservation.class)
+                .setParameter("room", room)
+                .getResultList());
     }
 
     @Override
@@ -93,7 +109,15 @@ public class JPADataAccess extends DataModel {
 
     @Override
     public void removeCustomer(Customer customer) {
-        // TODO ...
+        EntityTransaction tx = entityManager.getTransaction();
+        try {
+            tx.begin();
+            entityManager.remove(customer);
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+            throw e;
+        }
     }
 
     @Override
@@ -102,6 +126,15 @@ public class JPADataAccess extends DataModel {
                 .setParameter("customerName", customerName)
                 .getSingleResult();
     }
+
+    /*
+    public boolean customerExists(String customerName) throws NoResultException {
+        Query query = entityManager.createQuery("select o from Customer as o where o.name = :customerName", Customer.class)
+                .setParameter("customerName", customerName);
+        List results = query.getResultList();
+        return !results.isEmpty();
+    }
+    */
 
     @Override
     public void addRoom(Room room) {
@@ -118,7 +151,15 @@ public class JPADataAccess extends DataModel {
 
     @Override
     public void removeRoom(Room room) {
-        // TODO ...
+        EntityTransaction tx = entityManager.getTransaction();
+        try {
+            tx.begin();
+            entityManager.remove(room);
+            tx.commit();
+        } catch (Exception e) {
+            tx.rollback();
+            throw e;
+        }
     }
 
     @Override

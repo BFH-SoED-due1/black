@@ -35,7 +35,7 @@ public class ReservationTest {
         c.set(2016, 11, 9, 17, 22, 15);
         date4 = new Date(c.getTimeInMillis());
     }
-
+/*
     @Test
     public void testCompareTo() throws Exception {
         int returnValue, expected;
@@ -66,7 +66,7 @@ public class ReservationTest {
         expected = -1;
         assertEquals(returnValue, expected);
     }
-
+*/
     @Test
     public void testCreateReservation() throws Exception {
         Room testRoom1 = new Room(1,"50m^2");
