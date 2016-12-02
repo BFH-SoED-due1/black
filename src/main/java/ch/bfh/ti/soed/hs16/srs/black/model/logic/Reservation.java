@@ -7,20 +7,34 @@
  */
 package ch.bfh.ti.soed.hs16.srs.black.model.logic;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
 
 /**
  * The Reservation object stores a specific Reservation made by a Customer and contains a Room.
  * The Comparable class is overwritten. We use the data object to compare time ranges of made Reservations.
  */
-
+@Entity(name = "Reservation")
 public class Reservation implements Comparable<Reservation> {
 
-    private final Customer customer;
-    private final Room room;
-    private final Date begin;
-    private final Date end;
-    // price class
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @ManyToOne(targetEntity = Customer.class)
+    private Customer customer;
+    @ManyToOne(targetEntity = Room.class)
+    private Room room;
+    @Temporal(TemporalType.DATE)
+    private Date begin;
+    @Temporal(TemporalType.DATE)
+    private Date end;
+
+    public Reservation(){} // null constructor
 
     public Reservation(Customer customer, Room room, Date begin, Date end) throws Exception {
         this.customer = customer;
@@ -50,5 +64,21 @@ public class Reservation implements Comparable<Reservation> {
         if (begin.after(o.begin))
             return 1;
         return 0;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public Date getBegin() {
+        return begin;
+    }
+
+    public Date getEnd() {
+        return end;
     }
 }

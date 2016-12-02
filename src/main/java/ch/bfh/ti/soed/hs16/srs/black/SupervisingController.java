@@ -10,6 +10,9 @@ package ch.bfh.ti.soed.hs16.srs.black;
 import javax.servlet.annotation.WebServlet;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
+import ch.bfh.ti.soed.hs16.srs.black.model.JPADataAccess;
+import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
+import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginController;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationController;
@@ -45,11 +48,26 @@ public class SupervisingController extends UI {
     private ReservationView reservationView;
     private SignUpView signUpView;
 
+    // Create Room and Customer for test purposes
+    // Commented out because this data is now stored in the SQLite DB
+    /*static {
+        DataModel testData = JPADataAccess.getInstance();
+        Room room1 = new Room(1,"20m^2");
+        Room room2 = new Room(2,"20m^2");
+        Customer customer1 = new Customer("user1", "123");
+        Customer customer2 = new Customer("user2", "234");
+
+        testData.addRoom(room1);
+        testData.addRoom(room2);
+        testData.addCustomer(customer1);
+        testData.addCustomer(customer2);
+    }*/
+
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         // Set Title for Tab of Browser
         Page.getCurrent().setTitle("SRS - Smart Reservation System");
-        dataModel = new DataModel();
+        dataModel = JPADataAccess.getInstance();
         loginView = new LoginView();
         reservationView = new ReservationView();
         signUpView = new SignUpView();

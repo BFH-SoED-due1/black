@@ -10,76 +10,27 @@ package ch.bfh.ti.soed.hs16.srs.black.model;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Reservation;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
-
 import java.util.Set;
-import java.util.HashSet;
-import java.util.TreeSet;
 import java.util.Date;
 
 
-public class DataModel {
+public abstract class DataModel {
 
-    private Set<Customer> customers = new HashSet<>();
-    private Set<Room> rooms = new HashSet<>();
-    private Set<Reservation> reservations = new TreeSet<>();
+    protected static DataModel instance = null;
 
-    public DataModel() {
-        // set test users
-        addCustomer("user1", "123");
-        addCustomer("user2", "234");
+    // for reservation handling ...
+    public abstract Reservation addReservation(Customer customer, Room room, Date begin, Date end) throws Exception;
+    public abstract void cancelReservation(Reservation reservation);
+    public abstract Set<Reservation> getReservations(Customer customer);
+    public abstract Set<Reservation> getReservations(Room room);
 
-        // set test Rooms
-        addRoom(1, "30m^");
-        addRoom(2, "50m^2");
-    }
+    // for customer handling ...
+    public abstract void addCustomer(Customer customer);
+    public abstract void removeCustomer(Customer customer);
+    public abstract Customer getCustomer(String customerName);
 
-    public boolean customerExists(String customerName) {
-        for (Customer customer : customers)
-            if (customer.getName().equals(customerName))
-                return true;
-        return false;
-    }
-
-    public boolean roomExists(int roomNumber) {
-        for (Room room : rooms)
-            if (room.getRoomNr() == roomNumber)
-                return true;
-        return false;
-    }
-
-    protected Customer getCustomer(String customerName) {
-        for (Customer customer : customers)
-            if (customer.getName().equals(customerName))
-                return customer;
-        return null;
-    }
-
-    protected Room getRoom(int roomNr) {
-        for (Room room : rooms)
-            if (room.getRoomNr() == roomNr)
-                return room;
-        return null;
-    }
-
-    public String getPassword(String customerName) {
-        for (Customer customer : customers)
-            if (customer.getName().equals(customerName))
-                return customer.getPassword();
-        return null;
-    }
-
-    public void addCustomer(String customerName, String password) {
-        customers.add(new Customer(customerName, password));
-    }
-
-    public void addRoom(int roomNumber, String description) {
-        rooms.add(new Room(roomNumber, description));
-    }
-
-    public void addReservation(String userName, int roomNumber, Date begin, Date end) throws Exception {
-        if (!customerExists(userName) || !roomExists(roomNumber))
-            throw new IllegalArgumentException();
-        reservations.add(new Reservation(getCustomer(userName), getRoom(roomNumber), begin, end));
-        System.out.println("Added new Reservation");
-    }
+    // for room handling ...
+    public abstract void addRoom(Room room);
+    public abstract void removeRoom(Room room);
+    public abstract Room getRoom(int roomNr);
 }

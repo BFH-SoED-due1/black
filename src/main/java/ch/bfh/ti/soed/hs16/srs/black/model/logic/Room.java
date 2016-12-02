@@ -7,34 +7,47 @@
  */
 package ch.bfh.ti.soed.hs16.srs.black.model.logic;
 
-import java.util.Collections;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.GenerationType;
 import java.util.Set;
 import java.util.TreeSet;
-
+import java.util.Collections;
 
 /**
- * The room Object stores all reservations(Reservation) in a TreeSet. reservations can be added and removed afterwards.
+ * The Room object stores all Reservations in a TreeSet.
+ * Reservations can be added and removed afterwards.
  */
+@Entity(name = "Room")
 public class Room {
 
+    @Id @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @OneToMany(targetEntity = Reservation.class)
     private Set<Reservation> reservations;
+    @Column(unique = true)
     private int roomNr;
     private String description;
 
+    public Room(){} // null constructor
+
     public Room(int roomNr, String description) {
-        reservations = new TreeSet<Reservation>();
+        reservations = new TreeSet<>();
         this.roomNr = roomNr;
         this.description = description;
     }
 
-    protected void addReservation(Reservation reservation) throws Exception {
+    void addReservation(Reservation reservation) throws Exception {
         for (Reservation res : reservations)
             if (res.timeCollisionWith(reservation))
                 throw new Exception("time collision");
         reservations.add(reservation);
     }
 
-    protected void removeReservation(Reservation reservation) {
+    void removeReservation(Reservation reservation) {
         reservations.remove(reservation);
     }
 
@@ -44,5 +57,9 @@ public class Room {
 
     public int getRoomNr(){
         return roomNr;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
