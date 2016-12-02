@@ -28,7 +28,7 @@ public abstract class DataModel {
     public abstract void addCustomer(Customer customer);
     public abstract void removeCustomer(Customer customer);
     public abstract Customer getCustomer(String customerName);
-    public abstract boolean customerExists(String customerName);
+    //public abstract boolean customerExists(String customerName);
 
     // for room handling ..
     public abstract void addRoom(Room room);

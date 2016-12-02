@@ -13,7 +13,6 @@ import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
-import javax.persistence.Parameter;
 import javax.persistence.Persistence;
 import javax.persistence.Query;
 import java.util.ArrayList;
@@ -128,13 +127,14 @@ public class JPADataAccess extends DataModel {
                 .getSingleResult();
     }
 
-    @Override
+    /*
     public boolean customerExists(String customerName) throws NoResultException {
         Query query = entityManager.createQuery("select o from Customer as o where o.name = :customerName", Customer.class)
                 .setParameter("customerName", customerName);
         List results = query.getResultList();
         return !results.isEmpty();
     }
+    */
 
     @Override
     public void addRoom(Room room) {
