@@ -67,6 +67,7 @@ public class SupervisingController extends UI {
     protected void init(VaadinRequest vaadinRequest) {
         // Set Title for Tab of Browser
         Page.getCurrent().setTitle("SRS - Smart Reservation System");
+
         dataModel = JPADataAccess.getInstance();
         loginView = new LoginView();
         reservationView = new ReservationView();
@@ -100,16 +101,17 @@ public class SupervisingController extends UI {
                 // Check if a user has logged in
                 boolean isLoggedIn = VaadinSession.getCurrent().getAttribute("user") != null;
                 boolean isLoginView = event.getNewView() instanceof LoginView;
-/*
-                if (!isLoggedIn && !isLoginView) {
-                    // Always redirect to login view if a user has not yet logged in
-                    //navigator.navigateTo(LoginView.NAME);
-                    return false;
+                boolean isSignUpView = event.getNewView() instanceof SignUpView;
+                boolean isReservationView = event.getNewView() instanceof ReservationView;
 
-                } else if (isLoggedIn && isLoginView) {
-                    // Access attempt to the login view while already logged in gets cancelled
+                if (!isLoggedIn && isReservationView) {
+                    // Always redirect to login view if a user has not yet logged in
+                    navigator.navigateTo(LoginView.NAME);
                     return false;
-                }*/
+                } else if (isLoggedIn && (isLoginView || isSignUpView)) {
+                    // Access attempt to the login or signup view while already logged in gets cancelled
+                    return false;
+                }
                 return true;
             }
 

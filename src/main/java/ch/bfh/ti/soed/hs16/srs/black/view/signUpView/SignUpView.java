@@ -3,11 +3,17 @@ package ch.bfh.ti.soed.hs16.srs.black.view.signUpView;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.shared.ui.MarginInfo;
-import com.vaadin.ui.*;
+import com.vaadin.ui.Alignment;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.CustomComponent;
+import com.vaadin.ui.FormLayout;
+import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.Panel;
+import com.vaadin.ui.PasswordField;
+import com.vaadin.ui.TextField;
+import com.vaadin.ui.VerticalLayout;
 
-/**
- * Created by valentin on 30.11.16.
- */
+
 public class SignUpView extends CustomComponent implements View {
 
     public static final String NAME = "signup";

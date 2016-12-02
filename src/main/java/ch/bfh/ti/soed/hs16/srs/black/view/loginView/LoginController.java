@@ -16,7 +16,6 @@ import com.vaadin.server.Page;
 import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Notification;
-
 import javax.naming.AuthenticationException;
 
 
@@ -65,6 +64,5 @@ public class LoginController {
 
     public void signUp(Button.ClickEvent event){
         navigator.navigateTo(SignUpView.NAME);
-
     }
 }

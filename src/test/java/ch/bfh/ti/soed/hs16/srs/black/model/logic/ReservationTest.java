@@ -7,12 +7,6 @@
  */
 package ch.bfh.ti.soed.hs16.srs.black.model.logic;
 
-<<<<<<< HEAD:src/test/java/ch/bfh/ti/soed/hs16/srs/black/ReservationTest.java
-import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
-import ch.bfh.ti.soed.hs16.srs.black.model.logic.Reservation;
-import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
-=======
->>>>>>> 6850952f45b4f7fdfd301720c27f9a87e5810d14:src/test/java/ch/bfh/ti/soed/hs16/srs/black/model/logic/ReservationTest.java
 import org.junit.Before;
 import org.junit.Test;
 import java.util.Calendar;
@@ -21,7 +15,6 @@ import java.util.GregorianCalendar;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
-
 
 public class ReservationTest {
     // some test dates: date1 < date2 < date3 < date4
