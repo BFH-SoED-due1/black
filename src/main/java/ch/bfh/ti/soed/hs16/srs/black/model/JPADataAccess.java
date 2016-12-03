@@ -166,4 +166,10 @@ public class JPADataAccess extends DataModel {
                 .setParameter("roomNr", roomNr)
                 .getSingleResult();
     }
+
+    @Override
+    public List<Room> getRooms() throws NoResultException {
+        return entityManager.createQuery("select r from Room r", Room.class)
+                .getResultList();
+    }
 }

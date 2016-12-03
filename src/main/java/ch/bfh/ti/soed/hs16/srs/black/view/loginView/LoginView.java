@@ -9,6 +9,7 @@ package ch.bfh.ti.soed.hs16.srs.black.view.loginView;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.server.FontAwesome;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
@@ -31,20 +32,26 @@ public class LoginView extends CustomComponent implements View {
 
     public LoginView() {
         usernameField = new TextField("Username");
+        usernameField.setIcon(FontAwesome.USER);
+        usernameField.setWidth(12, Unit.EM);
         passwordField = new PasswordField("Password");
+        passwordField.setIcon(FontAwesome.KEY);
+        passwordField.setWidth(12, Unit.EM);
         loginButton = new Button("Login");
+        loginButton.setWidth(5, Unit.EM);
         signUpButton = new Button("Sign Up");
+        signUpButton.setWidth(6, Unit.EM);
 
         VerticalLayout layout = new VerticalLayout();
         HorizontalLayout layoutButtons = new HorizontalLayout(loginButton, signUpButton);
         layoutButtons.setSpacing(true);
-        Panel panel = new Panel("Smart Reservation System Login");
+        Panel panel = new Panel("Login - Smart Reservation System");
         panel.setSizeUndefined();
         layout.addComponent(panel);
 
         FormLayout content = new FormLayout();
         content.addComponents(usernameField, passwordField, layoutButtons);
-        content.setSizeUndefined();
+        content.setSizeFull();
         content.setMargin(true);
         panel.setContent(content);
 

@@ -9,12 +9,12 @@ package ch.bfh.ti.soed.hs16.srs.black.view.signUpView;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.server.FontAwesome;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.FormLayout;
-import com.vaadin.ui.HorizontalLayout;
 import com.vaadin.ui.Panel;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
@@ -30,25 +30,32 @@ public class SignUpView extends CustomComponent implements View {
     private Button addUserButton;
     private Button goBackButton;
 
-    public SignUpView(){
+    public SignUpView() {
         usernameField = new TextField("Username");
+        usernameField.setIcon(FontAwesome.USER);
+        usernameField.setWidth(12, Unit.EM);
         passwordField = new PasswordField("Password");
+        passwordField.setIcon(FontAwesome.KEY);
+        passwordField.setWidth(12, Unit.EM);
         passwordFieldRepeat = new PasswordField("Repeat Password");
-        addUserButton = new Button("Add User");
-        goBackButton = new Button("Go back");
+        passwordFieldRepeat.setIcon(FontAwesome.KEY);
+        passwordFieldRepeat.setWidth(12, Unit.EM);
+        addUserButton = new Button("Add New User");
+        addUserButton.setWidth(12, Unit.EM);
+        goBackButton = new Button("Back");
 
         VerticalLayout layout = new VerticalLayout();
-        HorizontalLayout layoutButtons = new HorizontalLayout(addUserButton, goBackButton);
-        layoutButtons.setSpacing(true);
-        Panel panel = new Panel("Smart Reservation System Sign Up");
+        Panel panel = new Panel("Sign Up - Smart Reservation System");
         panel.setSizeUndefined();
         layout.addComponent(panel);
 
         FormLayout content = new FormLayout();
-        content.addComponents(usernameField, passwordField, passwordFieldRepeat, layoutButtons);
+        content.addComponents(usernameField, passwordField, passwordFieldRepeat, addUserButton);
         content.setSizeUndefined();
         content.setMargin(true);
-        panel.setContent(content);
+        VerticalLayout formAndBack = new VerticalLayout(content, goBackButton);
+        formAndBack.setMargin(true);
+        panel.setContent(formAndBack);
 
         setCompositionRoot(layout);
 

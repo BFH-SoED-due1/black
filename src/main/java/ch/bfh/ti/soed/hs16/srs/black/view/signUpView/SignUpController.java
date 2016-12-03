@@ -51,7 +51,8 @@ public class SignUpController {
             try {
                 dataModel.addCustomer(new Customer(username, password));
                 navigator.navigateTo(ReservationView.NAME);
-                alertNf.setCaption("Successfully added new User: " + username);
+                alertNf.setCaption("Account: " + username + " has been successfully created.");
+                alertNf.setDescription("You can now login with your credentials.");
                 alertNf.show(Page.getCurrent());
             } catch (IllegalStateException e) {
                 alertNf.setCaption("User already exists!");

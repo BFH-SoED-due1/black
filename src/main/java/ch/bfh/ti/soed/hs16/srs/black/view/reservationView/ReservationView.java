@@ -7,8 +7,10 @@
  */
 package ch.bfh.ti.soed.hs16.srs.black.view.reservationView;
 
+import com.vaadin.data.validator.RegexpValidator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.server.FontAwesome;
 import com.vaadin.shared.ui.MarginInfo;
 import com.vaadin.shared.ui.datefield.Resolution;
 import com.vaadin.ui.Alignment;
@@ -36,24 +38,34 @@ public class ReservationView extends CustomComponent implements View {
         fromField.setLocale(new Locale("de", "DE"));
         fromField.setResolution(Resolution.MINUTE);
         fromField.setDateFormat("dd.MM.yyyy HH:mm");
+        fromField.setIcon(FontAwesome.CALENDAR);
+        fromField.setWidth(12, Unit.EM);
         toField = new DateField("End Date");
         toField.setLocale(new Locale("de", "DE"));
         toField.setResolution(Resolution.MINUTE);
         toField.setDateFormat("dd.MM.yyyy HH:mm");
+        toField.setIcon(FontAwesome.CALENDAR);
+        toField.setWidth(12, Unit.EM);
         roomNumberField = new TextField("Room Number");
+        roomNumberField.setIcon(FontAwesome.BUILDING_O);
+        roomNumberField.addValidator(new RegexpValidator("^[0-9]{1,3}$", "Please enter a valid room number."));
+        roomNumberField.setWidth(4, Unit.EM);
         makeReservationButton = new Button("Make Reservation");
+        makeReservationButton.setWidth(12, Unit.EM);
         logoutButton = new Button("Logout");
 
         VerticalLayout layout = new VerticalLayout();
-        Panel panel = new Panel("Reservation");
+        Panel panel = new Panel("Reservation - Smart Reservation System");
         panel.setSizeUndefined();
         layout.addComponent(panel);
 
         FormLayout content = new FormLayout();
-        content.addComponents(fromField, toField, roomNumberField, makeReservationButton, logoutButton);
+        content.addComponents(fromField, toField, roomNumberField, makeReservationButton);
         content.setSizeUndefined();
         content.setMargin(true);
-        panel.setContent(content);
+        VerticalLayout formAndLogout = new VerticalLayout(content, logoutButton);
+        formAndLogout.setMargin(true);
+        panel.setContent(formAndLogout);
 
         setCompositionRoot(layout);
 

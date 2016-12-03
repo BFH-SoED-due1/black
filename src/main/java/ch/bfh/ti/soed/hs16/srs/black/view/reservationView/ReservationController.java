@@ -45,10 +45,10 @@ public class ReservationController {
             SimpleDateFormat df = new SimpleDateFormat("dd.MM.yyyy HH:mm");
             Notification exceptionNf = new Notification("");
             exceptionNf.setDelayMsec(2000);
-            int roomNumber = Integer.parseInt(reservationView.getRoomNumberField().getValue());
             String username = String.valueOf(VaadinSession.getCurrent().getAttribute("user"));
 
             try {
+                int roomNumber = Integer.parseInt(reservationView.getRoomNumberField().getValue());
                 Customer customer = dataModel.getCustomer(username);
                 Room room = dataModel.getRoom(roomNumber);
                 dataModel.addReservation(customer, room, begin, end);
@@ -60,11 +60,13 @@ public class ReservationController {
                 exceptionNf.show(Page.getCurrent());
             } catch (IllegalArgumentException iae) {
                 exceptionNf.setCaption("Illegal Argument Exception");
-                exceptionNf.setDescription("Please check the dates you set for your reservation.");
+                exceptionNf.setDescription("Please check the entries you made for your reservation.");
                 exceptionNf.show(Page.getCurrent());
             } catch(NoResultException nre) {
                 exceptionNf.setCaption("No Result Exeption");
-                exceptionNf.setDescription("Room not found in database.");
+                exceptionNf.setDescription("Room couldn't be found. Currently available rooms: " +
+                        dataModel.getRooms().toString()
+                                .replaceAll("ch\\.bfh\\.ti\\.soed\\.hs16\\.srs\\.black\\.model\\.logic\\.Room\\@",""));
                 exceptionNf.show(Page.getCurrent());
             } catch (Exception e) {
                 exceptionNf.setCaption("Time Collision Exception");

@@ -34,4 +34,5 @@ public abstract class DataModel {
     public abstract void addRoom(Room room);
     public abstract void removeRoom(Room room);
     public abstract Room getRoom(int roomNr);
+    public abstract List<Room> getRooms();
 }
