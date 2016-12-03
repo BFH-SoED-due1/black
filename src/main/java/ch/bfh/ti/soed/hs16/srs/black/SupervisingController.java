@@ -65,7 +65,7 @@ public class SupervisingController extends UI {
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        // Set Title for Tab of Browser
+        // Set the title of the site in the browser
         Page.getCurrent().setTitle("SRS - Smart Reservation System");
 
         dataModel = JPADataAccess.getInstance();
@@ -100,6 +100,7 @@ public class SupervisingController extends UI {
             public boolean beforeViewChange(ViewChangeEvent event) {
                 // Check if a user has logged in
                 boolean isLoggedIn = VaadinSession.getCurrent().getAttribute("user") != null;
+
                 boolean isLoginView = event.getNewView() instanceof LoginView;
                 boolean isSignUpView = event.getNewView() instanceof SignUpView;
                 boolean isReservationView = event.getNewView() instanceof ReservationView;
@@ -124,7 +125,7 @@ public class SupervisingController extends UI {
 
 
     @WebServlet(urlPatterns = "/*", asyncSupported = true)
-    @VaadinServletConfiguration(ui = SupervisingController.class, productionMode = false)
+    @VaadinServletConfiguration(ui = SupervisingController.class, productionMode = false, widgetset = "com.vaadin.DefaultWidgetSet")
     public static class Servlet extends VaadinServlet {
     }
 }
