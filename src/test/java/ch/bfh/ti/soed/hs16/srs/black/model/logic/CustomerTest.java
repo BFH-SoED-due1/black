@@ -61,6 +61,6 @@ public class CustomerTest {
 
     @Test
     public void testEquals() throws Exception {
-        assertEquals(name, testCustomer.getName());
+        name.equals(testCustomer.getName());
     }
 }

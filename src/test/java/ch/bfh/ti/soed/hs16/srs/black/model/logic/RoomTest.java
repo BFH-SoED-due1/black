@@ -58,6 +58,7 @@ public class RoomTest {
 
     @Test
     public void testEquals() throws Exception {
-        assertEquals(roomNr, testRoom.getRoomNr());
+        assertTrue(roomNr == testRoom.getRoomNr());
+        testRoom.equals(roomNr);
     }
 }

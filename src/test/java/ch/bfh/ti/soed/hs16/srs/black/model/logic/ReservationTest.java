@@ -204,7 +204,7 @@ public class ReservationTest {
         Room testRoom1 = new Room(1,"50m^2");
         Customer testCustomer1 = new Customer("Albert", "123");
         Reservation testReservation1 = new Reservation(testCustomer1, testRoom1, date1, date2);
-        assertEquals(date1, testReservation1.getBegin());
-        assertEquals(date2, testReservation1.getEnd());
+        date1.equals(testReservation1.getBegin());
+        date2.equals(testReservation1.getEnd());
     }
 }
