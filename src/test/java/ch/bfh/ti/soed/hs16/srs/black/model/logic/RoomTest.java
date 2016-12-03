@@ -55,4 +55,9 @@ public class RoomTest {
     public void testGetDescription() throws Exception {
         assertEquals(testRoom.getDescription(), description);
     }
+
+    @Test
+    public void testEquals() throws Exception {
+        assertEquals(roomNr, testRoom.getRoomNr());
+    }
 }
