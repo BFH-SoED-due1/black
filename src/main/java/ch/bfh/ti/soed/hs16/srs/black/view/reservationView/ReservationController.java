@@ -64,7 +64,9 @@ public class ReservationController {
                 exceptionNf.show(Page.getCurrent());
             } catch(NoResultException nre) {
                 exceptionNf.setCaption("No Result Exeption");
-                exceptionNf.setDescription("Room not found in database.");
+                exceptionNf.setDescription("Room couldn't be found. Currently available rooms: " +
+                        dataModel.getRooms().toString()
+                                .replaceAll("ch\\.bfh\\.ti\\.soed\\.hs16\\.srs\\.black\\.model\\.logic\\.Room\\@",""));
                 exceptionNf.show(Page.getCurrent());
             } catch (Exception e) {
                 exceptionNf.setCaption("Time Collision Exception");

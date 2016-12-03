@@ -122,4 +122,12 @@ public class JPADataAccessTest {
         assertEquals(room1, dataModel.getRoom(10));
         dataModel.removeRoom(room1);
     }
+
+    @Test
+    public void testGetRooms() throws Exception {
+        Room room1 = new Room(11, "testRoomDescription1");
+        dataModel.addRoom(room1);
+        dataModel.getRooms().contains(room1);
+        dataModel.removeRoom(room1);
+    }
 }
