@@ -90,7 +90,9 @@ public class Reservation {
 
     @Override
     public boolean equals(Object o) {
+        /*
         if (this == o) return true;
+
         if (o == null || getClass() != o.getClass()) return false;
 
         Reservation that = (Reservation) o;
@@ -99,6 +101,8 @@ public class Reservation {
         if (!room.equals(that.room)) return false;
         if (!begin.equals(that.begin)) return false;
         return end.equals(that.end);
+        */
+        return this == o;
     }
 
     @Override
