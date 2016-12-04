@@ -2,13 +2,14 @@
     Sprint Backlog
 	----------
     ----------
-    November 12, 2016
+    December 04, 2016
 
 Sprint Backlog
 
     The sprint backlog is a breakdown of the user stories in the product backlog into tasks.
 These tasks are estimated in working hours and need to be continuously updated by the team members.
 
+    Sprint Backlog of Sprint 2
 
 *------+--------------+---------------------+------------+--------------------+-----------------+----------+
 |<<ID>>|<<Story Name>>|<<Story Description>>|<<Priority>>|<<Estimated Effort>>|<<Actual Effort>>|<<Status>>|
@@ -28,4 +29,36 @@ These tasks are estimated in working hours and need to be continuously updated b
 |1.3| |Implement Database Interface|Medium|3|-|In progress|
 *-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
 |1.4| |Create GUI|Medium|3|-|Waiting|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+
+    Sprint Backlog of Sprint 3
+
+*------+--------------+---------------------+------------+--------------------+-----------------+----------+
+|<<ID>>|<<Story Name>>|<<Story Description>>|<<Priority>>|<<Estimated Effort>>|<<Actual Effort>>|<<Status>>|
+*------+--------------+---------------------+------------+--------------------+-----------------+----------+
+|1|Make Reservation|As a customer I want to book one or multiple reservations for different rooms, to occupy them for a period of time.|High|14|18|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|1.1| |Implement Business Logic|High|3|3|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|1.2| |Implement Database Interface|Medium|8|10|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|1.2.1| |JPA implementation|Medium|4|6|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|1.2.2| |SQLite implementation|Medium|2|1|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|1.2.3| |Unit Tests for DataAccess|Medium|2|3|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|1.3| |Create GUI|Medium|3|5|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|2|Cancel Reservation|As a customer I want to cancel reservations placed by me, to set them free for that period of time.|High|6|-|In Progress|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|2.1| |Adapt logic from "Make Reservation"|Medium|3|2|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|2.2| |Add Cancel Reservation option to GUI|Medium|3|-|Waiting|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|3|Log In|As a customer I want to log-in, to authenticate myself and to have access to the system.|Medium|8|6|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|3.1| |Create Controller|Medium|4|3|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|3.2| |Create GUI|Medium|4|3|Done|
 *-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
