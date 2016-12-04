@@ -10,14 +10,9 @@ package ch.bfh.ti.soed.hs16.srs.black.model;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Reservation;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
-import org.eclipse.persistence.exceptions.DatabaseException;
 import org.junit.Before;
 import org.junit.Test;
-import org.sqlite.SQLiteException;
-
 import javax.persistence.NoResultException;
-import javax.persistence.PersistenceException;
-import javax.persistence.RollbackException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
