@@ -10,9 +10,14 @@ package ch.bfh.ti.soed.hs16.srs.black.model;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Reservation;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
+import org.eclipse.persistence.exceptions.DatabaseException;
 import org.junit.Before;
 import org.junit.Test;
+import org.sqlite.SQLiteException;
+
 import javax.persistence.NoResultException;
+import javax.persistence.PersistenceException;
+import javax.persistence.RollbackException;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -32,8 +37,8 @@ public class JPADataAccessTest {
     @Before
     public void setUp() throws Exception {
         dataModel = JPADataAccess.getInstance();
-        testCustomer = dataModel.getCustomer("user1");
-        testRoom = dataModel.getRoom(1);
+        //testCustomer = new Customer("testUser1", "123");
+        //testRoom = new Room(5, "testDescription");
         Calendar c = new GregorianCalendar();
         c.set(2016, 11, 9, 13, 22, 15);
         date1 = new Date(c.getTimeInMillis());
@@ -55,18 +60,26 @@ public class JPADataAccessTest {
 
     @Test
     public void testAddReservation() throws Exception {
+        Customer testCustomer = new Customer("testUser1", "123");
+        Room testRoom = new Room(5, "testDescription1");
         Reservation testReservation = dataModel.addReservation(testCustomer, testRoom, date1, date2);
         assertTrue(dataModel.getReservations(testRoom).contains(testReservation));
         assertTrue(dataModel.getReservations(testCustomer).contains(testReservation));
         dataModel.cancelReservation(testReservation);
+        dataModel.removeCustomer(testCustomer);
+        dataModel.removeRoom(testRoom);
     }
 
     @Test
     public void testCancelReservation() throws Exception {
+        Customer testCustomer = new Customer("testUser2", "123");
+        Room testRoom = new Room(6, "testDescription2");
         Reservation testReservation = dataModel.addReservation(testCustomer, testRoom, date3, date4);
         dataModel.cancelReservation(testReservation);
         assertFalse(dataModel.getReservations(testRoom).contains(testReservation));
         assertFalse(dataModel.getReservations(testCustomer).contains(testReservation));
+        dataModel.removeCustomer(testCustomer);
+        dataModel.removeRoom(testRoom);
     }
 
     @Test
@@ -129,5 +142,17 @@ public class JPADataAccessTest {
         dataModel.addRoom(room1);
         dataModel.getRooms().contains(room1);
         dataModel.removeRoom(room1);
+    }
+
+    @Test (expected = PersistenceException.class)
+    public void testRollback() throws Exception {
+        Room room1 = new Room(11, "testRoomDescription1");
+        Room room2 = new Room(11, "testRoomDescription1");
+        try {
+            dataModel.addRoom(room1);
+            dataModel.addRoom(room2);
+        } finally {
+            dataModel.removeRoom(room1);
+        }
     }
 }
