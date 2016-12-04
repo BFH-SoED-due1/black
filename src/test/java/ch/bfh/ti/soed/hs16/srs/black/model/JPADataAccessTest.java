@@ -89,32 +89,32 @@ public class JPADataAccessTest {
 
     @Test
     public void testAddCustomer() throws Exception {
-        Customer testCustomer1 = new Customer("testName", "testPw");
+        Customer testCustomer1 = new Customer("testName1", "testPw");
         dataModel.addCustomer(testCustomer1);
-        assertTrue(dataModel.getCustomer("testName").equals(testCustomer1));
+        assertTrue(dataModel.getCustomer("testName1").equals(testCustomer1));
         dataModel.removeCustomer(testCustomer1);
     }
 
     @Test (expected = NoResultException.class)
     public void testRemoveCustomer() throws Exception {
-        Customer testCustomer1 = new Customer("testName", "testPw");
+        Customer testCustomer1 = new Customer("testName2", "testPw");
         dataModel.addCustomer(testCustomer1);
-        assertTrue(dataModel.getCustomer("testName").equals(testCustomer1));
+        assertTrue(dataModel.getCustomer("testName2").equals(testCustomer1));
         dataModel.removeCustomer(testCustomer1);
-        dataModel.getCustomer("testName");
+        dataModel.getCustomer("testName2");
     }
 
     @Test
     public void testGetCustomer() throws Exception {
-        Customer testCustomer1 = new Customer("testName", "testPw");
+        Customer testCustomer1 = new Customer("testName3", "testPw");
         dataModel.addCustomer(testCustomer1);
-        assertEquals(testCustomer1, dataModel.getCustomer("testName"));
+        assertEquals(testCustomer1, dataModel.getCustomer("testName3"));
         dataModel.removeCustomer(testCustomer1);
     }
 
     @Test
     public void testAddRoom() throws Exception {
-        Room room1 = new Room(10, "testRoomDescription");
+        Room room1 = new Room(10, "testRoomDescription1");
         dataModel.addRoom(room1);
         assertTrue(dataModel.getRoom(10).equals(room1));
         dataModel.removeRoom(room1);
@@ -122,32 +122,32 @@ public class JPADataAccessTest {
 
     @Test (expected = NoResultException.class)
     public void testRemoveRoom() throws Exception {
-        Room room1 = new Room(10, "testRoomDescription");
+        Room room1 = new Room(11, "testRoomDescription2");
         dataModel.addRoom(room1);
         dataModel.removeRoom(room1);
-        dataModel.getRoom(10);
+        dataModel.getRoom(11);
     }
 
     @Test
     public void testGetRoom() throws Exception {
-        Room room1 = new Room(10, "testRoomDescription");
+        Room room1 = new Room(12, "testRoomDescription3");
         dataModel.addRoom(room1);
-        assertEquals(room1, dataModel.getRoom(10));
+        assertEquals(room1, dataModel.getRoom(12));
         dataModel.removeRoom(room1);
     }
 
     @Test
     public void testGetRooms() throws Exception {
-        Room room1 = new Room(11, "testRoomDescription1");
+        Room room1 = new Room(13, "testRoomDescription4");
         dataModel.addRoom(room1);
         dataModel.getRooms().contains(room1);
         dataModel.removeRoom(room1);
     }
 
-    @Test (expected = PersistenceException.class)
+    @Test (expected = IllegalStateException.class)
     public void testRollback() throws Exception {
-        Room room1 = new Room(11, "testRoomDescription1");
-        Room room2 = new Room(11, "testRoomDescription1");
+        Room room1 = new Room(14, "testRoomDescription5");
+        Room room2 = new Room(14, "testRoomDescription5");
         try {
             dataModel.addRoom(room1);
             dataModel.addRoom(room2);

@@ -13,6 +13,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
@@ -58,7 +59,15 @@ public class RoomTest {
 
     @Test
     public void testEquals() throws Exception {
-        assertTrue(roomNr == testRoom.getRoomNr());
-        testRoom.equals(roomNr);
+        Room testRoom1 = new Room(2, "test1");
+        Room testRoom2 = new Room(2, "test1");
+        Room testRoom3 = new Room(3, "test2");
+
+        assertTrue(testRoom1.equals(testRoom2));
+        assertFalse(testRoom1.equals(testRoom3));
+        assertFalse(testRoom1.equals(testCustomer));
+        assertFalse(testRoom1.equals(null));
+        assertTrue(testRoom1.equals(testRoom1));
+
     }
 }

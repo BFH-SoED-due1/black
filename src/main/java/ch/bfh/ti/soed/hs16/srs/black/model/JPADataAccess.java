@@ -35,9 +35,9 @@ public class JPADataAccess extends DataModel {
                     Class aClass = Class.forName(DEFAULT_DATA_ACCESS_CLASS);
                     instance = (DataModel) aClass.newInstance();
                 } catch (Exception ex) {
-                    System.err.println("Could not load class: " + DEFAULT_DATA_ACCESS_CLASS);
+                    //System.err.println("Could not load class: " + DEFAULT_DATA_ACCESS_CLASS);
 
-                    System.out.println(ex.getMessage());
+                    //System.out.println(ex.getMessage());
                     throw new RuntimeException("Could not load class: " + DEFAULT_DATA_ACCESS_CLASS);
                 }
                 entityManager = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT).createEntityManager();
@@ -64,8 +64,8 @@ public class JPADataAccess extends DataModel {
     @Override
     public void cancelReservation(Reservation reservation) {
         EntityTransaction tx = entityManager.getTransaction();
-        tx.begin();
         try {
+            tx.begin();
             Reservation reservation1 = entityManager.find(Reservation.class, reservation.getId());
             entityManager.remove(reservation1);
             reservation.cancelReservation();
@@ -108,9 +108,10 @@ public class JPADataAccess extends DataModel {
     @Override
     public void removeCustomer(Customer customer) {
         EntityTransaction tx = entityManager.getTransaction();
+        Customer tobeRemoved = entityManager.merge(customer);
         try {
             tx.begin();
-            entityManager.remove(customer);
+            entityManager.remove(tobeRemoved);
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
@@ -150,9 +151,10 @@ public class JPADataAccess extends DataModel {
     @Override
     public void removeRoom(Room room) {
         EntityTransaction tx = entityManager.getTransaction();
+        Room tobeRemoved = entityManager.merge(room);
         try {
             tx.begin();
-            entityManager.remove(room);
+            entityManager.remove(tobeRemoved);
             tx.commit();
         } catch (Exception e) {
             tx.rollback();

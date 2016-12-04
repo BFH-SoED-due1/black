@@ -9,10 +9,13 @@ package ch.bfh.ti.soed.hs16.srs.black.model.logic;
 
 import org.junit.Before;
 import org.junit.Test;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
@@ -61,6 +64,24 @@ public class CustomerTest {
 
     @Test
     public void testEquals() throws Exception {
-        name.equals(testCustomer.getName());
+        Customer testCustomer1 = new Customer("testUser1", "test");
+        Customer testCustomer2 = new Customer("testUser1", "test");
+        Customer testCustomer3 = new Customer("testUser2", "test");
+
+        assertTrue(testCustomer1.equals(testCustomer2));
+        assertFalse(testCustomer1.equals(testCustomer3));
+        assertFalse(testCustomer1.equals(testRoom));
+        assertFalse(testCustomer1.equals(null));
+        assertTrue(testCustomer1.equals(testCustomer1));
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testInstantiateCustomerName() {
+        new Customer("", "testPassword");
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testInstantiateCustomerPassword() {
+        new Customer("testName", "");
     }
 }
