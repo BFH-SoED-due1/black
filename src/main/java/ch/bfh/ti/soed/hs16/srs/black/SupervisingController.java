@@ -10,16 +10,24 @@ package ch.bfh.ti.soed.hs16.srs.black;
 import javax.servlet.annotation.WebServlet;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
-import ch.bfh.ti.soed.hs16.srs.black.loginView.LoginController;
-import ch.bfh.ti.soed.hs16.srs.black.loginView.LoginView;
-import ch.bfh.ti.soed.hs16.srs.black.reservationView.ReservationController;
-import ch.bfh.ti.soed.hs16.srs.black.reservationView.ReservationView;
+import ch.bfh.ti.soed.hs16.srs.black.model.JPADataAccess;
+import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
+import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
+import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginController;
+import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView;
+import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationController;
+import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationView;
+import ch.bfh.ti.soed.hs16.srs.black.view.signUpView.SignUpController;
+import ch.bfh.ti.soed.hs16.srs.black.view.signUpView.SignUpView;
+import com.vaadin.annotations.PreserveOnRefresh;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
-
 import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.server.Page;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
+import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.UI;
 
 /**
@@ -31,31 +39,93 @@ import com.vaadin.ui.UI;
  */
 @SuppressWarnings("serial")
 @Theme("mytheme")
+@PreserveOnRefresh  // Preserve the session when the site gets reloaded
 public class SupervisingController extends UI {
 
-    //Adding new views here and in init() method
-    //private static final String NAMEOFVIEW = "nameofview";
-    private static final String RESERVATION_VIEW = "reservation";
     private Navigator navigator;
     private DataModel dataModel;
     private LoginView loginView;
     private ReservationView reservationView;
+    private SignUpView signUpView;
+
+    // Create Room and Customer for test purposes
+    // Commented out because this data is now stored in the SQLite DB
+    /*static {
+        DataModel testData = JPADataAccess.getInstance();
+        Room room1 = new Room(1,"20m^2");
+        Room room2 = new Room(2,"20m^2");
+        Customer customer1 = new Customer("user1", "123");
+        Customer customer2 = new Customer("user2", "234");
+
+        testData.addRoom(room1);
+        testData.addRoom(room2);
+        testData.addCustomer(customer1);
+        testData.addCustomer(customer2);
+    }*/
 
     @Override
     protected void init(VaadinRequest vaadinRequest) {
-        dataModel = new DataModel();
+        // Set the title of the site in the browser
+        Page.getCurrent().setTitle("SRS - Smart Reservation System");
+
+        dataModel = JPADataAccess.getInstance();
         loginView = new LoginView();
         reservationView = new ReservationView();
+        signUpView = new SignUpView();
         navigator = new Navigator(this, this);
-        navigator.addView("", loginView);
-        navigator.addView(RESERVATION_VIEW, reservationView);
+
+        // Adding the login view to the navigator
+        navigator.addView(LoginView.NAME, loginView);
+
+        // Setting the error view of the navigator to the login view
+        // This way the navigator will always default to the login view
+        navigator.setErrorView(loginView);
+
+        // Adding the reservation view to the navigator
+        navigator.addView(ReservationView.NAME, reservationView);
+
+        // Adding the sign up view to the navigator
+        navigator.addView(SignUpView.NAME, signUpView);
+
+        // Instantiating the controllers for the two views
         new LoginController(dataModel, loginView, navigator);
         new ReservationController(dataModel, reservationView, navigator);
+        new SignUpController(dataModel, signUpView, navigator);
+
+        // We use a view change handler to ensure the user is always redirected
+        // to the login view if the user is not logged in
+        navigator.addViewChangeListener(new ViewChangeListener() {
+
+            @Override
+            public boolean beforeViewChange(ViewChangeEvent event) {
+                // Check if a user has logged in
+                boolean isLoggedIn = VaadinSession.getCurrent().getAttribute("user") != null;
+
+                boolean isLoginView = event.getNewView() instanceof LoginView;
+                boolean isSignUpView = event.getNewView() instanceof SignUpView;
+                boolean isReservationView = event.getNewView() instanceof ReservationView;
+
+                if (!isLoggedIn && isReservationView) {
+                    // Always redirect to login view if a user has not yet logged in
+                    navigator.navigateTo(LoginView.NAME);
+                    return false;
+                } else if (isLoggedIn && (isLoginView || isSignUpView)) {
+                    // Access attempt to the login or signup view while already logged in gets cancelled
+                    return false;
+                }
+                return true;
+            }
+
+            @Override
+            public void afterViewChange(ViewChangeEvent event) {
+                // placeholder
+            }
+        });
     }
 
 
-    @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = SupervisingController.class, productionMode = false)
-    public static class MyUIServlet extends VaadinServlet {
+    @WebServlet(urlPatterns = "/*", asyncSupported = true)
+    @VaadinServletConfiguration(ui = SupervisingController.class, productionMode = false, widgetset = "com.vaadin.DefaultWidgetSet")
+    public static class Servlet extends VaadinServlet {
     }
 }
