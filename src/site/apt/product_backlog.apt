@@ -2,7 +2,7 @@
     Product Backlog
 	----------
     ----------
-    December 04, 2016
+    December 06, 2016
 
 Product Backlog
 
@@ -24,7 +24,7 @@ The priority of these stories will be modified during the process of the project
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
 |05|Modify Reservation|As an administrator I want to cancel or rebook reservations in case a room may not be available on short notice.|Medium|6|-|Waiting|
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
-|06|Log In|As a customer I want to log-in, to authenticate myself and to have access to the system.|Medium|8|6|Done|
+|06|Log In|As a customer I want to log-in, to authenticate myself and to have access to the system.|Medium|14|12|Done|
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
 |07|Notifications|As a customer I want to receive notifications concerning my reservation, to be up-to-date about status changes.|Low|8|-|Waiting|
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+

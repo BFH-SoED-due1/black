@@ -15,9 +15,9 @@ import com.vaadin.navigator.Navigator;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinSession;
 import com.vaadin.ui.Notification;
-import javax.persistence.NoResultException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 
 public class ReservationController {
@@ -59,17 +59,18 @@ public class ReservationController {
                         " until " + df.format(end));
                 exceptionNf.show(Page.getCurrent());
             } catch (IllegalArgumentException iae) {
-                exceptionNf.setCaption("Illegal Argument Exception");
+                exceptionNf.setCaption("Error!");
                 exceptionNf.setDescription("Please check the entries you made for your reservation.");
                 exceptionNf.show(Page.getCurrent());
-            } catch(NoResultException nre) {
-                exceptionNf.setCaption("No Result Exeption");
-                exceptionNf.setDescription("Room couldn't be found. Currently available rooms: " +
-                        dataModel.getRooms().toString()
-                                .replaceAll("ch\\.bfh\\.ti\\.soed\\.hs16\\.srs\\.black\\.model\\.logic\\.Room\\@",""));
+            } catch(RuntimeException re) {
+                exceptionNf.setCaption("Error!");
+                exceptionNf.setDescription("Room couldn't be found.\nCurrently available rooms: " +
+                        dataModel.getRooms().stream().map(Object::toString)
+                                .collect(Collectors.joining(", "))
+                                .replaceAll("[^\\d , ][^\\@]*\\@", ""));
                 exceptionNf.show(Page.getCurrent());
             } catch (Exception e) {
-                exceptionNf.setCaption("Time Collision Exception");
+                exceptionNf.setCaption("Error!");
                 exceptionNf.setDescription("There already exists a reservation for the chosen time range.");
                 exceptionNf.show(Page.getCurrent());
             }

@@ -56,6 +56,7 @@ public class SignUpController {
                 alertNf.show(Page.getCurrent());
             } catch (IllegalStateException e) {
                 alertNf.setCaption("User already exists!");
+                alertNf.setDescription("Please enter a different username.");
                 alertNf.show(Page.getCurrent());
                 signUpView.getUsernameField().focus();
             } finally {

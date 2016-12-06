@@ -19,7 +19,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The Customer object stores all Reservations of a Customer in a TreeSet.
+ * The Customer object stores all Reservations of a Customer in an ArrayList.
  * Personal Information (Name and Password) are included too and can be changed after object creation.
  */
 @Entity(name = "Customer")

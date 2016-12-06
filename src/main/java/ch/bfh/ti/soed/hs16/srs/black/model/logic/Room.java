@@ -19,7 +19,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The Room object stores all Reservations in a an ArrayList.
+ * The Room object stores all Reservations in an ArrayList.
  * Reservations can be added and removed afterwards.
  */
 @Entity(name = "Room")
@@ -44,7 +44,7 @@ public class Room {
     void addReservation(Reservation reservation) throws Exception {
         for (Reservation res : reservations)
             if (res.timeCollisionWith(reservation))
-                throw new Exception("time collision");
+                throw new Exception("Time Collision");
         reservations.add(reservation);
     }
 
