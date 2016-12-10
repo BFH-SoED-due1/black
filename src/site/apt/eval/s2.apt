@@ -97,6 +97,50 @@ example, in the Sprint Plan document, however.)
 	50 points at most per team member are attributed to this deliverable. Points may
 	not be equally distributed among team members. (However, this is the goal.)
 
+*-------------------------------------------+---------------*-----------------*
+| Item										| Max. points	| Points received |
+*-------------------------------------------+---------------*-----------------*
+| Product backlog items at the beginning\	| 		 6		| 		 6		  |
+| COMMENTS:\								| 				| 				  |
+| - 										| 				| 				  |
+*-------------------------------------------+---------------*-----------------*
+| Sprint backlog items / tasks\				| 		 6		| 		 6		  |
+| COMMENTS:\								| 				| 				  |
+| - 										| 				| 				  |
+*-------------------------------------------+---------------*-----------------*
+| List of finished print backlog items\		| 		 6		| 		 6		  |
+| COMMENTS:\								| 				| 				  |
+| - 										| 				| 				  |
+*-------------------------------------------+---------------*-----------------*
+| Production classes and interfaces\		| 		 6		| 		 5		  |
+| COMMENTS:\								| 				| 				  |
+| - Unused fields\ 							| 				| 				  |
+| - Rest: good 								| 				| 				  |
+*-------------------------------------------+---------------*-----------------*
+| Working infrastructure\					| 		 8		| 		 8		  |
+| COMMENTS:\								| 				| 			  	  |
+| - Good 									| 				| 				  |
+*-------------------------------------------+---------------*-----------------*
+| JUnit tests, code coverage\				| 		 8		| 		 4		  |
+| COMMENTS:\								| 				| 			  	  |
+| - DataModel: Not tests 					| 				| 				  |
+*-------------------------------------------+---------------*-----------------*
+| Checkstyle report\						| 		 6		| 		 5		  |
+| COMMENTS:\								| 				| 			  	  |
+| - ReservationView: Using the '.*' form 	| 				| 				  |
+*-------------------------------------------+---------------*-----------------*
+| Update of existing documents, if any\		| 		 4		| 		 4		  |
+| COMMENTS:\								| 				| 			  	  |
+| - Not needed 								| 				| 				  |
+*-------------------------------------------+---------------*-----------------*
+| Miscellaneous\							| 				| 		 1		  |
+| COMMENTS:\								| 				| 			  	  |
+| - Correction of evaluation 1 (visibility of ass.)\ | 		| 				  |
+| - Contribution 'supercoast': -20			| 				| 				  |
+*-------------------------------------------+---------------*-----------------*
+| Total										| 		50		| 		45		  |
+*-------------------------------------------+---------------*-----------------*
+Distribution of points for this deliverable.
 
 
 * Deadline
