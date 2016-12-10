@@ -3,7 +3,7 @@
 		-------------
 		Eric Dubuis
 		-------------
-		October 25, 2016
+		October 25, 2016; updated December 10, 2016
 
 Deliverable 2
 
@@ -123,7 +123,7 @@ example, in the Sprint Plan document, however.)
 *-------------------------------------------+---------------*-----------------*
 | JUnit tests, code coverage\				| 		 8		| 		 4		  |
 | COMMENTS:\								| 				| 			  	  |
-| - DataModel: Not tests 					| 				| 				  |
+| - DataModel: No tests 					| 				| 				  |
 *-------------------------------------------+---------------*-----------------*
 | Checkstyle report\						| 		 6		| 		 5		  |
 | COMMENTS:\								| 				| 			  	  |
