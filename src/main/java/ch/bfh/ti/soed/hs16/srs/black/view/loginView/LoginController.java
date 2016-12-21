@@ -11,6 +11,7 @@ import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationView;
 import ch.bfh.ti.soed.hs16.srs.black.view.signUpView.SignUpView;
+import com.vaadin.event.ShortcutAction;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinSession;
@@ -31,15 +32,16 @@ public class LoginController {
         this.navigator = navigator;
 
         loginView.getLoginButton().addClickListener(this::login);
+        loginView.getLoginButton().setClickShortcut(ShortcutAction.KeyCode.ENTER);
         loginView.getSignUpButton().addClickListener(this::signUp);
     }
 
     public void login(Button.ClickEvent event) {
         String userName = loginView.getUsernameField().getValue();
         String password = loginView.getPasswordField().getValue();
-        Customer customer = dataModel.getCustomer(userName);
 
         try {
+            Customer customer = dataModel.getCustomer(userName);
             if (customer.getPassword().equals(password)) {
                 // Store the current user in the service session
                 VaadinSession.getCurrent().setAttribute("user", userName);

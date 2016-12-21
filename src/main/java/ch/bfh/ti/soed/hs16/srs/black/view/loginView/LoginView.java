@@ -20,6 +20,7 @@ import com.vaadin.ui.Panel;
 import com.vaadin.ui.PasswordField;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
+import com.vaadin.ui.themes.ValoTheme;
 
 
 public class LoginView extends CustomComponent implements View {
@@ -39,6 +40,7 @@ public class LoginView extends CustomComponent implements View {
         passwordField.setWidth(12, Unit.EM);
         loginButton = new Button("Login");
         loginButton.setWidth(5, Unit.EM);
+        loginButton.addStyleName(ValoTheme.BUTTON_PRIMARY);
         signUpButton = new Button("Sign Up");
         signUpButton.setWidth(6, Unit.EM);
 
