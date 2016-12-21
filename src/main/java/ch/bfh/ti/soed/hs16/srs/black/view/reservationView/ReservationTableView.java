@@ -9,7 +9,6 @@ package ch.bfh.ti.soed.hs16.srs.black.view.reservationView;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.Panel;
@@ -35,7 +34,6 @@ public class ReservationTableView extends CustomComponent implements View {
 
         listReservations = new VerticalLayout(panel);
         listReservations.setSizeUndefined();
-        listReservations.setComponentAlignment(panel, Alignment.MIDDLE_CENTER);
         listReservations.setMargin(true);
     }
 

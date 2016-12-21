@@ -12,7 +12,6 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.shared.ui.datefield.Resolution;
-import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.DateField;
@@ -63,7 +62,6 @@ public class ReservationMakeView extends CustomComponent implements View {
         panel.setContent(formAndLogout);
         makeViewLayout = new VerticalLayout(panel);
         makeViewLayout.setSizeUndefined();
-        makeViewLayout.setComponentAlignment(panel, Alignment.MIDDLE_CENTER);
         makeViewLayout.setMargin(true);
     }
 

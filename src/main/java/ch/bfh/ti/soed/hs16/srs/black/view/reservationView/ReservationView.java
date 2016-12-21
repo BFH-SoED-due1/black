@@ -28,14 +28,14 @@ public class ReservationView extends VerticalLayout implements View {
         reservationMakeView = new ReservationMakeView();
         reservationTableView = new ReservationTableView();
 
-        VerticalLayout mvl= reservationMakeView.getMakeViewLayout();
-        VerticalLayout lrvl = reservationTableView.getListReservations();
+        VerticalLayout makeViewLayoutVL = reservationMakeView.getMakeViewLayout();
+        VerticalLayout listReservationsVL = reservationTableView.getListReservations();
 
         GridLayout grid = new GridLayout(2, 1);
-        grid.addComponent(mvl, 0, 0);
-        grid.addComponent(lrvl, 1, 0);
-        grid.setComponentAlignment(mvl, Alignment.MIDDLE_CENTER);
-        grid.setComponentAlignment(lrvl, Alignment.TOP_CENTER);
+        grid.addComponent(makeViewLayoutVL, 0, 0);
+        grid.addComponent(listReservationsVL, 1, 0);
+        grid.setComponentAlignment(makeViewLayoutVL, Alignment.TOP_CENTER);
+        grid.setComponentAlignment(listReservationsVL, Alignment.TOP_CENTER);
         grid.setSizeUndefined();
 
         setSizeFull();
