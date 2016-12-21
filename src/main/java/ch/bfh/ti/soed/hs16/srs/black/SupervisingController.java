@@ -8,11 +8,8 @@
 package ch.bfh.ti.soed.hs16.srs.black;
 
 import javax.servlet.annotation.WebServlet;
-
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
 import ch.bfh.ti.soed.hs16.srs.black.model.JPADataAccess;
-import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
-import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginController;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationController;
@@ -47,6 +44,7 @@ public class SupervisingController extends UI {
     private LoginView loginView;
     private ReservationView reservationView;
     private SignUpView signUpView;
+    private ReservationController reservationController;
 
     // Create Room and Customer for test purposes
     // Commented out because this data is now stored in the SQLite DB
@@ -88,8 +86,8 @@ public class SupervisingController extends UI {
         navigator.addView(SignUpView.NAME, signUpView);
 
         // Instantiating the controllers for the two views
+        reservationController = new ReservationController(dataModel, reservationView, navigator);
         new LoginController(dataModel, loginView, navigator);
-        new ReservationController(dataModel, reservationView, navigator);
         new SignUpController(dataModel, signUpView, navigator);
 
         // We use a view change handler to ensure the user is always redirected
@@ -118,11 +116,14 @@ public class SupervisingController extends UI {
 
             @Override
             public void afterViewChange(ViewChangeEvent event) {
-                // placeholder
+                try {
+                    reservationController.createList((String) VaadinSession.getCurrent().getAttribute("user"));
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                }
             }
         });
     }
-
 
     @WebServlet(urlPatterns = "/*", asyncSupported = true)
     @VaadinServletConfiguration(ui = SupervisingController.class, productionMode = false, widgetset = "com.vaadin.DefaultWidgetSet")
