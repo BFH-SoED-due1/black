@@ -9,14 +9,18 @@ package ch.bfh.ti.soed.hs16.srs.black.view.reservationView;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
+import ch.bfh.ti.soed.hs16.srs.black.model.logic.Reservation;
 import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView;
+import com.vaadin.data.Item;
 import com.vaadin.navigator.Navigator;
 import com.vaadin.server.Page;
 import com.vaadin.server.VaadinSession;
+import com.vaadin.ui.Button;
 import com.vaadin.ui.Notification;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.stream.Collectors;
 
 
@@ -35,7 +39,7 @@ public class ReservationController {
             // Logout the user / end the session
             VaadinSession.getCurrent().setAttribute("user", null);
 
-            // Refresh this view, the navigator should redirect to login view
+            // Refresh this view, the navigator should redirect to login view$
             navigator.navigateTo(LoginView.NAME);
         });
 
@@ -58,6 +62,11 @@ public class ReservationController {
                         ", From: " + df.format(begin) +
                         " until " + df.format(end));
                 exceptionNf.show(Page.getCurrent());
+                try {
+                    createList(username);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             } catch (IllegalArgumentException iae) {
                 exceptionNf.setCaption("Error!");
                 exceptionNf.setDescription("Please check the entries you made for your reservation.");
@@ -74,6 +83,37 @@ public class ReservationController {
                 exceptionNf.setDescription("There already exists a reservation for the chosen time range.");
                 exceptionNf.show(Page.getCurrent());
             }
+
         });
+    }
+
+    public void createList(String customer) throws Exception{
+
+        reservationView.getReservationList().removeAllItems();
+
+        List<Reservation> reservationList = dataModel.getReservations(dataModel.getCustomer(customer));
+
+        for (Reservation reservation: reservationList) {
+
+            Button button = new Button("X");
+
+            Object newItemId = reservationView.getReservationList().addItem();
+
+            button.addClickListener(new Button.ClickListener() {
+                @Override
+                public void buttonClick(Button.ClickEvent clickEvent) {
+
+                    dataModel.cancelReservation(reservation);
+                    reservationView.getReservationList().removeItem(newItemId);
+                }
+            });
+
+            Item row1 = reservationView.getReservationList().getItem(newItemId);
+            row1.getItemProperty("Room").setValue((Integer) reservation.getRoom().getRoomNr());
+            row1.getItemProperty("Start Time").setValue(reservation.getBegin());
+            row1.getItemProperty("End Time").setValue(reservation.getEnd());
+            row1.getItemProperty("Cancel").setValue(button);
+
+        }
     }
 }
