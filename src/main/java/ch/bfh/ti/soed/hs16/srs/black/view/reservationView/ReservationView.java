@@ -9,15 +9,16 @@ package ch.bfh.ti.soed.hs16.srs.black.view.reservationView;
 
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
-import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.DateField;
-import com.vaadin.ui.HorizontalLayout;
+import com.vaadin.ui.GridLayout;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.TextField;
+import com.vaadin.ui.VerticalLayout;
 
 
-public class ReservationView extends CustomComponent implements View {
+public class ReservationView extends VerticalLayout implements View {
 
     public static final String NAME = "reservation";
     private ReservationMakeView reservationMakeView;
@@ -27,15 +28,19 @@ public class ReservationView extends CustomComponent implements View {
         reservationMakeView = new ReservationMakeView();
         reservationTableView = new ReservationTableView();
 
+        VerticalLayout makeViewLayoutVL = reservationMakeView.getMakeViewLayout();
+        VerticalLayout listReservationsVL = reservationTableView.getListReservations();
 
-        HorizontalLayout layout = new HorizontalLayout();
-        layout.addComponent(reservationMakeView.getFormAndLogout());
-        layout.addComponent(reservationTableView.getListReservations());
+        GridLayout grid = new GridLayout(2, 1);
+        grid.addComponent(makeViewLayoutVL, 0, 0);
+        grid.addComponent(listReservationsVL, 1, 0);
+        grid.setComponentAlignment(makeViewLayoutVL, Alignment.TOP_CENTER);
+        grid.setComponentAlignment(listReservationsVL, Alignment.TOP_CENTER);
+        grid.setSizeUndefined();
 
-
-        setCompositionRoot(layout);
-
-
+        setSizeFull();
+        addComponent(grid);
+        setComponentAlignment(grid, Alignment.TOP_CENTER);
     }
 
     public Button getLogoutButton() {

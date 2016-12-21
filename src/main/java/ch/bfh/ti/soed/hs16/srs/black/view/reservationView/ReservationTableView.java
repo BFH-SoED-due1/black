@@ -11,33 +11,29 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
-import com.vaadin.ui.FormLayout;
-import com.vaadin.ui.Label;
+import com.vaadin.ui.Panel;
 import com.vaadin.ui.Table;
 import com.vaadin.ui.VerticalLayout;
-
 import java.util.Date;
 
 
 public class ReservationTableView extends CustomComponent implements View {
 
     private Table table;
-    private Label infoLabel;
     private VerticalLayout listReservations;
 
     public ReservationTableView() {
-        infoLabel = new Label("My Reservations");
+        Panel panel = new Panel("My Reservations");
         table = new Table();
         table.addContainerProperty("Room", Integer.class, null);
         table.addContainerProperty("Start Time", Date.class, null);
         table.addContainerProperty("End Time", Date.class, null);
         table.addContainerProperty("Cancel", Button.class, null);
         table.setPageLength(table.size());
+        panel.setContent(table);
 
-        FormLayout content = new FormLayout();
-        content.addComponents(infoLabel, table);
-        content.setMargin(true);
-        listReservations = new VerticalLayout(content);
+        listReservations = new VerticalLayout(panel);
+        listReservations.setSizeUndefined();
         listReservations.setMargin(true);
     }
 
