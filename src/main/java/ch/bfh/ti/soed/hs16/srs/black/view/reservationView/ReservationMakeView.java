@@ -12,11 +12,12 @@ import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.shared.ui.datefield.Resolution;
+import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.FormLayout;
-import com.vaadin.ui.Label;
+import com.vaadin.ui.Panel;
 import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import java.util.Locale;
@@ -24,16 +25,14 @@ import java.util.Locale;
 
 public class ReservationMakeView extends CustomComponent implements View {
 
-    private Label infoLabel;
     private DateField fromField;
     private DateField toField;
     private TextField roomNumberField;
     private Button makeReservationButton;
     private Button logoutButton;
-    private VerticalLayout formAndLogout;
+    private VerticalLayout makeViewLayout;
 
     public ReservationMakeView() {
-        infoLabel = new Label("Make new Reservations");
         fromField = new DateField("Start Date");
         fromField.setLocale(new Locale("de", "DE"));
         fromField.setResolution(Resolution.MINUTE);
@@ -54,16 +53,22 @@ public class ReservationMakeView extends CustomComponent implements View {
         makeReservationButton.setWidth(12, Unit.EM);
         logoutButton = new Button("Logout");
 
+        Panel panel = new Panel("Create New Reservation");
         FormLayout content = new FormLayout();
-        content.addComponents(infoLabel, fromField, toField, roomNumberField, makeReservationButton, logoutButton);
+        content.addComponents(fromField, toField, roomNumberField, makeReservationButton);
         content.setSizeUndefined();
         content.setMargin(true);
-        formAndLogout = new VerticalLayout(content);
+        VerticalLayout formAndLogout = new VerticalLayout(content, logoutButton);
         formAndLogout.setMargin(true);
+        panel.setContent(formAndLogout);
+        makeViewLayout = new VerticalLayout(panel);
+        makeViewLayout.setSizeUndefined();
+        makeViewLayout.setComponentAlignment(panel, Alignment.MIDDLE_CENTER);
+        makeViewLayout.setMargin(true);
     }
 
-    public VerticalLayout getFormAndLogout() {
-        return formAndLogout;
+    public VerticalLayout getMakeViewLayout() {
+        return makeViewLayout;
     }
 
     public Button getLogoutButton() {
