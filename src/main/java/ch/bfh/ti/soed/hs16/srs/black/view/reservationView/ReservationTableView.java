@@ -7,7 +7,6 @@
  */
 package ch.bfh.ti.soed.hs16.srs.black.view.reservationView;
 
-
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Button;
@@ -19,12 +18,12 @@ import com.vaadin.ui.VerticalLayout;
 
 import java.util.Date;
 
+
 public class ReservationTableView extends CustomComponent implements View {
 
     private Table table;
-
-    Label infoLabel;
-    VerticalLayout listReservations;
+    private Label infoLabel;
+    private VerticalLayout listReservations;
 
     public ReservationTableView() {
         infoLabel = new Label("My Reservations");

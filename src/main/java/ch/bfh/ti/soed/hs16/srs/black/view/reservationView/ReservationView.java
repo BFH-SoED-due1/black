@@ -20,8 +20,8 @@ import com.vaadin.ui.TextField;
 public class ReservationView extends CustomComponent implements View {
 
     public static final String NAME = "reservation";
-    ReservationMakeView reservationMakeView;
-    ReservationTableView reservationTableView;
+    private ReservationMakeView reservationMakeView;
+    private ReservationTableView reservationTableView;
 
     public ReservationView() {
         reservationMakeView = new ReservationMakeView();

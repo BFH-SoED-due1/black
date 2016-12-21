@@ -30,8 +30,7 @@ public class ReservationMakeView extends CustomComponent implements View {
     private TextField roomNumberField;
     private Button makeReservationButton;
     private Button logoutButton;
-
-    VerticalLayout formAndLogout;
+    private VerticalLayout formAndLogout;
 
     public ReservationMakeView() {
         infoLabel = new Label("Make new Reservations");
