@@ -49,8 +49,8 @@ public class JPADataAccess extends DataModel {
     @Override
     public Reservation addReservation(Customer customer, Room room, Date begin, Date end) throws Exception {
         EntityTransaction tx = entityManager.getTransaction();
-        tx.begin();
         try {
+            tx.begin();
             Reservation reservation = new Reservation(customer, room, begin, end);
             entityManager.persist(reservation);
             tx.commit();
@@ -68,7 +68,7 @@ public class JPADataAccess extends DataModel {
             tx.begin();
             Reservation reservation1 = entityManager.find(Reservation.class, reservation.getId());
             entityManager.remove(reservation1);
-            reservation.cancelReservation();
+            reservation1.cancelReservation();
             tx.commit();
         } catch (Exception e) {
             tx.rollback();
