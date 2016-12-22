@@ -9,7 +9,7 @@ package ch.bfh.ti.soed.hs16.srs.black;
 
 import javax.servlet.annotation.WebServlet;
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
-import ch.bfh.ti.soed.hs16.srs.black.model.jpa.JPADataAccess;
+import ch.bfh.ti.soed.hs16.srs.black.model.persistence.JPADataAccess;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginController;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationController;

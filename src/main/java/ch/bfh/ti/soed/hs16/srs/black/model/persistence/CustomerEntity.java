@@ -5,10 +5,10 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.model.jpa;
+package ch.bfh.ti.soed.hs16.srs.black.model.persistence;
 
+import ch.bfh.ti.soed.hs16.srs.black.model.Customer;
 import ch.bfh.ti.soed.hs16.srs.black.model.Reservation;
-import ch.bfh.ti.soed.hs16.srs.black.model.Room;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -22,32 +22,31 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The RoomEntity object stores all Reservations in an ArrayList.
- * Reservations can be added and removed afterwards.
+ * The CustomerEntity object stores all Reservations of a CustomerEntity in an ArrayList.
+ * Personal Information (Name and Password) are included too and can be changed after object creation.
  */
-@Entity(name = "Room")
-public class RoomEntity implements Room {
+@Entity(name = "Customer")
+public class CustomerEntity implements Customer {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @OneToMany(targetEntity = ReservationEntity.class, cascade = CascadeType.PERSIST)
     private List<Reservation> reservations;
     @Column(unique = true)
-    private int roomNr;
-    private String description;
+    private String name;
+    private String password;
 
-    public RoomEntity() {} // null constructor
+    public CustomerEntity() {} // null constructor
 
-    public RoomEntity(int roomNr, String description) {
-        reservations = new ArrayList();
-        this.roomNr = roomNr;
-        this.description = description;
+    public CustomerEntity(String name, String password) {
+        reservations = new ArrayList<>();
+        this.name = name;
+        this.password = password;
+        if (name.isEmpty() || password.isEmpty())
+            throw new IllegalArgumentException();
     }
 
-    public void addReservation(Reservation reservation) throws Exception {
-        for (Reservation res : reservations)
-            if (res.timeCollisionWith(reservation))
-                throw new Exception("Time Collision");
+    public void addReservation(Reservation reservation) {
         reservations.add(reservation);
     }
 
@@ -59,12 +58,12 @@ public class RoomEntity implements Room {
         return Collections.unmodifiableList(reservations);
     }
 
-    public int getRoomNr(){
-        return roomNr;
+    public String getPassword(){
+        return password;
     }
 
-    public String getDescription() {
-        return description;
+    public String getName(){
+        return name;
     }
 
     @Override
@@ -72,13 +71,13 @@ public class RoomEntity implements Room {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        RoomEntity room = (RoomEntity) o;
+        CustomerEntity customer = (CustomerEntity) o;
 
-        return roomNr == room.roomNr;
+        return name.equals(customer.name);
     }
 
     @Override
     public int hashCode() {
-        return roomNr;
+        return name.hashCode();
     }
 }

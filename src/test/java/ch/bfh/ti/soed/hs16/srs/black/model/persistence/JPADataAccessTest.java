@@ -5,7 +5,7 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.model.jpa;
+package ch.bfh.ti.soed.hs16.srs.black.model.persistence;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.Customer;
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
@@ -13,11 +13,10 @@ import ch.bfh.ti.soed.hs16.srs.black.model.Reservation;
 import ch.bfh.ti.soed.hs16.srs.black.model.Room;
 import org.junit.Before;
 import org.junit.Test;
-import javax.persistence.NoResultException;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -58,8 +57,8 @@ public class JPADataAccessTest {
 
     @Test
     public void testAddReservation() throws Exception {
-        Customer testCustomer = new CustomerEntity("testUser1", "123");
-        Room testRoom = new RoomEntity(5, "testDescription1");
+        Customer testCustomer = dataModel.addCustomer("testUser1", "123");
+        Room testRoom = dataModel.addRoom(5, "testDescription1");
         Reservation testReservation = dataModel.addReservation(testCustomer, testRoom, date1, date2);
         assertTrue(dataModel.getReservations(testRoom).contains(testReservation));
         assertTrue(dataModel.getReservations(testCustomer).contains(testReservation));
@@ -70,8 +69,8 @@ public class JPADataAccessTest {
 
     @Test
     public void testCancelReservation() throws Exception {
-        Customer testCustomer = new CustomerEntity("testUser2", "123");
-        Room testRoom = new RoomEntity(6, "testDescription2");
+        Customer testCustomer = dataModel.addCustomer("testUser2", "123");
+        Room testRoom = dataModel.addRoom(6, "testDescription2");
         Reservation testReservation = dataModel.addReservation(testCustomer, testRoom, date3, date4);
         dataModel.cancelReservation(testReservation);
         assertFalse(dataModel.getReservations(testRoom).contains(testReservation));
@@ -87,40 +86,34 @@ public class JPADataAccessTest {
 
     @Test
     public void testAddCustomer() throws Exception {
-        Customer testCustomer1 = new CustomerEntity("testName1", "testPw");
-        dataModel.addCustomer("testName1", "testPw");
+        Customer testCustomer1 = dataModel.addCustomer("testName1", "testPw");
         assertTrue(dataModel.getCustomer("testName1").equals(testCustomer1));
         dataModel.removeCustomer(testCustomer1);
     }
 
     @Test (expected = Exception.class)
     public void testRemoveCustomer() throws Exception {
-        Customer testCustomer1 = new CustomerEntity("testName2", "testPw");
-        dataModel.addCustomer("testName2", "testPw");
-        assertTrue(dataModel.getCustomer("testName2").equals(testCustomer1));
-        dataModel.removeCustomer(testCustomer1);
+        Customer toRemove = dataModel.addCustomer("testName2", "testPw");
+        dataModel.removeCustomer(toRemove);
         dataModel.getCustomer("testName2");
     }
 
     @Test
     public void testGetCustomer() throws Exception {
-        Customer testCustomer1 = new CustomerEntity("testName3", "testPw");
-        dataModel.addCustomer("testName3", "testPw");
+        Customer testCustomer1 = dataModel.addCustomer("testName3", "testPw");
         assertEquals(testCustomer1, dataModel.getCustomer("testName3"));
         dataModel.removeCustomer(testCustomer1);
     }
 
     @Test
     public void testAddRoom() throws Exception {
-        Room room1 = new RoomEntity(10, "testRoomDescription1");
-        dataModel.addRoom(10, "testRoomDescription1");
+        Room room1 = dataModel.addRoom(10, "testRoomDescription1");
         assertTrue(dataModel.getRoom(10).equals(room1));
         dataModel.removeRoom(room1);
     }
 
     @Test (expected = Exception.class)
     public void testRemoveRoom() throws Exception {
-        //Room room1 = new RoomEntity(11, "testRoomDescription2");
         dataModel.addRoom(11, "testRoomDescription2");
         Room room = dataModel.getRoom(11);
         dataModel.removeRoom(room);
@@ -129,29 +122,26 @@ public class JPADataAccessTest {
 
     @Test
     public void testGetRoom() throws Exception {
-        Room room1 = new RoomEntity(12, "testRoomDescription3");
-        dataModel.addRoom(12, "testRoomDescription3");
+        Room room1 = dataModel.addRoom(12, "testRoomDescription3");
         assertEquals(room1, dataModel.getRoom(12));
         dataModel.removeRoom(room1);
     }
 
     @Test
     public void testGetRooms() throws Exception {
-        Room room1 = new RoomEntity(13, "testRoomDescription4");
-        dataModel.addRoom(13, "testRoomDescription4");
-        dataModel.getRooms().contains(room1);
+        Room room1 = dataModel.addRoom(13, "testRoomDescription4");
+        assertTrue(dataModel.getRooms().contains(room1));
         dataModel.removeRoom(room1);
     }
 
     @Test (expected = IllegalStateException.class)
     public void testRollback() throws Exception {
-        Room room1 = new RoomEntity(14, "testRoomDescription5");
-        Room room2 = new RoomEntity(14, "testRoomDescription5");
+        Room first = null;
         try {
-            dataModel.addRoom(14, "testRoomDescription5");
+            first = dataModel.addRoom(14, "testRoomDescription5");
             dataModel.addRoom(14, "testRoomDescription5");
         } finally {
-            dataModel.removeRoom(room1);
+            dataModel.removeRoom(first);
         }
     }
 }

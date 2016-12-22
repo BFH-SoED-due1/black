@@ -7,8 +7,6 @@
  */
 package ch.bfh.ti.soed.hs16.srs.black.model;
 
-import ch.bfh.ti.soed.hs16.srs.black.model.jpa.ReservationEntity;
-
 import java.util.List;
 
 public interface Customer {
@@ -19,6 +17,7 @@ public interface Customer {
     String getName();
 
     void addReservation(Reservation reservation);
+
     void removeReservation(Reservation reservation);
 
 }

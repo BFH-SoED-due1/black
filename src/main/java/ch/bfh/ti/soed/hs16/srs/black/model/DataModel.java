@@ -21,13 +21,13 @@ public abstract class DataModel {
     public abstract List<Reservation> getReservations(Room room);
 
     // for customer handling ...
-    public abstract void addCustomer(String username, String password);
+    public abstract Customer addCustomer(String username, String password);
     public abstract void removeCustomer(Customer customer);
     public abstract Customer getCustomer(String customerName) throws Exception;
     //public abstract boolean customerExists(String customerName);
 
     // for room handling ...
-    public abstract void addRoom(int roomNr, String description);
+    public abstract Room addRoom(int roomNr, String description);
     public abstract void removeRoom(Room room);
     public abstract Room getRoom(int roomNr);
     public abstract List<Room> getRooms();

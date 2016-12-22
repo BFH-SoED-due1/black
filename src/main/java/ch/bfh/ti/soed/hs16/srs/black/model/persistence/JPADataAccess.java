@@ -5,7 +5,7 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.model.jpa;
+package ch.bfh.ti.soed.hs16.srs.black.model.persistence;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.*;
 
@@ -21,7 +21,7 @@ import java.util.List;
 public class JPADataAccess extends DataModel {
 
     private static final String PERSISTENCE_UNIT = "black";
-    private static final String DEFAULT_DATA_ACCESS_CLASS = "ch.bfh.ti.soed.hs16.srs.black.model.jpa.JPADataAccess";
+    private static final String DEFAULT_DATA_ACCESS_CLASS = "ch.bfh.ti.soed.hs16.srs.black.model.persistence.JPADataAccess";
     private static EntityManager entityManager;
 
     private JPADataAccess() {} // to create an instance of this class, you have to use getInstance()
@@ -92,13 +92,14 @@ public class JPADataAccess extends DataModel {
     }
 
     @Override
-    public void addCustomer(String username, String password) {
+    public Customer addCustomer(String username, String password) {
         Customer customer = new CustomerEntity(username, password);
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
             entityManager.persist(customer);
             tx.commit();
+            return customer;
         } catch (Exception e) {
             tx.rollback();
             throw e;
@@ -136,13 +137,14 @@ public class JPADataAccess extends DataModel {
     */
 
     @Override
-    public void addRoom(int roomNr, String description) {
+    public Room addRoom(int roomNr, String description) {
         Room room = new RoomEntity(roomNr, description);
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
             entityManager.persist(room);
             tx.commit();
+            return room;
         } catch (Exception e) {
             tx.rollback();
             throw e;

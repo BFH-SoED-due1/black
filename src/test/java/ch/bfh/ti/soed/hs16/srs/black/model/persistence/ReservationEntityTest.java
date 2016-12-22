@@ -5,7 +5,7 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.model.jpa;
+package ch.bfh.ti.soed.hs16.srs.black.model.persistence;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.Customer;
 import ch.bfh.ti.soed.hs16.srs.black.model.Reservation;
