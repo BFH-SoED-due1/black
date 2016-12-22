@@ -47,7 +47,7 @@ public class LoginView extends CustomComponent implements View {
         VerticalLayout layout = new VerticalLayout();
         HorizontalLayout layoutButtons = new HorizontalLayout(loginButton, signUpButton);
         layoutButtons.setSpacing(true);
-        Panel panel = new Panel("Login - Smart Reservation System");
+        Panel panel = new Panel("Login - Smart ReservationEntity System");
         panel.setSizeUndefined();
         layout.addComponent(panel);
 

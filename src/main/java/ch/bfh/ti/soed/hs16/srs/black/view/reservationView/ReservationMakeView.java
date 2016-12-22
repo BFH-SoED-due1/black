@@ -44,15 +44,15 @@ public class ReservationMakeView extends CustomComponent implements View {
         toField.setDateFormat("dd.MM.yyyy HH:mm");
         toField.setIcon(FontAwesome.CALENDAR);
         toField.setWidth(12, Unit.EM);
-        roomNumberField = new TextField("Room Number");
+        roomNumberField = new TextField("RoomEntity Number");
         roomNumberField.setIcon(FontAwesome.BUILDING_O);
         roomNumberField.addValidator(new RegexpValidator("^[0-9]{1,3}$", "Please enter a valid room number."));
         roomNumberField.setWidth(4, Unit.EM);
-        makeReservationButton = new Button("Make Reservation");
+        makeReservationButton = new Button("Make ReservationEntity");
         makeReservationButton.setWidth(12, Unit.EM);
         logoutButton = new Button("Logout");
 
-        Panel panel = new Panel("Create New Reservation");
+        Panel panel = new Panel("Create New ReservationEntity");
         FormLayout content = new FormLayout();
         content.addComponents(fromField, toField, roomNumberField, makeReservationButton);
         content.setSizeUndefined();
