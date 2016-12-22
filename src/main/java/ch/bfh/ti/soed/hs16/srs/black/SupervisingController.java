@@ -9,7 +9,7 @@ package ch.bfh.ti.soed.hs16.srs.black;
 
 import javax.servlet.annotation.WebServlet;
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
-import ch.bfh.ti.soed.hs16.srs.black.model.JPADataAccess;
+import ch.bfh.ti.soed.hs16.srs.black.model.persistence.JPADataAccess;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginController;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationController;
@@ -46,14 +46,14 @@ public class SupervisingController extends UI {
     private SignUpView signUpView;
     private ReservationController reservationController;
 
-    // Create Room and Customer for test purposes
+    // Create RoomEntity and CustomerEntity for test purposes
     // Commented out because this data is now stored in the SQLite DB
     /*static {
         DataModel testData = JPADataAccess.getInstance();
-        Room room1 = new Room(1,"20m^2");
-        Room room2 = new Room(2,"20m^2");
-        Customer customer1 = new Customer("user1", "123");
-        Customer customer2 = new Customer("user2", "234");
+        RoomEntity room1 = new RoomEntity(1,"20m^2");
+        RoomEntity room2 = new RoomEntity(2,"20m^2");
+        CustomerEntity customer1 = new CustomerEntity("user1", "123");
+        CustomerEntity customer2 = new CustomerEntity("user2", "234");
 
         testData.addRoom(room1);
         testData.addRoom(room2);
@@ -64,7 +64,7 @@ public class SupervisingController extends UI {
     @Override
     protected void init(VaadinRequest vaadinRequest) {
         // Set the title of the site in the browser
-        Page.getCurrent().setTitle("SRS - Smart Reservation System");
+        Page.getCurrent().setTitle("SRS - Smart ReservationEntity System");
 
         dataModel = JPADataAccess.getInstance();
         loginView = new LoginView();

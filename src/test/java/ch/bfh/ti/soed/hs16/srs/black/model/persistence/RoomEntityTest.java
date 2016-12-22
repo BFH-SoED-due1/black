@@ -5,8 +5,11 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.model.logic;
+package ch.bfh.ti.soed.hs16.srs.black.model.persistence;
 
+import ch.bfh.ti.soed.hs16.srs.black.model.Customer;
+import ch.bfh.ti.soed.hs16.srs.black.model.Reservation;
+import ch.bfh.ti.soed.hs16.srs.black.model.Room;
 import org.junit.Before;
 import org.junit.Test;
 import java.util.Calendar;
@@ -17,7 +20,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 
-public class RoomTest {
+public class RoomEntityTest {
 
     Customer testCustomer;
     Room testRoom;
@@ -27,10 +30,10 @@ public class RoomTest {
 
     @Before
     public void setUp() throws Exception {
-        testCustomer = new Customer("user1", "123");
+        testCustomer = new CustomerEntity("user1", "123");
         roomNr = 1;
         description = "79m^";
-        testRoom = new Room(roomNr, description);
+        testRoom = new RoomEntity(roomNr, description);
         Calendar c = new GregorianCalendar();
         c.set(2016, 11, 9, 13, 22, 15);
         date1 = new Date(c.getTimeInMillis());
@@ -41,8 +44,8 @@ public class RoomTest {
     }
     @Test
     public void testGetReservations() throws Exception {
-        Reservation testReservation1 = new Reservation(testCustomer, testRoom, date1, date2);
-        Reservation testReservation2 = new Reservation(testCustomer, testRoom, date2, date3);
+        Reservation testReservation1 = new ReservationEntity(testCustomer, testRoom, date1, date2);
+        Reservation testReservation2 = new ReservationEntity(testCustomer, testRoom, date2, date3);
         assertTrue(testRoom.getReservations().contains(testReservation1));
         assertTrue(testRoom.getReservations().contains(testReservation2));
     }
@@ -59,9 +62,9 @@ public class RoomTest {
 
     @Test
     public void testEquals() throws Exception {
-        Room testRoom1 = new Room(2, "test1");
-        Room testRoom2 = new Room(2, "test1");
-        Room testRoom3 = new Room(3, "test2");
+        Room testRoom1 = new RoomEntity(2, "test1");
+        Room testRoom2 = new RoomEntity(2, "test1");
+        Room testRoom3 = new RoomEntity(3, "test2");
 
         assertTrue(testRoom1.equals(testRoom2));
         assertFalse(testRoom1.equals(testRoom3));

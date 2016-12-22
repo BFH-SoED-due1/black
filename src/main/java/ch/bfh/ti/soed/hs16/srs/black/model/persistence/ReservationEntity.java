@@ -5,7 +5,11 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.model.logic;
+package ch.bfh.ti.soed.hs16.srs.black.model.persistence;
+
+import ch.bfh.ti.soed.hs16.srs.black.model.Customer;
+import ch.bfh.ti.soed.hs16.srs.black.model.Reservation;
+import ch.bfh.ti.soed.hs16.srs.black.model.Room;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -18,26 +22,26 @@ import javax.persistence.TemporalType;
 import java.util.Date;
 
 /**
- * The Reservation object stores a specific Reservation made by a Customer and contains a Room.
+ * The ReservationEntity object stores a specific ReservationEntity made by a CustomerEntity and contains a RoomEntity.
  * The Comparable class is overwritten. We use the data object to compare time ranges of made Reservations.
  */
 @Entity(name = "Reservation")
-public class Reservation {
+public class ReservationEntity implements Reservation {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne(targetEntity = Customer.class, cascade = CascadeType.PERSIST)
+    @ManyToOne(targetEntity = CustomerEntity.class, cascade = CascadeType.PERSIST)
     private Customer customer;
-    @ManyToOne(targetEntity = Room.class, cascade = CascadeType.PERSIST)
+    @ManyToOne(targetEntity = RoomEntity.class, cascade = CascadeType.PERSIST)
     private Room room;
     @Temporal(TemporalType.DATE)
     private Date begin;
     @Temporal(TemporalType.DATE)
     private Date end;
 
-    public Reservation() {} // null constructor
+    public ReservationEntity() {} // null constructor
 
-    public Reservation(Customer customer, Room room, Date begin, Date end) throws Exception {
+    public ReservationEntity(Customer customer, Room room, Date begin, Date end) throws Exception {
         this.customer = customer;
         this.room = room;
         this.begin = begin;
@@ -54,12 +58,12 @@ public class Reservation {
     }
 
     public boolean timeCollisionWith(Reservation o) {
-        return begin.after(o.begin) && begin.before(o.end) || begin.before(o.begin) && end.after(o.begin)
-                || begin.equals(o.begin) && end.equals(o.end);
+        return begin.after(o.getBegin()) && begin.before(o.getEnd()) || begin.before(o.getBegin()) && end.after(o.getBegin())
+                || begin.equals(o.getBegin()) && end.equals(o.getEnd());
     }
 /*
     @Override
-    public int compareTo(Reservation o) {
+    public int compareTo(ReservationEntity o) {
         if (begin.before(o.begin))
             return -1;
         if (begin.after(o.begin))
@@ -95,7 +99,7 @@ public class Reservation {
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        Reservation that = (Reservation) o;
+        ReservationEntity that = (ReservationEntity) o;
 
         if (!customer.equals(that.customer)) return false;
         if (!room.equals(that.room)) return false;

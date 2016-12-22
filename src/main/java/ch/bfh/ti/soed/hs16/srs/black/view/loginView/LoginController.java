@@ -8,7 +8,7 @@
 package ch.bfh.ti.soed.hs16.srs.black.view.loginView;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
-import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
+import ch.bfh.ti.soed.hs16.srs.black.model.Customer;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationView;
 import ch.bfh.ti.soed.hs16.srs.black.view.signUpView.SignUpView;
 import com.vaadin.event.ShortcutAction;

@@ -5,11 +5,10 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.model;
+package ch.bfh.ti.soed.hs16.srs.black.model.persistence;
 
-import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
-import ch.bfh.ti.soed.hs16.srs.black.model.logic.Reservation;
-import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
+import ch.bfh.ti.soed.hs16.srs.black.model.*;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.NoResultException;
@@ -22,7 +21,7 @@ import java.util.List;
 public class JPADataAccess extends DataModel {
 
     private static final String PERSISTENCE_UNIT = "black";
-    private static final String DEFAULT_DATA_ACCESS_CLASS = "ch.bfh.ti.soed.hs16.srs.black.model.JPADataAccess";
+    private static final String DEFAULT_DATA_ACCESS_CLASS = "ch.bfh.ti.soed.hs16.srs.black.model.persistence.JPADataAccess";
     private static EntityManager entityManager;
 
     private JPADataAccess() {} // to create an instance of this class, you have to use getInstance()
@@ -51,7 +50,7 @@ public class JPADataAccess extends DataModel {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
-            Reservation reservation = new Reservation(customer, room, begin, end);
+            Reservation reservation = new ReservationEntity(customer, room, begin, end);
             entityManager.persist(reservation);
             tx.commit();
             return reservation;
@@ -66,7 +65,7 @@ public class JPADataAccess extends DataModel {
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
-            Reservation reservation1 = entityManager.find(Reservation.class, reservation.getId());
+            Reservation reservation1 = entityManager.find(ReservationEntity.class, reservation.getId());
             entityManager.remove(reservation1);
             reservation1.cancelReservation();
             tx.commit();
@@ -79,7 +78,7 @@ public class JPADataAccess extends DataModel {
     @Override
     public List<Reservation> getReservations(Customer customer) throws NoResultException {
         return new ArrayList<Reservation>(entityManager.createQuery
-                ("select r from Reservation as r where r.customer = :customer", Reservation.class)
+                ("select r from Reservation as r where r.customer = :customer", ReservationEntity.class)
                 .setParameter("customer", customer)
                 .getResultList());
     }
@@ -87,18 +86,20 @@ public class JPADataAccess extends DataModel {
     @Override
     public List<Reservation> getReservations(Room room) throws NoResultException {
         return new ArrayList<Reservation>(entityManager.createQuery
-                ("select r from Reservation as r where r.room = :room", Reservation.class)
+                ("select r from Reservation as r where r.room = :room", ReservationEntity.class)
                 .setParameter("room", room)
                 .getResultList());
     }
 
     @Override
-    public void addCustomer(Customer customer) {
+    public Customer addCustomer(String username, String password) {
+        Customer customer = new CustomerEntity(username, password);
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
             entityManager.persist(customer);
             tx.commit();
+            return customer;
         } catch (Exception e) {
             tx.rollback();
             throw e;
@@ -121,14 +122,14 @@ public class JPADataAccess extends DataModel {
 
     @Override
     public Customer getCustomer(String customerName) throws NoResultException {
-        return entityManager.createQuery("select o from Customer as o where o.name = :customerName", Customer.class)
+        return entityManager.createQuery("select o from Customer as o where o.name = :customerName", CustomerEntity.class)
                 .setParameter("customerName", customerName)
                 .getSingleResult();
     }
 
     /*
     public boolean customerExists(String customerName) throws NoResultException {
-        Query query = entityManager.createQuery("select o from Customer as o where o.name = :customerName", Customer.class)
+        Query query = entityManager.createQuery("select o from CustomerEntity as o where o.name = :customerName", CustomerEntity.class)
                 .setParameter("customerName", customerName);
         List results = query.getResultList();
         return !results.isEmpty();
@@ -136,12 +137,14 @@ public class JPADataAccess extends DataModel {
     */
 
     @Override
-    public void addRoom(Room room) {
+    public Room addRoom(int roomNr, String description) {
+        Room room = new RoomEntity(roomNr, description);
         EntityTransaction tx = entityManager.getTransaction();
         try {
             tx.begin();
             entityManager.persist(room);
             tx.commit();
+            return room;
         } catch (Exception e) {
             tx.rollback();
             throw e;
@@ -164,14 +167,14 @@ public class JPADataAccess extends DataModel {
 
     @Override
     public Room getRoom(int roomNr) throws NoResultException {
-        return entityManager.createQuery("select o from Room as o where o.roomNr = :roomNr", Room.class)
+        return entityManager.createQuery("select o from Room as o where o.roomNr = :roomNr", RoomEntity.class)
                 .setParameter("roomNr", roomNr)
                 .getSingleResult();
     }
 
     @Override
     public List<Room> getRooms() throws NoResultException {
-        return entityManager.createQuery("select r from Room r", Room.class)
+        return entityManager.createQuery("select r from Room r")
                 .getResultList();
     }
 }

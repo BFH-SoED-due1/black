@@ -8,9 +8,9 @@
 package ch.bfh.ti.soed.hs16.srs.black.view.reservationView;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
-import ch.bfh.ti.soed.hs16.srs.black.model.logic.Customer;
-import ch.bfh.ti.soed.hs16.srs.black.model.logic.Reservation;
-import ch.bfh.ti.soed.hs16.srs.black.model.logic.Room;
+import ch.bfh.ti.soed.hs16.srs.black.model.Customer;
+import ch.bfh.ti.soed.hs16.srs.black.model.Reservation;
+import ch.bfh.ti.soed.hs16.srs.black.model.Room;
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView;
 import com.vaadin.data.Item;
 import com.vaadin.navigator.Navigator;
@@ -58,7 +58,7 @@ public class ReservationController {
                 dataModel.addReservation(customer, room, begin, end);
                 exceptionNf.setCaption("Success");
                 exceptionNf.setDescription("Added reservation for: " + username +
-                        ", Room Nr.: " + roomNumber +
+                        ", RoomEntity Nr.: " + roomNumber +
                         ", From: " + df.format(begin) +
                         " until " + df.format(end));
                 exceptionNf.show(Page.getCurrent());
@@ -73,7 +73,7 @@ public class ReservationController {
                 exceptionNf.show(Page.getCurrent());
             } catch(RuntimeException re) {
                 exceptionNf.setCaption("Error!");
-                exceptionNf.setDescription("Room couldn't be found.\nCurrently available rooms: " +
+                exceptionNf.setDescription("RoomEntity couldn't be found.\nCurrently available rooms: " +
                         dataModel.getRooms().stream().map(Object::toString)
                                 .collect(Collectors.joining(", "))
                                 .replaceAll("[^\\d , ][^\\@]*\\@", ""));
@@ -109,7 +109,7 @@ public class ReservationController {
             });
 
             Item row1 = reservationView.getReservationList().getItem(newItemId);
-            row1.getItemProperty("Room").setValue((Integer) reservation.getRoom().getRoomNr());
+            row1.getItemProperty("RoomEntity").setValue((Integer) reservation.getRoom().getRoomNr());
             row1.getItemProperty("Start Time").setValue(reservation.getBegin());
             row1.getItemProperty("End Time").setValue(reservation.getEnd());
             row1.getItemProperty("Cancel").setValue(button);

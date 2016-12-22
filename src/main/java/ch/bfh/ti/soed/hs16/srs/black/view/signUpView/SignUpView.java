@@ -45,7 +45,7 @@ public class SignUpView extends CustomComponent implements View {
         goBackButton = new Button("Back");
 
         VerticalLayout layout = new VerticalLayout();
-        Panel panel = new Panel("Sign Up - Smart Reservation System");
+        Panel panel = new Panel("Sign Up - Smart ReservationEntity System");
         panel.setSizeUndefined();
         layout.addComponent(panel);
 
