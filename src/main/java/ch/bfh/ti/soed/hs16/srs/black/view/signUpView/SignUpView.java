@@ -86,6 +86,6 @@ public class SignUpView extends CustomComponent implements View {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-        // placeholder
+        usernameField.focus();
     }
 }
