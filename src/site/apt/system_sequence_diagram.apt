@@ -1,0 +1,32 @@
+    ----------
+    System Sequence Diagram
+    ----------
+    ----------
+    December 23, 2016
+
+System Sequence Diagram
+
+  A System Sequence Diagram (SSD) is a visual summary of an individual use case.
+The diagram places emphasis on events that involve interaction between actors and systems
+
+[images/system_sequence_diagram1.svg] System Sequence Diagram 1
+
+  The first System Sequence Diagram focuses on the LogIn and SignUp use cases of the SRS.
+
+[images/system_sequence_diagram2.svg] System Sequence Diagram 2
+
+  The second System Sequence Diagram focuses on the MakeReservation use case of the SRS.
+
+
+Sequence Diagram
+
+  The Sequence Diagram is an interaction diagram that shows how objects operate with one another and in what order.
+It is a construct of a message sequence chart.
+
+[images/sequence_diagram.svg] Sequence Diagram
+
+  This Sequence Diagram focuses in detail on the MakeReservation use case of the SRS.
+It assumes that the User is already signed up and logged into the system.
+The User makes the call to Make a new Reservation through the User Interface (UI).
+Internally this call will go through the ReservationController, which will call the addReservation method.
+The addReservation method includes the Customer object, the user specified Room object and the specified begin/end times.
