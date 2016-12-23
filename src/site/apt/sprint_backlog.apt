@@ -2,7 +2,7 @@
     Sprint Backlog
 	----------
     ----------
-    December 04, 2016
+    December 23, 2016
 
 Sprint Backlog
 
@@ -61,4 +61,18 @@ These tasks are estimated in working hours and need to be continuously updated b
 |3.1| |Create Controller|Medium|4|3|Done|
 *-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
 |3.2| |Create GUI|Medium|4|3|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+
+    Sprint Backlog of Sprint 4
+
+*------+--------------+---------------------+------------+--------------------+-----------------+----------+
+|<<ID>>|<<Story Name>>|<<Story Description>>|<<Priority>>|<<Estimated Effort>>|<<Actual Effort>>|<<Status>>|
+*------+--------------+---------------------+------------+--------------------+-----------------+----------+
+|1|Cancel Reservation|As a customer I want to cancel reservations placed by me, to set them free for that period of time.|High|6|5|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|1.1| |Add Cancel Reservation option to GUI|Medium|3|3|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|2|Overview Reservations|As a customer I want to have a list of my reservations, to keep an overview|Low|3|3|Done|
+*-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
+|2.1| |Add Overview Reservation option to GUI|Medium|3|3|Done|
 *-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
