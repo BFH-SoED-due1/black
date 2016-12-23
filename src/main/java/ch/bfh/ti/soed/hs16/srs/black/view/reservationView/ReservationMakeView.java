@@ -7,7 +7,6 @@
  */
 package ch.bfh.ti.soed.hs16.srs.black.view.reservationView;
 
-import com.vaadin.data.validator.RegexpValidator;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.server.FontAwesome;
@@ -16,8 +15,8 @@ import com.vaadin.ui.Button;
 import com.vaadin.ui.CustomComponent;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.FormLayout;
+import com.vaadin.ui.NativeSelect;
 import com.vaadin.ui.Panel;
-import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import java.util.Locale;
 
@@ -26,7 +25,7 @@ public class ReservationMakeView extends CustomComponent implements View {
 
     private DateField fromField;
     private DateField toField;
-    private TextField roomNumberField;
+    private NativeSelect roomSelect;
     private Button makeReservationButton;
     private Button logoutButton;
     private VerticalLayout makeViewLayout;
@@ -44,17 +43,17 @@ public class ReservationMakeView extends CustomComponent implements View {
         toField.setDateFormat("dd.MM.yyyy HH:mm");
         toField.setIcon(FontAwesome.CALENDAR);
         toField.setWidth(12, Unit.EM);
-        roomNumberField = new TextField("RoomEntity Number");
-        roomNumberField.setIcon(FontAwesome.BUILDING_O);
-        roomNumberField.addValidator(new RegexpValidator("^[0-9]{1,3}$", "Please enter a valid room number."));
-        roomNumberField.setWidth(4, Unit.EM);
-        makeReservationButton = new Button("Make ReservationEntity");
+        roomSelect = new NativeSelect("Room Number");
+        roomSelect.setIcon(FontAwesome.BED);
+        roomSelect.setNullSelectionAllowed(true);
+        roomSelect.setImmediate(true);
+        makeReservationButton = new Button("Make Reservation", FontAwesome.CHECK);
         makeReservationButton.setWidth(12, Unit.EM);
         logoutButton = new Button("Logout");
 
-        Panel panel = new Panel("Create New ReservationEntity");
+        Panel panel = new Panel("Create New Reservation");
         FormLayout content = new FormLayout();
-        content.addComponents(fromField, toField, roomNumberField, makeReservationButton);
+        content.addComponents(fromField, toField, roomSelect, makeReservationButton);
         content.setSizeUndefined();
         content.setMargin(true);
         VerticalLayout formAndLogout = new VerticalLayout(content, logoutButton);
@@ -85,9 +84,10 @@ public class ReservationMakeView extends CustomComponent implements View {
         return toField;
     }
 
-    public TextField getRoomNumberField() {
-        return roomNumberField;
+    public NativeSelect getRoomSelect() {
+        return roomSelect;
     }
+
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {

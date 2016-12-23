@@ -13,8 +13,8 @@ import com.vaadin.ui.Alignment;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.DateField;
 import com.vaadin.ui.GridLayout;
+import com.vaadin.ui.NativeSelect;
 import com.vaadin.ui.Table;
-import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 
 
@@ -59,8 +59,8 @@ public class ReservationView extends VerticalLayout implements View {
         return reservationMakeView.getToField();
     }
 
-    public TextField getRoomNumberField() {
-        return reservationMakeView.getRoomNumberField();
+    public NativeSelect getRoomSelect() {
+        return reservationMakeView.getRoomSelect();
     }
 
     public Table getReservationList(){
