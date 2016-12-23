@@ -22,11 +22,11 @@ import static org.junit.Assert.assertTrue;
 
 public class RoomEntityTest {
 
-    Customer testCustomer;
-    Room testRoom;
-    Date date1, date2, date3;
-    int roomNr;
-    String description;
+    private Customer testCustomer;
+    private Room testRoom;
+    private Date date1, date2, date3;
+    private int roomNr;
+    private String description;
 
     @Before
     public void setUp() throws Exception {

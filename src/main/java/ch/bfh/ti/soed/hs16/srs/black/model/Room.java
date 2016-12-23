@@ -9,6 +9,7 @@ package ch.bfh.ti.soed.hs16.srs.black.model;
 
 import java.util.List;
 
+
 public interface Room {
 
     List<Reservation> getReservations();

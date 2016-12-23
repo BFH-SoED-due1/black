@@ -7,7 +7,10 @@
  */
 package ch.bfh.ti.soed.hs16.srs.black.model.persistence;
 
-import ch.bfh.ti.soed.hs16.srs.black.model.*;
+import ch.bfh.ti.soed.hs16.srs.black.model.Customer;
+import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
+import ch.bfh.ti.soed.hs16.srs.black.model.Reservation;
+import ch.bfh.ti.soed.hs16.srs.black.model.Room;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;

@@ -13,11 +13,9 @@ import ch.bfh.ti.soed.hs16.srs.black.model.Reservation;
 import ch.bfh.ti.soed.hs16.srs.black.model.Room;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
@@ -26,10 +24,10 @@ import static org.junit.Assert.assertTrue;
 
 public class JPADataAccessTest {
 
-    DataModel dataModel;
-    Customer testCustomer;
-    Room testRoom;
-    Date date1, date2, date3, date4;
+    private DataModel dataModel;
+    private Customer testCustomer;
+    private Room testRoom;
+    private Date date1, date2, date3, date4;
 
     @Before
     public void setUp() throws Exception {
