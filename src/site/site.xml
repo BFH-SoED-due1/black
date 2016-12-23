@@ -34,8 +34,9 @@
             <item name="Context View" href="context_view.html"/>
             <item name="Product Backlog" href="product_backlog.html"/>
             <item name="Sprint Backlog" href="sprint_backlog.html"/>
+            <item name="System Sequence Diagram" href="system_sequence_diagram.apt.html" />
+            <item name="Package Diagram" href="package_diagram.apt.html" />
             <!--
-            <item name="System Sequence Diagram" href="system_sequence_diagram.html" />
             <item name="Detailed Design Document" href="detailed_design_document.html" />
             <item name="System Architecture Document" href="system_architecture_document.html" />
             <item name="Other Specs" href="other_specs.html" />
