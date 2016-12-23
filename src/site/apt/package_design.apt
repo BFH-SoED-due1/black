@@ -1,0 +1,44 @@
+    ----------
+    Package Design
+    ----------
+    ----------
+    December 23, 2016
+
+Package Diagram
+
+  The Package Diagram shows the dependencies between the packages in a project.
+Package diagrams can use packages containing use cases to illustrate the functionality of a software system.
+
+  It can consist of the following elements: Package, Class, Interface, Object, Table.
+
+[images/package_diagram.svg] Package Diagram
+
+  Our Package Diagram consists of two main packages called <<<model>>> and <<<view>>> and also the <<<SupervisingController>>> class,
+which is very essential in our project, because we built it using the Model View Control Pattern (MVC).
+
+  Within the <<<model>>> package we have the three interfaces <<<Customer>>>, <<<Reservation>>> and <<<Room>>>.
+  Lastly there's an abstract class called <<<DataModel>>>.
+Inside the sub-package <<<persistence>>> we have the realizations of the aforementioned interfaces.
+The abstract class <<<DataModel>>> is implemented within the <<<JPADataAccess>>> class.
+
+  The <<<view>>> package consists of three sub-packages for all the views of the GUI.
+There are the <<<loginView>>> and <<<signUpView>>> packages, which each have a controller class and a view class.
+Lastly there's the <<<registrationView>>> package which also has a controller and a view class, but in comparison to the other
+packages also has two sub-views, which are combined withing the <<<RegistrationView>>> class.
+These views all have access to the <<<model>>> package and its content.
+
+  The <<<SupervisingController>>> has access to both the <<<model>>> and the <<<view>>> packages.
+It is the foundation of the project and initializes the content.
+
+
+A-I Graph
+
+  The AI-Graph shows the relationship between the stability and abstractness of each package.
+
+[images/ai-graph.png] Package Diagram
+
+  The most abstract package in our project is the model. It only contains the interfaces for the entities and the
+abstract class DataModel, which defines the data access. The model also only depends on the java.util and java.lang
+packages, which makes it very stable.
+All other packages don’t contain any abstract classes, but they depend on many other packages like the model and
+packages of the vaadin framework. The result of that is a higher instability.

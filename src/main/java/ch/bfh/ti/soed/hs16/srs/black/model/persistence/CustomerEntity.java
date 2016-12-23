@@ -5,7 +5,10 @@
  *
  * Distributable under GPL license. See terms of license at gnu.org.
  */
-package ch.bfh.ti.soed.hs16.srs.black.model.logic;
+package ch.bfh.ti.soed.hs16.srs.black.model.persistence;
+
+import ch.bfh.ti.soed.hs16.srs.black.model.Customer;
+import ch.bfh.ti.soed.hs16.srs.black.model.Reservation;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,23 +22,23 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * The Customer object stores all Reservations of a Customer in a TreeSet.
+ * The CustomerEntity object stores all Reservations of a CustomerEntity in an ArrayList.
  * Personal Information (Name and Password) are included too and can be changed after object creation.
  */
 @Entity(name = "Customer")
-public class Customer {
+public class CustomerEntity implements Customer {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @OneToMany(targetEntity = Reservation.class, cascade = CascadeType.PERSIST)
+    @OneToMany(targetEntity = ReservationEntity.class, cascade = CascadeType.PERSIST)
     private List<Reservation> reservations;
     @Column(unique = true)
     private String name;
     private String password;
 
-    public Customer() {} // null constructor
+    public CustomerEntity() {} // null constructor
 
-    public Customer(String name, String password) {
+    public CustomerEntity(String name, String password) {
         reservations = new ArrayList<>();
         this.name = name;
         this.password = password;
@@ -43,11 +46,11 @@ public class Customer {
             throw new IllegalArgumentException();
     }
 
-    void addReservation(Reservation reservation) {
+    public void addReservation(Reservation reservation) {
         reservations.add(reservation);
     }
 
-    void removeReservation(Reservation reservation) {
+    public void removeReservation(Reservation reservation) {
         reservations.remove(reservation);
     }
 
@@ -68,7 +71,7 @@ public class Customer {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Customer customer = (Customer) o;
+        CustomerEntity customer = (CustomerEntity) o;
 
         return name.equals(customer.name);
     }

@@ -34,8 +34,9 @@
             <item name="Context View" href="context_view.html"/>
             <item name="Product Backlog" href="product_backlog.html"/>
             <item name="Sprint Backlog" href="sprint_backlog.html"/>
-            <!--
             <item name="System Sequence Diagram" href="system_sequence_diagram.html" />
+            <item name="Package Design" href="package_design.html" />
+            <!--
             <item name="Detailed Design Document" href="detailed_design_document.html" />
             <item name="System Architecture Document" href="system_architecture_document.html" />
             <item name="Other Specs" href="other_specs.html" />
@@ -47,8 +48,8 @@
             <item name="Deliverable 1" href="eval/s1.html"/>
             <item name="Deliverable 2" href="eval/s2.html"/>
             <item name="Deliverable 3" href="eval/s3.html"/>
-            <!--
             <item name="Deliverable 4" href="eval/s4.html"/>
+            <!--
             <item name="Evaluation" href="eval/summary.html"/>
             -->
         </menu>

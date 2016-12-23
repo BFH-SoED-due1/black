@@ -2,7 +2,7 @@
     Product Backlog
 	----------
     ----------
-    December 04, 2016
+    December 23, 2016
 
 Product Backlog
 
@@ -16,19 +16,19 @@ The priority of these stories will be modified during the process of the project
 *------+--------------+---------------------+------------+--------------------+-----------------+----------+
 |01|Make Reservation|As a customer I want to book one or multiple reservations for different rooms, to occupy them for a period of time.|High|14|18|Done|
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
-|02|Cancel Reservation|As a customer I want to cancel reservations placed by me, to set them free for that period of time.|High|6|-|In progress|
+|02|Cancel Reservation|As a customer I want to cancel reservations placed by me, to set them free for that period of time.|High|6|5|Done|
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
-|03|Lookup Rooms|As a customer I want to see which rooms are open at which times, to see which rooms are open for reservation.|Medium|8|-|Waiting|
+|03|Lookup Rooms|As a customer I want to see which rooms are open at which times, to see which rooms are open for reservation.|Medium|6|-|Waiting|
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
 |04|Manage Rooms|As an administrator I want to add, modify and remove rooms, to adjust the system according to the circumstances.|Medium|8|-|Waiting|
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
 |05|Modify Reservation|As an administrator I want to cancel or rebook reservations in case a room may not be available on short notice.|Medium|6|-|Waiting|
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
-|06|Log In|As a customer I want to log-in, to authenticate myself and to have access to the system.|Medium|8|6|Done|
+|06|Log In|As a customer I want to log-in, to authenticate myself and to have access to the system.|Medium|14|12|Done|
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
 |07|Notifications|As a customer I want to receive notifications concerning my reservation, to be up-to-date about status changes.|Low|8|-|Waiting|
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
-|08|Overview Reservations|As a customer I want to have a list of my reservations, to keep an overview|Low|6|-|Waiting|
+|08|Overview Reservations|As a customer I want to have a list of my reservations, to keep an overview|Low|3|3|Done|
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
 |09|Overview Billings|As a customer I want to have an overview of my billings and their current status, to be informed about my running costs.|Low|6|-|Waiting|
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
