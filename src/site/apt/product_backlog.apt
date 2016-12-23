@@ -18,7 +18,7 @@ The priority of these stories will be modified during the process of the project
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
 |02|Cancel Reservation|As a customer I want to cancel reservations placed by me, to set them free for that period of time.|High|6|5|Done|
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
-|03|Lookup Rooms|As a customer I want to see which rooms are open at which times, to see which rooms are open for reservation.|Medium|8|-|Waiting|
+|03|Lookup Rooms|As a customer I want to see which rooms are open at which times, to see which rooms are open for reservation.|Medium|6|-|Waiting|
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
 |04|Manage Rooms|As an administrator I want to add, modify and remove rooms, to adjust the system according to the circumstances.|Medium|8|-|Waiting|
 *--+---------------+-----------------------+------------------------+------------------------+----------+----------+
