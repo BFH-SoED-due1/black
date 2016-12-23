@@ -9,7 +9,9 @@ package ch.bfh.ti.soed.hs16.srs.black.model;
 
 import java.util.List;
 
+
 public interface Customer {
+
     List<Reservation> getReservations();
 
     String getPassword();
@@ -19,5 +21,4 @@ public interface Customer {
     void addReservation(Reservation reservation);
 
     void removeReservation(Reservation reservation);
-
 }

@@ -7,11 +7,11 @@
  */
 package ch.bfh.ti.soed.hs16.srs.black.model;
 
-
 import java.util.Date;
 
 
 public interface Reservation {
+
     void cancelReservation();
 
     Long getId();
