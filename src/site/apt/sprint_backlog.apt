@@ -2,7 +2,7 @@
     Sprint Backlog
 	----------
     ----------
-    December 23, 2016
+    December 28, 2016
 
 Sprint Backlog
 
@@ -82,9 +82,9 @@ These tasks are estimated in working hours and need to be continuously updated b
 *-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
 |3|Lookup Rooms|As a customer I want to see which rooms are open at which times, to see which rooms are open for reservation.|Medium|6|-|In progress|
 *-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
-|3.1| |Add option to see which Rooms are available for reservation|Medium|2|2|Done|
+|3.1| |Add option to see which rooms are open for reservation|Medium|2|2|Done|
 *-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
-|3.2| |Add option to see which Rooms are open at which times|Medium|2|-|Waiting|
+|3.2| |Add option to see at which times a room is open for reservation|Medium|2|-|Waiting|
 *-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
-|3.3| |Show details of the Rooms|Medium|2|-|Waiting|
+|3.3| |Show details of the rooms|Medium|2|-|Waiting|
 *-----+---------------+-----------------------+------------------------+------------------------+----------+----------+
