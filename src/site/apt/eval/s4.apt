@@ -3,7 +3,7 @@
 		-------------
 		Eric Dubuis
 		-------------
-		December 4, 2016
+		December 4, 2016; updated January 25, 2017.
 
 
 Deliverable 4
@@ -130,6 +130,81 @@ hours) as soon as you'll have finished the first task.
 	<<100>> points at most per team member are attributed to this deliverable. Points may
 not be equally distributed among team members. (However, this is the goal.)
 
+*---------------------------------------------------------------+---------------*-----------------*
+| Item															| Max. points	| Points received |
+*---------------------------------------------------------------+---------------*-----------------*
+| Product backlog items (at the beginning)						| 		5 		| 		 5		  |
+| COMMENTS:\													| 				| 				  |
+| -	Good														| 				| 				  |
+*---------------------------------------------------------------+---------------*-----------------*
+| The sprint backlog items / task list with task estimates	 	| 	 	10		| 		10		  |
+| COMMENTS:\													| 				| 				  |
+| -	Good														| 				| 				  |
+*---------------------------------------------------------------+---------------*-----------------*
+| The list of finished sprint backlog items / tasks and			| 		5		|   	 5		  |
+| measurements of your efforts (in hours)\ 						| 				|   			  |
+| COMMENTS:\													| 				| 				  |
+| -	Good														| 				| 				  |
+*---------------------------------------------------------------+---------------*-----------------*
+| Stable structure in terms of Java packages respecting the		| 		10 		| 		10 		  |
+| SOLID design principles\ 										| 		 		| 		 		  |
+| COMMENTS:\													| 				| 				  |
+| - Rest: Good													| 				| 				  |
+*---------------------------------------------------------------+---------------*-----------------*
+| Production Java interfaces and classes for logical			| 		10		| 		6 		  |
+| and persistence layer\										| 		 		| 		 		  |
+| COMMENTS:\													| 				| 			  	  |
+| - Logical layer missing (-1)\									| 				| 				  |
+| - @Override missing in some classes (-2)\						| 				| 				  |
+| - Using raw type instead of generic one (-1)\					| 				| 				  |
+*---------------------------------------------------------------+---------------*-----------------*
+| Production Java interfaces and classes for the user			| 		5 		| 		 3		  |
+| interface layer\												| 		 		| 		 		  |
+| COMMENTS:\													| 				| 			  	  |
+| - Unused import(s) (-2)\										| 				| 				  |
+*---------------------------------------------------------------+---------------*-----------------*
+| JUnit test classes for the core layers of the software,		| 		10 		| 		 10		  |
+| coverage: 90% (UI components excluded)\						| 		 		| 		 		  |
+| COMMENTS:\													| 				| 			  	  |
+| - Good														| 				| 				  |
+*---------------------------------------------------------------+---------------*-----------------*
+| The JDepend report\											| 		5		| 		5 		  |
+| COMMENTS:\													| 				| 			  	  |
+| - Good														| 				| 				  |
+*---------------------------------------------------------------+---------------*-----------------*
+| The Checkstyle report \										| 		5		| 		 5		  |
+| COMMENTS:\													| 				| 			  	  |
+| - Good														| 				| 				  |
+*---------------------------------------------------------------+---------------*-----------------*
+| JavaDoc quality \												| 		5		| 		 0		  |
+| COMMENTS:\													| 				| 			  	  |
+| - Missing														| 				| 				  |
+*---------------------------------------------------------------+---------------*-----------------*
+| Running application, UI, functionality\						| 		20		| 		 10		  |
+| COMMENTS:\													| 				| 			  	  |
+| - List of reservations is not updated (NP exception)\			| 				| 				  |
+| - Rest: okay													| 				| 				  |
+*---------------------------------------------------------------+---------------*-----------------*
+| Software (architecture) documentation\						| 		10		| 		 9		  |
+| COMMENTS:\													| 				| 			  	  |
+| - A-I graph not fully correct (-1)\							| 				| 				  |
+| - Rest: Good													| 				| 				  |
+*---------------------------------------------------------------+---------------*-----------------*
+| Miscellaneous 1\												| 				| 		 		  |
+| COMMENTS:\													| 				| 			  	  |
+| - None														| 				| 				  |
+*---------------------------------------------------------------+---------------*-----------------*
+| Miscellaneous 2\												| 				| 		 		  |
+| COMMENTS:\													| 				| 			  	  |
+| - None														| 				| 				  |
+*---------------------------------------------------------------+---------------*-----------------*
+| Miscellaneous 3\												| 				| 		 		  |
+| COMMENTS:\													| 				| 			  	  |
+| - None														| 				| 				  |
+*---------------------------------------------------------------+---------------*-----------------*
+| Total															| 		100		| 		78		  |
+*---------------------------------------------------------------+---------------*-----------------*
+Distribution of points for this deliverable.
 
 
 * Deadline

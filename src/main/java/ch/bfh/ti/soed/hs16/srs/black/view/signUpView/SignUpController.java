@@ -8,7 +8,7 @@
 package ch.bfh.ti.soed.hs16.srs.black.view.signUpView;
 
 import ch.bfh.ti.soed.hs16.srs.black.model.DataModel;
-import ch.bfh.ti.soed.hs16.srs.black.model.Customer;
+import ch.bfh.ti.soed.hs16.srs.black.model.Customer; // TODO Unused...
 import ch.bfh.ti.soed.hs16.srs.black.view.loginView.LoginView;
 import ch.bfh.ti.soed.hs16.srs.black.view.reservationView.ReservationView;
 import com.vaadin.navigator.Navigator;
